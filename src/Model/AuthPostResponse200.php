@@ -28,7 +28,7 @@ class AuthPostResponse200
     /**
      * The status of the authentication.
      *
-     * @return string
+     * @return string|null
      */
     public function getStatus(): ?string
     {
@@ -38,7 +38,7 @@ class AuthPostResponse200
     /**
      * The status of the authentication.
      *
-     * @param string $status
+     * @param string|null $status
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class AuthPostResponse200
     /**
      * An opaque token used to authenticate a user after a successful login.
      *
-     * @return string
+     * @return string|null
      */
     public function getIdentityToken(): ?string
     {
@@ -62,7 +62,7 @@ class AuthPostResponse200
     /**
      * An opaque token used to authenticate a user after a successful login.
      *
-     * @param string $identityToken
+     * @param string|null $identityToken
      *
      * @return self
      */

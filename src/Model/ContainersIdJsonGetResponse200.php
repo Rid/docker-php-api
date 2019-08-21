@@ -95,7 +95,9 @@ class ContainersIdJsonGetResponse200
      */
     protected $appArmorProfile;
     /**
-     * @var mixed[]
+     * IDs of exec instances that are running in the container.
+     *
+     * @var string[]
      */
     protected $execIDs;
     /**
@@ -142,7 +144,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The ID of the container.
      *
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -152,7 +154,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The ID of the container.
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -166,7 +168,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The time the container was created.
      *
-     * @return string
+     * @return string|null
      */
     public function getCreated(): ?string
     {
@@ -176,7 +178,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The time the container was created.
      *
-     * @param string $created
+     * @param string|null $created
      *
      * @return self
      */
@@ -190,7 +192,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The path to the command being run.
      *
-     * @return string
+     * @return string|null
      */
     public function getPath(): ?string
     {
@@ -200,7 +202,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The path to the command being run.
      *
-     * @param string $path
+     * @param string|null $path
      *
      * @return self
      */
@@ -214,7 +216,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The arguments to the command being run.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getArgs(): ?array
     {
@@ -224,7 +226,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The arguments to the command being run.
      *
-     * @param string[] $args
+     * @param string[]|null $args
      *
      * @return self
      */
@@ -238,7 +240,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The state of the container.
      *
-     * @return ContainersIdJsonGetResponse200State
+     * @return ContainersIdJsonGetResponse200State|null
      */
     public function getState(): ?ContainersIdJsonGetResponse200State
     {
@@ -248,7 +250,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The state of the container.
      *
-     * @param ContainersIdJsonGetResponse200State $state
+     * @param ContainersIdJsonGetResponse200State|null $state
      *
      * @return self
      */
@@ -262,7 +264,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The container's image.
      *
-     * @return string
+     * @return string|null
      */
     public function getImage(): ?string
     {
@@ -272,7 +274,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The container's image.
      *
-     * @param string $image
+     * @param string|null $image
      *
      * @return self
      */
@@ -284,7 +286,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getResolvConfPath(): ?string
     {
@@ -292,7 +294,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param string $resolvConfPath
+     * @param string|null $resolvConfPath
      *
      * @return self
      */
@@ -304,7 +306,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getHostnamePath(): ?string
     {
@@ -312,7 +314,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param string $hostnamePath
+     * @param string|null $hostnamePath
      *
      * @return self
      */
@@ -324,7 +326,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getHostsPath(): ?string
     {
@@ -332,7 +334,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param string $hostsPath
+     * @param string|null $hostsPath
      *
      * @return self
      */
@@ -344,7 +346,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLogPath(): ?string
     {
@@ -352,7 +354,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param string $logPath
+     * @param string|null $logPath
      *
      * @return self
      */
@@ -388,7 +390,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -396,7 +398,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -408,7 +410,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getRestartCount(): ?int
     {
@@ -416,7 +418,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param int $restartCount
+     * @param int|null $restartCount
      *
      * @return self
      */
@@ -428,7 +430,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDriver(): ?string
     {
@@ -436,7 +438,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param string $driver
+     * @param string|null $driver
      *
      * @return self
      */
@@ -448,7 +450,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMountLabel(): ?string
     {
@@ -456,7 +458,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param string $mountLabel
+     * @param string|null $mountLabel
      *
      * @return self
      */
@@ -468,7 +470,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getProcessLabel(): ?string
     {
@@ -476,7 +478,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param string $processLabel
+     * @param string|null $processLabel
      *
      * @return self
      */
@@ -488,7 +490,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAppArmorProfile(): ?string
     {
@@ -496,7 +498,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param string $appArmorProfile
+     * @param string|null $appArmorProfile
      *
      * @return self
      */
@@ -508,7 +510,9 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return mixed[]
+     * IDs of exec instances that are running in the container.
+     *
+     * @return string[]|null
      */
     public function getExecIDs(): ?array
     {
@@ -516,7 +520,9 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param mixed[] $execIDs
+     * IDs of exec instances that are running in the container.
+     *
+     * @param string[]|null $execIDs
      *
      * @return self
      */
@@ -530,7 +536,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Container configuration that depends on the host we are running on.
      *
-     * @return HostConfig
+     * @return HostConfig|null
      */
     public function getHostConfig(): ?HostConfig
     {
@@ -540,7 +546,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Container configuration that depends on the host we are running on.
      *
-     * @param HostConfig $hostConfig
+     * @param HostConfig|null $hostConfig
      *
      * @return self
      */
@@ -554,7 +560,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Information about a container's graph driver.
      *
-     * @return GraphDriverData
+     * @return GraphDriverData|null
      */
     public function getGraphDriver(): ?GraphDriverData
     {
@@ -564,7 +570,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Information about a container's graph driver.
      *
-     * @param GraphDriverData $graphDriver
+     * @param GraphDriverData|null $graphDriver
      *
      * @return self
      */
@@ -578,7 +584,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The size of files that have been created or changed by this container.
      *
-     * @return int
+     * @return int|null
      */
     public function getSizeRw(): ?int
     {
@@ -588,7 +594,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The size of files that have been created or changed by this container.
      *
-     * @param int $sizeRw
+     * @param int|null $sizeRw
      *
      * @return self
      */
@@ -602,7 +608,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The total size of all the files in this container.
      *
-     * @return int
+     * @return int|null
      */
     public function getSizeRootFs(): ?int
     {
@@ -612,7 +618,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The total size of all the files in this container.
      *
-     * @param int $sizeRootFs
+     * @param int|null $sizeRootFs
      *
      * @return self
      */
@@ -624,7 +630,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @return MountPoint[]
+     * @return MountPoint[]|null
      */
     public function getMounts(): ?array
     {
@@ -632,7 +638,7 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * @param MountPoint[] $mounts
+     * @param MountPoint[]|null $mounts
      *
      * @return self
      */
@@ -646,7 +652,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Configuration for a container that is portable between hosts.
      *
-     * @return ContainerConfig
+     * @return ContainerConfig|null
      */
     public function getConfig(): ?ContainerConfig
     {
@@ -656,7 +662,7 @@ class ContainersIdJsonGetResponse200
     /**
      * Configuration for a container that is portable between hosts.
      *
-     * @param ContainerConfig $config
+     * @param ContainerConfig|null $config
      *
      * @return self
      */
@@ -670,7 +676,7 @@ class ContainersIdJsonGetResponse200
     /**
      * NetworkSettings exposes the network settings in the API.
      *
-     * @return NetworkSettings
+     * @return NetworkSettings|null
      */
     public function getNetworkSettings(): ?NetworkSettings
     {
@@ -680,7 +686,7 @@ class ContainersIdJsonGetResponse200
     /**
      * NetworkSettings exposes the network settings in the API.
      *
-     * @param NetworkSettings $networkSettings
+     * @param NetworkSettings|null $networkSettings
      *
      * @return self
      */

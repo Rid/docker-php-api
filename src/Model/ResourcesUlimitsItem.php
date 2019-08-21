@@ -34,7 +34,7 @@ class ResourcesUlimitsItem
     /**
      * Name of ulimit.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -44,7 +44,7 @@ class ResourcesUlimitsItem
     /**
      * Name of ulimit.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class ResourcesUlimitsItem
     /**
      * Soft limit.
      *
-     * @return int
+     * @return int|null
      */
     public function getSoft(): ?int
     {
@@ -68,7 +68,7 @@ class ResourcesUlimitsItem
     /**
      * Soft limit.
      *
-     * @param int $soft
+     * @param int|null $soft
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class ResourcesUlimitsItem
     /**
      * Hard limit.
      *
-     * @return int
+     * @return int|null
      */
     public function getHard(): ?int
     {
@@ -92,7 +92,7 @@ class ResourcesUlimitsItem
     /**
      * Hard limit.
      *
-     * @param int $hard
+     * @param int|null $hard
      *
      * @return self
      */

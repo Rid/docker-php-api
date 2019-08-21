@@ -36,7 +36,7 @@ class RestartPolicy
     - `on-failure` Restart only when the container exit code is non-zero
 
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -50,7 +50,7 @@ class RestartPolicy
     - `on-failure` Restart only when the container exit code is non-zero
 
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class RestartPolicy
     /**
      * If `on-failure` is used, the number of times to retry before giving up.
      *
-     * @return int
+     * @return int|null
      */
     public function getMaximumRetryCount(): ?int
     {
@@ -74,7 +74,7 @@ class RestartPolicy
     /**
      * If `on-failure` is used, the number of times to retry before giving up.
      *
-     * @param int $maximumRetryCount
+     * @param int|null $maximumRetryCount
      *
      * @return self
      */

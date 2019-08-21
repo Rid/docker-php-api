@@ -25,7 +25,7 @@ class IndexInfo
      */
     protected $mirrors;
     /**
-     * Indicates if the the registry is part of the list of insecure.
+     * Indicates if the registry is part of the list of insecure.
     registries.
 
     If `false`, the registry is insecure. Insecure registries accept
@@ -52,7 +52,7 @@ class IndexInfo
     /**
      * Name of the registry, such as "docker.io".
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -62,7 +62,7 @@ class IndexInfo
     /**
      * Name of the registry, such as "docker.io".
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -76,7 +76,7 @@ class IndexInfo
     /**
      * List of mirrors, expressed as URIs.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getMirrors(): ?array
     {
@@ -86,7 +86,7 @@ class IndexInfo
     /**
      * List of mirrors, expressed as URIs.
      *
-     * @param string[] $mirrors
+     * @param string[]|null $mirrors
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class IndexInfo
     }
 
     /**
-     * Indicates if the the registry is part of the list of insecure.
+     * Indicates if the registry is part of the list of insecure.
     registries.
 
     If `false`, the registry is insecure. Insecure registries accept
@@ -112,7 +112,7 @@ class IndexInfo
     > trusted CAs instead of enabling this option.
 
      *
-     * @return bool
+     * @return bool|null
      */
     public function getSecure(): ?bool
     {
@@ -120,7 +120,7 @@ class IndexInfo
     }
 
     /**
-     * Indicates if the the registry is part of the list of insecure.
+     * Indicates if the registry is part of the list of insecure.
     registries.
 
     If `false`, the registry is insecure. Insecure registries accept
@@ -134,7 +134,7 @@ class IndexInfo
     > trusted CAs instead of enabling this option.
 
      *
-     * @param bool $secure
+     * @param bool|null $secure
      *
      * @return self
      */
@@ -148,7 +148,7 @@ class IndexInfo
     /**
      * Indicates whether this is an official registry (i.e., Docker Hub / docker.io).
      *
-     * @return bool
+     * @return bool|null
      */
     public function getOfficial(): ?bool
     {
@@ -158,7 +158,7 @@ class IndexInfo
     /**
      * Indicates whether this is an official registry (i.e., Docker Hub / docker.io).
      *
-     * @param bool $official
+     * @param bool|null $official
      *
      * @return self
      */

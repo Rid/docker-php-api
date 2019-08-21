@@ -28,7 +28,7 @@ class ContainersCreatePostResponse201
     /**
      * The ID of the created container.
      *
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -38,7 +38,7 @@ class ContainersCreatePostResponse201
     /**
      * The ID of the created container.
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class ContainersCreatePostResponse201
     /**
      * Warnings encountered when creating the container.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getWarnings(): ?array
     {
@@ -62,7 +62,7 @@ class ContainersCreatePostResponse201
     /**
      * Warnings encountered when creating the container.
      *
-     * @param string[] $warnings
+     * @param string[]|null $warnings
      *
      * @return self
      */

@@ -17,7 +17,7 @@ class IPAM
      *
      * @var string
      */
-    protected $driver;
+    protected $driver = 'default';
     /**
      * List of IPAM configuration options, specified as a map: `{"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}`.
      *
@@ -27,14 +27,14 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @var string[][]
+     * @var string[]
      */
     protected $options;
 
     /**
      * Name of the IPAM driver to use.
      *
-     * @return string
+     * @return string|null
      */
     public function getDriver(): ?string
     {
@@ -44,7 +44,7 @@ class IPAM
     /**
      * Name of the IPAM driver to use.
      *
-     * @param string $driver
+     * @param string|null $driver
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class IPAM
     /**
      * List of IPAM configuration options, specified as a map: `{"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}`.
      *
-     * @return string[][]
+     * @return string[][]|null
      */
     public function getConfig(): ?array
     {
@@ -68,7 +68,7 @@ class IPAM
     /**
      * List of IPAM configuration options, specified as a map: `{"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}`.
      *
-     * @param string[][] $config
+     * @param string[][]|null $config
      *
      * @return self
      */
@@ -82,9 +82,9 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @return string[][]
+     * @return string[]|null
      */
-    public function getOptions(): ?array
+    public function getOptions(): ?\ArrayObject
     {
         return $this->options;
     }
@@ -92,11 +92,11 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @param string[][] $options
+     * @param string[]|null $options
      *
      * @return self
      */
-    public function setOptions(?array $options): self
+    public function setOptions(?\ArrayObject $options): self
     {
         $this->options = $options;
 

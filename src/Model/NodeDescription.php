@@ -42,7 +42,7 @@ class NodeDescription
     protected $tLSInfo;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getHostname(): ?string
     {
@@ -50,7 +50,7 @@ class NodeDescription
     }
 
     /**
-     * @param string $hostname
+     * @param string|null $hostname
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class NodeDescription
     /**
      * Platform represents the platform (Arch/OS).
      *
-     * @return Platform
+     * @return Platform|null
      */
     public function getPlatform(): ?Platform
     {
@@ -74,7 +74,7 @@ class NodeDescription
     /**
      * Platform represents the platform (Arch/OS).
      *
-     * @param Platform $platform
+     * @param Platform|null $platform
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class NodeDescription
     /**
      * An object describing the resources which can be advertised by a node and requested by a task.
      *
-     * @return ResourceObject
+     * @return ResourceObject|null
      */
     public function getResources(): ?ResourceObject
     {
@@ -98,7 +98,7 @@ class NodeDescription
     /**
      * An object describing the resources which can be advertised by a node and requested by a task.
      *
-     * @param ResourceObject $resources
+     * @param ResourceObject|null $resources
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class NodeDescription
     /**
      * EngineDescription provides information about an engine.
      *
-     * @return EngineDescription
+     * @return EngineDescription|null
      */
     public function getEngine(): ?EngineDescription
     {
@@ -122,7 +122,7 @@ class NodeDescription
     /**
      * EngineDescription provides information about an engine.
      *
-     * @param EngineDescription $engine
+     * @param EngineDescription|null $engine
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class NodeDescription
     /**
      * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
      *
-     * @return TLSInfo
+     * @return TLSInfo|null
      */
     public function getTLSInfo(): ?TLSInfo
     {
@@ -146,7 +146,7 @@ class NodeDescription
     /**
      * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
      *
-     * @param TLSInfo $tLSInfo
+     * @param TLSInfo|null $tLSInfo
      *
      * @return self
      */

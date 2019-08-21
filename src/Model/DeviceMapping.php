@@ -26,7 +26,7 @@ class DeviceMapping
     protected $cgroupPermissions;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPathOnHost(): ?string
     {
@@ -34,7 +34,7 @@ class DeviceMapping
     }
 
     /**
-     * @param string $pathOnHost
+     * @param string|null $pathOnHost
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class DeviceMapping
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPathInContainer(): ?string
     {
@@ -54,7 +54,7 @@ class DeviceMapping
     }
 
     /**
-     * @param string $pathInContainer
+     * @param string|null $pathInContainer
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class DeviceMapping
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCgroupPermissions(): ?string
     {
@@ -74,7 +74,7 @@ class DeviceMapping
     }
 
     /**
-     * @param string $cgroupPermissions
+     * @param string|null $cgroupPermissions
      *
      * @return self
      */

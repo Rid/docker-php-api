@@ -22,7 +22,8 @@ class SecretInspect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         $this->id = $id;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -51,7 +52,7 @@ class SecretInspect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * @throws \Docker\API\Exception\SecretInspectInternalServerErrorException
      * @throws \Docker\API\Exception\SecretInspectServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Secret
+     * @return \Docker\API\Model\Secret|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

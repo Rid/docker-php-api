@@ -23,8 +23,7 @@ class ContainerLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var bool $follow return the logs as a stream
-
+     *     @var bool $follow keep connection after returning logs
      *     @var bool $stdout Return logs from `stdout`
      *     @var bool $stderr Return logs from `stderr`
      *     @var int $since Only return logs since this time, as a UNIX timestamp
@@ -39,7 +38,8 @@ class ContainerLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -86,9 +86,6 @@ class ContainerLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
-        if (101 === $status) {
-            return json_decode($body);
-        }
         if (200 === $status) {
             return json_decode($body);
         }

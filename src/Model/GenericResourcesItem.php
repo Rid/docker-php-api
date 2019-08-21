@@ -22,7 +22,7 @@ class GenericResourcesItem
     protected $discreteResourceSpec;
 
     /**
-     * @return GenericResourcesItemNamedResourceSpec
+     * @return GenericResourcesItemNamedResourceSpec|null
      */
     public function getNamedResourceSpec(): ?GenericResourcesItemNamedResourceSpec
     {
@@ -30,7 +30,7 @@ class GenericResourcesItem
     }
 
     /**
-     * @param GenericResourcesItemNamedResourceSpec $namedResourceSpec
+     * @param GenericResourcesItemNamedResourceSpec|null $namedResourceSpec
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class GenericResourcesItem
     }
 
     /**
-     * @return GenericResourcesItemDiscreteResourceSpec
+     * @return GenericResourcesItemDiscreteResourceSpec|null
      */
     public function getDiscreteResourceSpec(): ?GenericResourcesItemDiscreteResourceSpec
     {
@@ -50,7 +50,7 @@ class GenericResourcesItem
     }
 
     /**
-     * @param GenericResourcesItemDiscreteResourceSpec $discreteResourceSpec
+     * @param GenericResourcesItemDiscreteResourceSpec|null $discreteResourceSpec
      *
      * @return self
      */

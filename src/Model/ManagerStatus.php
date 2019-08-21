@@ -15,7 +15,7 @@ class ManagerStatus
     /**
      * @var bool
      */
-    protected $leader;
+    protected $leader = false;
     /**
      * Reachability represents the reachability of a node.
      *
@@ -30,7 +30,7 @@ class ManagerStatus
     protected $addr;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getLeader(): ?bool
     {
@@ -38,7 +38,7 @@ class ManagerStatus
     }
 
     /**
-     * @param bool $leader
+     * @param bool|null $leader
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class ManagerStatus
     /**
      * Reachability represents the reachability of a node.
      *
-     * @return string
+     * @return string|null
      */
     public function getReachability(): ?string
     {
@@ -62,7 +62,7 @@ class ManagerStatus
     /**
      * Reachability represents the reachability of a node.
      *
-     * @param string $reachability
+     * @param string|null $reachability
      *
      * @return self
      */
@@ -76,7 +76,7 @@ class ManagerStatus
     /**
      * The IP address and port at which the manager is reachable.
      *
-     * @return string
+     * @return string|null
      */
     public function getAddr(): ?string
     {
@@ -86,7 +86,7 @@ class ManagerStatus
     /**
      * The IP address and port at which the manager is reachable.
      *
-     * @param string $addr
+     * @param string|null $addr
      *
      * @return self
      */

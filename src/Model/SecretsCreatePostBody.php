@@ -51,7 +51,7 @@ class SecretsCreatePostBody
     /**
      * User-defined name of the secret.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -61,7 +61,7 @@ class SecretsCreatePostBody
     /**
      * User-defined name of the secret.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -75,7 +75,7 @@ class SecretsCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -85,7 +85,7 @@ class SecretsCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -104,7 +104,7 @@ class SecretsCreatePostBody
     other endpoints.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getData(): ?string
     {
@@ -119,7 +119,7 @@ class SecretsCreatePostBody
     other endpoints.
 
      *
-     * @param string $data
+     * @param string|null $data
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class SecretsCreatePostBody
     /**
      * Driver represents a driver (network, logging, secrets).
      *
-     * @return Driver
+     * @return Driver|null
      */
     public function getDriver(): ?Driver
     {
@@ -143,7 +143,7 @@ class SecretsCreatePostBody
     /**
      * Driver represents a driver (network, logging, secrets).
      *
-     * @param Driver $driver
+     * @param Driver|null $driver
      *
      * @return self
      */
@@ -157,7 +157,7 @@ class SecretsCreatePostBody
     /**
      * Driver represents a driver (network, logging, secrets).
      *
-     * @return Driver
+     * @return Driver|null
      */
     public function getTemplating(): ?Driver
     {
@@ -167,7 +167,7 @@ class SecretsCreatePostBody
     /**
      * Driver represents a driver (network, logging, secrets).
      *
-     * @param Driver $templating
+     * @param Driver|null $templating
      *
      * @return self
      */

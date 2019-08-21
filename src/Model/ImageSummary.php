@@ -54,7 +54,7 @@ class ImageSummary
     protected $containers;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -62,7 +62,7 @@ class ImageSummary
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class ImageSummary
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getParentId(): ?string
     {
@@ -82,7 +82,7 @@ class ImageSummary
     }
 
     /**
-     * @param string $parentId
+     * @param string|null $parentId
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class ImageSummary
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getRepoTags(): ?array
     {
@@ -102,7 +102,7 @@ class ImageSummary
     }
 
     /**
-     * @param string[] $repoTags
+     * @param string[]|null $repoTags
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class ImageSummary
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getRepoDigests(): ?array
     {
@@ -122,7 +122,7 @@ class ImageSummary
     }
 
     /**
-     * @param string[] $repoDigests
+     * @param string[]|null $repoDigests
      *
      * @return self
      */
@@ -134,7 +134,7 @@ class ImageSummary
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -142,7 +142,7 @@ class ImageSummary
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -154,7 +154,7 @@ class ImageSummary
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getSize(): ?int
     {
@@ -162,7 +162,7 @@ class ImageSummary
     }
 
     /**
-     * @param int $size
+     * @param int|null $size
      *
      * @return self
      */
@@ -174,7 +174,7 @@ class ImageSummary
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getSharedSize(): ?int
     {
@@ -182,7 +182,7 @@ class ImageSummary
     }
 
     /**
-     * @param int $sharedSize
+     * @param int|null $sharedSize
      *
      * @return self
      */
@@ -194,7 +194,7 @@ class ImageSummary
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getVirtualSize(): ?int
     {
@@ -202,7 +202,7 @@ class ImageSummary
     }
 
     /**
-     * @param int $virtualSize
+     * @param int|null $virtualSize
      *
      * @return self
      */
@@ -214,7 +214,7 @@ class ImageSummary
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -222,7 +222,7 @@ class ImageSummary
     }
 
     /**
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -234,7 +234,7 @@ class ImageSummary
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getContainers(): ?int
     {
@@ -242,7 +242,7 @@ class ImageSummary
     }
 
     /**
-     * @param int $containers
+     * @param int|null $containers
      *
      * @return self
      */

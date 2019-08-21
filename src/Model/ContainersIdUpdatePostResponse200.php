@@ -18,7 +18,7 @@ class ContainersIdUpdatePostResponse200
     protected $warnings;
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getWarnings(): ?array
     {
@@ -26,7 +26,7 @@ class ContainersIdUpdatePostResponse200
     }
 
     /**
-     * @param string[] $warnings
+     * @param string[]|null $warnings
      *
      * @return self
      */

@@ -22,7 +22,7 @@ class SwarmUnlockPostBody
     /**
      * The swarm's unlock key.
      *
-     * @return string
+     * @return string|null
      */
     public function getUnlockKey(): ?string
     {
@@ -32,7 +32,7 @@ class SwarmUnlockPostBody
     /**
      * The swarm's unlock key.
      *
-     * @param string $unlockKey
+     * @param string|null $unlockKey
      *
      * @return self
      */

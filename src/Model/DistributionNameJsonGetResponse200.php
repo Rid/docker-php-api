@@ -28,7 +28,7 @@ class DistributionNameJsonGetResponse200
     /**
      * A descriptor struct containing digest, media type, and size.
      *
-     * @return DistributionNameJsonGetResponse200Descriptor
+     * @return DistributionNameJsonGetResponse200Descriptor|null
      */
     public function getDescriptor(): ?DistributionNameJsonGetResponse200Descriptor
     {
@@ -38,7 +38,7 @@ class DistributionNameJsonGetResponse200
     /**
      * A descriptor struct containing digest, media type, and size.
      *
-     * @param DistributionNameJsonGetResponse200Descriptor $descriptor
+     * @param DistributionNameJsonGetResponse200Descriptor|null $descriptor
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class DistributionNameJsonGetResponse200
     /**
      * An array containing all platforms supported by the image.
      *
-     * @return DistributionNameJsonGetResponse200PlatformsItem[]
+     * @return DistributionNameJsonGetResponse200PlatformsItem[]|null
      */
     public function getPlatforms(): ?array
     {
@@ -62,7 +62,7 @@ class DistributionNameJsonGetResponse200
     /**
      * An array containing all platforms supported by the image.
      *
-     * @param DistributionNameJsonGetResponse200PlatformsItem[] $platforms
+     * @param DistributionNameJsonGetResponse200PlatformsItem[]|null $platforms
      *
      * @return self
      */

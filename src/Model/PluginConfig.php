@@ -84,7 +84,7 @@ class PluginConfig
     /**
      * Docker Version used to create the plugin.
      *
-     * @return string
+     * @return string|null
      */
     public function getDockerVersion(): ?string
     {
@@ -94,7 +94,7 @@ class PluginConfig
     /**
      * Docker Version used to create the plugin.
      *
-     * @param string $dockerVersion
+     * @param string|null $dockerVersion
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class PluginConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -114,7 +114,7 @@ class PluginConfig
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -126,7 +126,7 @@ class PluginConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDocumentation(): ?string
     {
@@ -134,7 +134,7 @@ class PluginConfig
     }
 
     /**
-     * @param string $documentation
+     * @param string|null $documentation
      *
      * @return self
      */
@@ -148,7 +148,7 @@ class PluginConfig
     /**
      * The interface between Docker and the plugin.
      *
-     * @return PluginConfigInterface
+     * @return PluginConfigInterface|null
      */
     public function getInterface(): ?PluginConfigInterface
     {
@@ -158,7 +158,7 @@ class PluginConfig
     /**
      * The interface between Docker and the plugin.
      *
-     * @param PluginConfigInterface $interface
+     * @param PluginConfigInterface|null $interface
      *
      * @return self
      */
@@ -170,7 +170,7 @@ class PluginConfig
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getEntrypoint(): ?array
     {
@@ -178,7 +178,7 @@ class PluginConfig
     }
 
     /**
-     * @param string[] $entrypoint
+     * @param string[]|null $entrypoint
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class PluginConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWorkDir(): ?string
     {
@@ -198,7 +198,7 @@ class PluginConfig
     }
 
     /**
-     * @param string $workDir
+     * @param string|null $workDir
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class PluginConfig
     }
 
     /**
-     * @return PluginConfigUser
+     * @return PluginConfigUser|null
      */
     public function getUser(): ?PluginConfigUser
     {
@@ -218,7 +218,7 @@ class PluginConfig
     }
 
     /**
-     * @param PluginConfigUser $user
+     * @param PluginConfigUser|null $user
      *
      * @return self
      */
@@ -230,7 +230,7 @@ class PluginConfig
     }
 
     /**
-     * @return PluginConfigNetwork
+     * @return PluginConfigNetwork|null
      */
     public function getNetwork(): ?PluginConfigNetwork
     {
@@ -238,7 +238,7 @@ class PluginConfig
     }
 
     /**
-     * @param PluginConfigNetwork $network
+     * @param PluginConfigNetwork|null $network
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class PluginConfig
     }
 
     /**
-     * @return PluginConfigLinux
+     * @return PluginConfigLinux|null
      */
     public function getLinux(): ?PluginConfigLinux
     {
@@ -258,7 +258,7 @@ class PluginConfig
     }
 
     /**
-     * @param PluginConfigLinux $linux
+     * @param PluginConfigLinux|null $linux
      *
      * @return self
      */
@@ -270,7 +270,7 @@ class PluginConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPropagatedMount(): ?string
     {
@@ -278,7 +278,7 @@ class PluginConfig
     }
 
     /**
-     * @param string $propagatedMount
+     * @param string|null $propagatedMount
      *
      * @return self
      */
@@ -290,7 +290,7 @@ class PluginConfig
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIpcHost(): ?bool
     {
@@ -298,7 +298,7 @@ class PluginConfig
     }
 
     /**
-     * @param bool $ipcHost
+     * @param bool|null $ipcHost
      *
      * @return self
      */
@@ -310,7 +310,7 @@ class PluginConfig
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPidHost(): ?bool
     {
@@ -318,7 +318,7 @@ class PluginConfig
     }
 
     /**
-     * @param bool $pidHost
+     * @param bool|null $pidHost
      *
      * @return self
      */
@@ -330,7 +330,7 @@ class PluginConfig
     }
 
     /**
-     * @return PluginMount[]
+     * @return PluginMount[]|null
      */
     public function getMounts(): ?array
     {
@@ -338,7 +338,7 @@ class PluginConfig
     }
 
     /**
-     * @param PluginMount[] $mounts
+     * @param PluginMount[]|null $mounts
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class PluginConfig
     }
 
     /**
-     * @return PluginEnv[]
+     * @return PluginEnv[]|null
      */
     public function getEnv(): ?array
     {
@@ -358,7 +358,7 @@ class PluginConfig
     }
 
     /**
-     * @param PluginEnv[] $env
+     * @param PluginEnv[]|null $env
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class PluginConfig
     }
 
     /**
-     * @return PluginConfigArgs
+     * @return PluginConfigArgs|null
      */
     public function getArgs(): ?PluginConfigArgs
     {
@@ -378,7 +378,7 @@ class PluginConfig
     }
 
     /**
-     * @param PluginConfigArgs $args
+     * @param PluginConfigArgs|null $args
      *
      * @return self
      */
@@ -390,7 +390,7 @@ class PluginConfig
     }
 
     /**
-     * @return PluginConfigRootfs
+     * @return PluginConfigRootfs|null
      */
     public function getRootfs(): ?PluginConfigRootfs
     {
@@ -398,7 +398,7 @@ class PluginConfig
     }
 
     /**
-     * @param PluginConfigRootfs $rootfs
+     * @param PluginConfigRootfs|null $rootfs
      *
      * @return self
      */

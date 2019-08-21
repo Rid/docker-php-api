@@ -12,7 +12,8 @@ namespace Docker\API\Endpoint;
 
 class SwarmInspect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\AmpArtaxEndpoint, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -41,7 +42,7 @@ class SwarmInspect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * @throws \Docker\API\Exception\SwarmInspectInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmInspectServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Swarm
+     * @return \Docker\API\Model\Swarm|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

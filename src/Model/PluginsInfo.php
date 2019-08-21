@@ -40,7 +40,7 @@ class PluginsInfo
     /**
      * Names of available volume-drivers, and network-driver plugins.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getVolume(): ?array
     {
@@ -50,7 +50,7 @@ class PluginsInfo
     /**
      * Names of available volume-drivers, and network-driver plugins.
      *
-     * @param string[] $volume
+     * @param string[]|null $volume
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class PluginsInfo
     /**
      * Names of available network-drivers, and network-driver plugins.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getNetwork(): ?array
     {
@@ -74,7 +74,7 @@ class PluginsInfo
     /**
      * Names of available network-drivers, and network-driver plugins.
      *
-     * @param string[] $network
+     * @param string[]|null $network
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class PluginsInfo
     /**
      * Names of available authorization plugins.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getAuthorization(): ?array
     {
@@ -98,7 +98,7 @@ class PluginsInfo
     /**
      * Names of available authorization plugins.
      *
-     * @param string[] $authorization
+     * @param string[]|null $authorization
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class PluginsInfo
     /**
      * Names of available logging-drivers, and logging-driver plugins.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLog(): ?array
     {
@@ -122,7 +122,7 @@ class PluginsInfo
     /**
      * Names of available logging-drivers, and logging-driver plugins.
      *
-     * @param string[] $log
+     * @param string[]|null $log
      *
      * @return self
      */

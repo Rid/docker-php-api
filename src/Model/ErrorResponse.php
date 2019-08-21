@@ -22,7 +22,7 @@ class ErrorResponse
     /**
      * The error message.
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage(): ?string
     {
@@ -32,7 +32,7 @@ class ErrorResponse
     /**
      * The error message.
      *
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */

@@ -64,7 +64,8 @@ class SystemEvents extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -105,7 +106,7 @@ class SystemEvents extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * @throws \Docker\API\Exception\SystemEventsBadRequestException
      * @throws \Docker\API\Exception\SystemEventsInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\EventsGetResponse200
+     * @return \Docker\API\Model\EventsGetResponse200|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

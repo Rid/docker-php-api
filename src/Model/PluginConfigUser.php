@@ -22,7 +22,7 @@ class PluginConfigUser
     protected $gID;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUID(): ?int
     {
@@ -30,7 +30,7 @@ class PluginConfigUser
     }
 
     /**
-     * @param int $uID
+     * @param int|null $uID
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class PluginConfigUser
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGID(): ?int
     {
@@ -50,7 +50,7 @@ class PluginConfigUser
     }
 
     /**
-     * @param int $gID
+     * @param int|null $gID
      *
      * @return self
      */

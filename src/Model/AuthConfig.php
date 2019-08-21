@@ -30,7 +30,7 @@ class AuthConfig
     protected $serveraddress;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUsername(): ?string
     {
@@ -38,7 +38,7 @@ class AuthConfig
     }
 
     /**
-     * @param string $username
+     * @param string|null $username
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class AuthConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPassword(): ?string
     {
@@ -58,7 +58,7 @@ class AuthConfig
     }
 
     /**
-     * @param string $password
+     * @param string|null $password
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class AuthConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -78,7 +78,7 @@ class AuthConfig
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class AuthConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getServeraddress(): ?string
     {
@@ -98,7 +98,7 @@ class AuthConfig
     }
 
     /**
-     * @param string $serveraddress
+     * @param string|null $serveraddress
      *
      * @return self
      */

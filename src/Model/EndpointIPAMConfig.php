@@ -26,7 +26,7 @@ class EndpointIPAMConfig
     protected $linkLocalIPs;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getIPv4Address(): ?string
     {
@@ -34,7 +34,7 @@ class EndpointIPAMConfig
     }
 
     /**
-     * @param string $iPv4Address
+     * @param string|null $iPv4Address
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class EndpointIPAMConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getIPv6Address(): ?string
     {
@@ -54,7 +54,7 @@ class EndpointIPAMConfig
     }
 
     /**
-     * @param string $iPv6Address
+     * @param string|null $iPv6Address
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class EndpointIPAMConfig
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getLinkLocalIPs(): ?array
     {
@@ -74,7 +74,7 @@ class EndpointIPAMConfig
     }
 
     /**
-     * @param string[] $linkLocalIPs
+     * @param string[]|null $linkLocalIPs
      *
      * @return self
      */

@@ -27,7 +27,8 @@ class PluginDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -66,7 +67,7 @@ class PluginDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * @throws \Docker\API\Exception\PluginDeleteNotFoundException
      * @throws \Docker\API\Exception\PluginDeleteInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Plugin
+     * @return \Docker\API\Model\Plugin|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

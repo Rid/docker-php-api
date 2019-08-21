@@ -29,7 +29,7 @@ class NetworksCreatePostBody
      *
      * @var string
      */
-    protected $driver;
+    protected $driver = 'bridge';
     /**
      * Restrict external access to the network.
      *
@@ -74,7 +74,7 @@ class NetworksCreatePostBody
     /**
      * The network's name.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -84,7 +84,7 @@ class NetworksCreatePostBody
     /**
      * The network's name.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class NetworksCreatePostBody
     /**
      * Check for networks with duplicate names. Since Network is primarily keyed based on a random ID and not on the name, and network name is strictly a user-friendly alias to the network which is uniquely identified using ID, there is no guaranteed way to check for duplicates. CheckDuplicate is there to provide a best effort checking of any networks which has the same name but it is not guaranteed to catch all name collisions.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCheckDuplicate(): ?bool
     {
@@ -108,7 +108,7 @@ class NetworksCreatePostBody
     /**
      * Check for networks with duplicate names. Since Network is primarily keyed based on a random ID and not on the name, and network name is strictly a user-friendly alias to the network which is uniquely identified using ID, there is no guaranteed way to check for duplicates. CheckDuplicate is there to provide a best effort checking of any networks which has the same name but it is not guaranteed to catch all name collisions.
      *
-     * @param bool $checkDuplicate
+     * @param bool|null $checkDuplicate
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class NetworksCreatePostBody
     /**
      * Name of the network driver plugin to use.
      *
-     * @return string
+     * @return string|null
      */
     public function getDriver(): ?string
     {
@@ -132,7 +132,7 @@ class NetworksCreatePostBody
     /**
      * Name of the network driver plugin to use.
      *
-     * @param string $driver
+     * @param string|null $driver
      *
      * @return self
      */
@@ -146,7 +146,7 @@ class NetworksCreatePostBody
     /**
      * Restrict external access to the network.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getInternal(): ?bool
     {
@@ -156,7 +156,7 @@ class NetworksCreatePostBody
     /**
      * Restrict external access to the network.
      *
-     * @param bool $internal
+     * @param bool|null $internal
      *
      * @return self
      */
@@ -170,7 +170,7 @@ class NetworksCreatePostBody
     /**
      * Globally scoped network is manually attachable by regular containers from workers in swarm mode.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getAttachable(): ?bool
     {
@@ -180,7 +180,7 @@ class NetworksCreatePostBody
     /**
      * Globally scoped network is manually attachable by regular containers from workers in swarm mode.
      *
-     * @param bool $attachable
+     * @param bool|null $attachable
      *
      * @return self
      */
@@ -194,7 +194,7 @@ class NetworksCreatePostBody
     /**
      * Ingress network is the network which provides the routing-mesh in swarm mode.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIngress(): ?bool
     {
@@ -204,7 +204,7 @@ class NetworksCreatePostBody
     /**
      * Ingress network is the network which provides the routing-mesh in swarm mode.
      *
-     * @param bool $ingress
+     * @param bool|null $ingress
      *
      * @return self
      */
@@ -216,7 +216,7 @@ class NetworksCreatePostBody
     }
 
     /**
-     * @return IPAM
+     * @return IPAM|null
      */
     public function getIPAM(): ?IPAM
     {
@@ -224,7 +224,7 @@ class NetworksCreatePostBody
     }
 
     /**
-     * @param IPAM $iPAM
+     * @param IPAM|null $iPAM
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class NetworksCreatePostBody
     /**
      * Enable IPv6 on the network.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getEnableIPv6(): ?bool
     {
@@ -248,7 +248,7 @@ class NetworksCreatePostBody
     /**
      * Enable IPv6 on the network.
      *
-     * @param bool $enableIPv6
+     * @param bool|null $enableIPv6
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class NetworksCreatePostBody
     /**
      * Network specific options to be used by the drivers.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getOptions(): ?\ArrayObject
     {
@@ -272,7 +272,7 @@ class NetworksCreatePostBody
     /**
      * Network specific options to be used by the drivers.
      *
-     * @param string[] $options
+     * @param string[]|null $options
      *
      * @return self
      */
@@ -286,7 +286,7 @@ class NetworksCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -296,7 +296,7 @@ class NetworksCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */

@@ -26,7 +26,8 @@ class ContainerUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $this->body = $update;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -54,7 +55,7 @@ class ContainerUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      * @throws \Docker\API\Exception\ContainerUpdateNotFoundException
      * @throws \Docker\API\Exception\ContainerUpdateInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersIdUpdatePostResponse200
+     * @return \Docker\API\Model\ContainersIdUpdatePostResponse200|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

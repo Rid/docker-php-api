@@ -41,7 +41,7 @@ class ServiceSpecUpdateConfig
      *
      * @var float
      */
-    protected $maxFailureRatio;
+    protected $maxFailureRatio = 0;
     /**
      * The order of operations when rolling out an updated task. Either the old task is shut down before the new task is started, or the new task is started before the old task is shut down.
      *
@@ -52,7 +52,7 @@ class ServiceSpecUpdateConfig
     /**
      * Maximum number of tasks to be updated in one iteration (0 means unlimited parallelism).
      *
-     * @return int
+     * @return int|null
      */
     public function getParallelism(): ?int
     {
@@ -62,7 +62,7 @@ class ServiceSpecUpdateConfig
     /**
      * Maximum number of tasks to be updated in one iteration (0 means unlimited parallelism).
      *
-     * @param int $parallelism
+     * @param int|null $parallelism
      *
      * @return self
      */
@@ -76,7 +76,7 @@ class ServiceSpecUpdateConfig
     /**
      * Amount of time between updates, in nanoseconds.
      *
-     * @return int
+     * @return int|null
      */
     public function getDelay(): ?int
     {
@@ -86,7 +86,7 @@ class ServiceSpecUpdateConfig
     /**
      * Amount of time between updates, in nanoseconds.
      *
-     * @param int $delay
+     * @param int|null $delay
      *
      * @return self
      */
@@ -100,7 +100,7 @@ class ServiceSpecUpdateConfig
     /**
      * Action to take if an updated task fails to run, or stops running during the update.
      *
-     * @return string
+     * @return string|null
      */
     public function getFailureAction(): ?string
     {
@@ -110,7 +110,7 @@ class ServiceSpecUpdateConfig
     /**
      * Action to take if an updated task fails to run, or stops running during the update.
      *
-     * @param string $failureAction
+     * @param string|null $failureAction
      *
      * @return self
      */
@@ -124,7 +124,7 @@ class ServiceSpecUpdateConfig
     /**
      * Amount of time to monitor each updated task for failures, in nanoseconds.
      *
-     * @return int
+     * @return int|null
      */
     public function getMonitor(): ?int
     {
@@ -134,7 +134,7 @@ class ServiceSpecUpdateConfig
     /**
      * Amount of time to monitor each updated task for failures, in nanoseconds.
      *
-     * @param int $monitor
+     * @param int|null $monitor
      *
      * @return self
      */
@@ -148,7 +148,7 @@ class ServiceSpecUpdateConfig
     /**
      * The fraction of tasks that may fail during an update before the failure action is invoked, specified as a floating point number between 0 and 1.
      *
-     * @return float
+     * @return float|null
      */
     public function getMaxFailureRatio(): ?float
     {
@@ -158,7 +158,7 @@ class ServiceSpecUpdateConfig
     /**
      * The fraction of tasks that may fail during an update before the failure action is invoked, specified as a floating point number between 0 and 1.
      *
-     * @param float $maxFailureRatio
+     * @param float|null $maxFailureRatio
      *
      * @return self
      */
@@ -172,7 +172,7 @@ class ServiceSpecUpdateConfig
     /**
      * The order of operations when rolling out an updated task. Either the old task is shut down before the new task is started, or the new task is started before the old task is shut down.
      *
-     * @return string
+     * @return string|null
      */
     public function getOrder(): ?string
     {
@@ -182,7 +182,7 @@ class ServiceSpecUpdateConfig
     /**
      * The order of operations when rolling out an updated task. Either the old task is shut down before the new task is started, or the new task is started before the old task is shut down.
      *
-     * @param string $order
+     * @param string|null $order
      *
      * @return self
      */

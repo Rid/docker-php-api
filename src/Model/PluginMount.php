@@ -42,7 +42,7 @@ class PluginMount
     protected $options;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -50,7 +50,7 @@ class PluginMount
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -62,7 +62,7 @@ class PluginMount
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -70,7 +70,7 @@ class PluginMount
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class PluginMount
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getSettable(): ?array
     {
@@ -90,7 +90,7 @@ class PluginMount
     }
 
     /**
-     * @param string[] $settable
+     * @param string[]|null $settable
      *
      * @return self
      */
@@ -102,7 +102,7 @@ class PluginMount
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSource(): ?string
     {
@@ -110,7 +110,7 @@ class PluginMount
     }
 
     /**
-     * @param string $source
+     * @param string|null $source
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class PluginMount
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDestination(): ?string
     {
@@ -130,7 +130,7 @@ class PluginMount
     }
 
     /**
-     * @param string $destination
+     * @param string|null $destination
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class PluginMount
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -150,7 +150,7 @@ class PluginMount
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -162,7 +162,7 @@ class PluginMount
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getOptions(): ?array
     {
@@ -170,7 +170,7 @@ class PluginMount
     }
 
     /**
-     * @param string[] $options
+     * @param string[]|null $options
      *
      * @return self
      */

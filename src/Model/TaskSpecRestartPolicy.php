@@ -29,18 +29,18 @@ class TaskSpecRestartPolicy
      *
      * @var int
      */
-    protected $maxAttempts;
+    protected $maxAttempts = 0;
     /**
      * Windows is the time window used to evaluate the restart policy (default value is 0, which is unbounded).
      *
      * @var int
      */
-    protected $window;
+    protected $window = 0;
 
     /**
      * Condition for restart.
      *
-     * @return string
+     * @return string|null
      */
     public function getCondition(): ?string
     {
@@ -50,7 +50,7 @@ class TaskSpecRestartPolicy
     /**
      * Condition for restart.
      *
-     * @param string $condition
+     * @param string|null $condition
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class TaskSpecRestartPolicy
     /**
      * Delay between restart attempts.
      *
-     * @return int
+     * @return int|null
      */
     public function getDelay(): ?int
     {
@@ -74,7 +74,7 @@ class TaskSpecRestartPolicy
     /**
      * Delay between restart attempts.
      *
-     * @param int $delay
+     * @param int|null $delay
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class TaskSpecRestartPolicy
     /**
      * Maximum attempts to restart a given container before giving up (default value is 0, which is ignored).
      *
-     * @return int
+     * @return int|null
      */
     public function getMaxAttempts(): ?int
     {
@@ -98,7 +98,7 @@ class TaskSpecRestartPolicy
     /**
      * Maximum attempts to restart a given container before giving up (default value is 0, which is ignored).
      *
-     * @param int $maxAttempts
+     * @param int|null $maxAttempts
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class TaskSpecRestartPolicy
     /**
      * Windows is the time window used to evaluate the restart policy (default value is 0, which is unbounded).
      *
-     * @return int
+     * @return int|null
      */
     public function getWindow(): ?int
     {
@@ -122,7 +122,7 @@ class TaskSpecRestartPolicy
     /**
      * Windows is the time window used to evaluate the restart policy (default value is 0, which is unbounded).
      *
-     * @param int $window
+     * @param int|null $window
      *
      * @return self
      */

@@ -22,7 +22,7 @@ class TaskSpecNetworksItem
     protected $aliases;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTarget(): ?string
     {
@@ -30,7 +30,7 @@ class TaskSpecNetworksItem
     }
 
     /**
-     * @param string $target
+     * @param string|null $target
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class TaskSpecNetworksItem
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getAliases(): ?array
     {
@@ -50,7 +50,7 @@ class TaskSpecNetworksItem
     }
 
     /**
-     * @param string[] $aliases
+     * @param string[]|null $aliases
      *
      * @return self
      */

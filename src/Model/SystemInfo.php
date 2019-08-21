@@ -163,6 +163,12 @@ class SystemInfo
      */
     protected $cPUSet;
     /**
+     * Indicates if the host kernel has PID limit support enabled.
+     *
+     * @var bool
+     */
+    protected $pidsLimit;
+    /**
      * Indicates if OOM killer disable is supported on the host.
      *
      * @var bool
@@ -229,7 +235,7 @@ class SystemInfo
      *
      * @var string
      */
-    protected $cgroupDriver;
+    protected $cgroupDriver = 'cgroupfs';
     /**
      * Number of event listeners subscribed.
      *
@@ -255,6 +261,19 @@ class SystemInfo
      * @var string
      */
     protected $operatingSystem;
+    /**
+     * Version of the host's operating system.
+
+    <p><br /></p>
+
+    > **Note**: The information returned in this field, including its
+    > very existence, and the formatting of values, should not be considered
+    > stable, and may change without notice.
+
+     *
+     * @var string
+     */
+    protected $oSVersion;
     /**
      * Generic type of the operating system of the host, as returned by the.
     Go runtime (`GOOS`).
@@ -300,7 +319,7 @@ class SystemInfo
      *
      * @var string
      */
-    protected $indexServerAddress;
+    protected $indexServerAddress = 'https://index.docker.io/v1/';
     /**
      * RegistryServiceConfig stores daemon registry services configuration.
      *
@@ -316,6 +335,8 @@ class SystemInfo
     /**
      * HTTP-proxy configured for the daemon. This value is obtained from the.
     [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+    Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+    are masked in the API response.
 
     Containers do not automatically inherit this configuration.
 
@@ -326,6 +347,8 @@ class SystemInfo
     /**
      * HTTPS-proxy configured for the daemon. This value is obtained from the.
     [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+    Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+    are masked in the API response.
 
     Containers do not automatically inherit this configuration.
 
@@ -440,7 +463,7 @@ class SystemInfo
      *
      * @var string
      */
-    protected $defaultRuntime;
+    protected $defaultRuntime = 'runc';
     /**
      * Represents generic information about swarm.
      *
@@ -456,7 +479,7 @@ class SystemInfo
      *
      * @var bool
      */
-    protected $liveRestoreEnabled;
+    protected $liveRestoreEnabled = false;
     /**
      * Represents the isolation technology to use as a default for containers.
     The supported values are platform-specific.
@@ -469,9 +492,9 @@ class SystemInfo
      *
      * @var string
      */
-    protected $isolation;
+    protected $isolation = 'default';
     /**
-     * Name and, optional, path of the the `docker-init` binary.
+     * Name and, optional, path of the `docker-init` binary.
 
     If the path is omitted, the daemon searches the host's `$PATH` for the
     binary and uses the first result.
@@ -509,7 +532,7 @@ class SystemInfo
     protected $initCommit;
     /**
      * List of security features that are enabled on the daemon, such as.
-    apparmor, seccomp, SELinux, and user-namespaces (userns).
+    apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
 
     Additional configuration options for each security feature may
     be present, and are included as a comma-separated list of key/value
@@ -519,6 +542,26 @@ class SystemInfo
      * @var string[]
      */
     protected $securityOptions;
+    /**
+     * Reports a summary of the product license on the daemon.
+
+    If a commercial license has been applied to the daemon, information
+    such as number of nodes, and expiration are included.
+
+     *
+     * @var string
+     */
+    protected $productLicense;
+    /**
+     * List of warnings / informational messages about missing features, or.
+    issues related to the daemon configuration.
+
+    These messages can be printed by the client as information to the user.
+
+     *
+     * @var string[]
+     */
+    protected $warnings;
 
     /**
      * Unique identifier of the daemon.
@@ -529,7 +572,7 @@ class SystemInfo
     > should not be considered stable.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getID(): ?string
     {
@@ -545,7 +588,7 @@ class SystemInfo
     > should not be considered stable.
 
      *
-     * @param string $iD
+     * @param string|null $iD
      *
      * @return self
      */
@@ -559,7 +602,7 @@ class SystemInfo
     /**
      * Total number of containers on the host.
      *
-     * @return int
+     * @return int|null
      */
     public function getContainers(): ?int
     {
@@ -569,7 +612,7 @@ class SystemInfo
     /**
      * Total number of containers on the host.
      *
-     * @param int $containers
+     * @param int|null $containers
      *
      * @return self
      */
@@ -583,7 +626,7 @@ class SystemInfo
     /**
      * Number of containers with status `"running"`.
      *
-     * @return int
+     * @return int|null
      */
     public function getContainersRunning(): ?int
     {
@@ -593,7 +636,7 @@ class SystemInfo
     /**
      * Number of containers with status `"running"`.
      *
-     * @param int $containersRunning
+     * @param int|null $containersRunning
      *
      * @return self
      */
@@ -607,7 +650,7 @@ class SystemInfo
     /**
      * Number of containers with status `"paused"`.
      *
-     * @return int
+     * @return int|null
      */
     public function getContainersPaused(): ?int
     {
@@ -617,7 +660,7 @@ class SystemInfo
     /**
      * Number of containers with status `"paused"`.
      *
-     * @param int $containersPaused
+     * @param int|null $containersPaused
      *
      * @return self
      */
@@ -631,7 +674,7 @@ class SystemInfo
     /**
      * Number of containers with status `"stopped"`.
      *
-     * @return int
+     * @return int|null
      */
     public function getContainersStopped(): ?int
     {
@@ -641,7 +684,7 @@ class SystemInfo
     /**
      * Number of containers with status `"stopped"`.
      *
-     * @param int $containersStopped
+     * @param int|null $containersStopped
      *
      * @return self
      */
@@ -658,7 +701,7 @@ class SystemInfo
     Both _tagged_ and _untagged_ (dangling) images are counted.
 
      *
-     * @return int
+     * @return int|null
      */
     public function getImages(): ?int
     {
@@ -671,7 +714,7 @@ class SystemInfo
     Both _tagged_ and _untagged_ (dangling) images are counted.
 
      *
-     * @param int $images
+     * @param int|null $images
      *
      * @return self
      */
@@ -685,7 +728,7 @@ class SystemInfo
     /**
      * Name of the storage driver in use.
      *
-     * @return string
+     * @return string|null
      */
     public function getDriver(): ?string
     {
@@ -695,7 +738,7 @@ class SystemInfo
     /**
      * Name of the storage driver in use.
      *
-     * @param string $driver
+     * @param string|null $driver
      *
      * @return self
      */
@@ -721,7 +764,7 @@ class SystemInfo
     > and may change without notice.
 
      *
-     * @return string[][]
+     * @return string[][]|null
      */
     public function getDriverStatus(): ?array
     {
@@ -743,7 +786,7 @@ class SystemInfo
     > and may change without notice.
 
      *
-     * @param string[][] $driverStatus
+     * @param string[][]|null $driverStatus
      *
      * @return self
      */
@@ -761,7 +804,7 @@ class SystemInfo
     on Windows.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getDockerRootDir(): ?string
     {
@@ -775,7 +818,7 @@ class SystemInfo
     on Windows.
 
      *
-     * @param string $dockerRootDir
+     * @param string|null $dockerRootDir
      *
      * @return self
      */
@@ -796,7 +839,7 @@ class SystemInfo
     > built-in swarm mode.
 
      *
-     * @return string[][]
+     * @return string[][]|null
      */
     public function getSystemStatus(): ?array
     {
@@ -813,7 +856,7 @@ class SystemInfo
     > built-in swarm mode.
 
      *
-     * @param string[][] $systemStatus
+     * @param string[][]|null $systemStatus
      *
      * @return self
      */
@@ -834,7 +877,7 @@ class SystemInfo
     > if there is no resource using the plugin.
 
      *
-     * @return PluginsInfo
+     * @return PluginsInfo|null
      */
     public function getPlugins(): ?PluginsInfo
     {
@@ -851,7 +894,7 @@ class SystemInfo
     > if there is no resource using the plugin.
 
      *
-     * @param PluginsInfo $plugins
+     * @param PluginsInfo|null $plugins
      *
      * @return self
      */
@@ -865,7 +908,7 @@ class SystemInfo
     /**
      * Indicates if the host has memory limit support enabled.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getMemoryLimit(): ?bool
     {
@@ -875,7 +918,7 @@ class SystemInfo
     /**
      * Indicates if the host has memory limit support enabled.
      *
-     * @param bool $memoryLimit
+     * @param bool|null $memoryLimit
      *
      * @return self
      */
@@ -889,7 +932,7 @@ class SystemInfo
     /**
      * Indicates if the host has memory swap limit support enabled.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getSwapLimit(): ?bool
     {
@@ -899,7 +942,7 @@ class SystemInfo
     /**
      * Indicates if the host has memory swap limit support enabled.
      *
-     * @param bool $swapLimit
+     * @param bool|null $swapLimit
      *
      * @return self
      */
@@ -913,7 +956,7 @@ class SystemInfo
     /**
      * Indicates if the host has kernel memory limit support enabled.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getKernelMemory(): ?bool
     {
@@ -923,7 +966,7 @@ class SystemInfo
     /**
      * Indicates if the host has kernel memory limit support enabled.
      *
-     * @param bool $kernelMemory
+     * @param bool|null $kernelMemory
      *
      * @return self
      */
@@ -937,7 +980,7 @@ class SystemInfo
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by the host.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCpuCfsPeriod(): ?bool
     {
@@ -947,7 +990,7 @@ class SystemInfo
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by the host.
      *
-     * @param bool $cpuCfsPeriod
+     * @param bool|null $cpuCfsPeriod
      *
      * @return self
      */
@@ -961,7 +1004,7 @@ class SystemInfo
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by the host.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCpuCfsQuota(): ?bool
     {
@@ -971,7 +1014,7 @@ class SystemInfo
     /**
      * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by the host.
      *
-     * @param bool $cpuCfsQuota
+     * @param bool|null $cpuCfsQuota
      *
      * @return self
      */
@@ -985,7 +1028,7 @@ class SystemInfo
     /**
      * Indicates if CPU Shares limiting is supported by the host.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCPUShares(): ?bool
     {
@@ -995,7 +1038,7 @@ class SystemInfo
     /**
      * Indicates if CPU Shares limiting is supported by the host.
      *
-     * @param bool $cPUShares
+     * @param bool|null $cPUShares
      *
      * @return self
      */
@@ -1012,7 +1055,7 @@ class SystemInfo
     See [cpuset(7)](https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt)
 
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCPUSet(): ?bool
     {
@@ -1025,7 +1068,7 @@ class SystemInfo
     See [cpuset(7)](https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt)
 
      *
-     * @param bool $cPUSet
+     * @param bool|null $cPUSet
      *
      * @return self
      */
@@ -1037,9 +1080,33 @@ class SystemInfo
     }
 
     /**
+     * Indicates if the host kernel has PID limit support enabled.
+     *
+     * @return bool|null
+     */
+    public function getPidsLimit(): ?bool
+    {
+        return $this->pidsLimit;
+    }
+
+    /**
+     * Indicates if the host kernel has PID limit support enabled.
+     *
+     * @param bool|null $pidsLimit
+     *
+     * @return self
+     */
+    public function setPidsLimit(?bool $pidsLimit): self
+    {
+        $this->pidsLimit = $pidsLimit;
+
+        return $this;
+    }
+
+    /**
      * Indicates if OOM killer disable is supported on the host.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getOomKillDisable(): ?bool
     {
@@ -1049,7 +1116,7 @@ class SystemInfo
     /**
      * Indicates if OOM killer disable is supported on the host.
      *
-     * @param bool $oomKillDisable
+     * @param bool|null $oomKillDisable
      *
      * @return self
      */
@@ -1063,7 +1130,7 @@ class SystemInfo
     /**
      * Indicates IPv4 forwarding is enabled.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIPv4Forwarding(): ?bool
     {
@@ -1073,7 +1140,7 @@ class SystemInfo
     /**
      * Indicates IPv4 forwarding is enabled.
      *
-     * @param bool $iPv4Forwarding
+     * @param bool|null $iPv4Forwarding
      *
      * @return self
      */
@@ -1087,7 +1154,7 @@ class SystemInfo
     /**
      * Indicates if `bridge-nf-call-iptables` is available on the host.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBridgeNfIptables(): ?bool
     {
@@ -1097,7 +1164,7 @@ class SystemInfo
     /**
      * Indicates if `bridge-nf-call-iptables` is available on the host.
      *
-     * @param bool $bridgeNfIptables
+     * @param bool|null $bridgeNfIptables
      *
      * @return self
      */
@@ -1111,7 +1178,7 @@ class SystemInfo
     /**
      * Indicates if `bridge-nf-call-ip6tables` is available on the host.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getBridgeNfIp6tables(): ?bool
     {
@@ -1121,7 +1188,7 @@ class SystemInfo
     /**
      * Indicates if `bridge-nf-call-ip6tables` is available on the host.
      *
-     * @param bool $bridgeNfIp6tables
+     * @param bool|null $bridgeNfIp6tables
      *
      * @return self
      */
@@ -1135,7 +1202,7 @@ class SystemInfo
     /**
      * Indicates if the daemon is running in debug-mode / with debug-level logging enabled.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getDebug(): ?bool
     {
@@ -1145,7 +1212,7 @@ class SystemInfo
     /**
      * Indicates if the daemon is running in debug-mode / with debug-level logging enabled.
      *
-     * @param bool $debug
+     * @param bool|null $debug
      *
      * @return self
      */
@@ -1162,7 +1229,7 @@ class SystemInfo
     This information is only returned if debug-mode is enabled.
 
      *
-     * @return int
+     * @return int|null
      */
     public function getNFd(): ?int
     {
@@ -1175,7 +1242,7 @@ class SystemInfo
     This information is only returned if debug-mode is enabled.
 
      *
-     * @param int $nFd
+     * @param int|null $nFd
      *
      * @return self
      */
@@ -1192,7 +1259,7 @@ class SystemInfo
     This information is only returned if debug-mode is enabled.
 
      *
-     * @return int
+     * @return int|null
      */
     public function getNGoroutines(): ?int
     {
@@ -1205,7 +1272,7 @@ class SystemInfo
     This information is only returned if debug-mode is enabled.
 
      *
-     * @param int $nGoroutines
+     * @param int|null $nGoroutines
      *
      * @return self
      */
@@ -1221,7 +1288,7 @@ class SystemInfo
     format with nano-seconds.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getSystemTime(): ?string
     {
@@ -1233,7 +1300,7 @@ class SystemInfo
     format with nano-seconds.
 
      *
-     * @param string $systemTime
+     * @param string|null $systemTime
      *
      * @return self
      */
@@ -1247,7 +1314,7 @@ class SystemInfo
     /**
      * The logging driver to use as a default for new containers.
      *
-     * @return string
+     * @return string|null
      */
     public function getLoggingDriver(): ?string
     {
@@ -1257,7 +1324,7 @@ class SystemInfo
     /**
      * The logging driver to use as a default for new containers.
      *
-     * @param string $loggingDriver
+     * @param string|null $loggingDriver
      *
      * @return self
      */
@@ -1271,7 +1338,7 @@ class SystemInfo
     /**
      * The driver to use for managing cgroups.
      *
-     * @return string
+     * @return string|null
      */
     public function getCgroupDriver(): ?string
     {
@@ -1281,7 +1348,7 @@ class SystemInfo
     /**
      * The driver to use for managing cgroups.
      *
-     * @param string $cgroupDriver
+     * @param string|null $cgroupDriver
      *
      * @return self
      */
@@ -1295,7 +1362,7 @@ class SystemInfo
     /**
      * Number of event listeners subscribed.
      *
-     * @return int
+     * @return int|null
      */
     public function getNEventsListener(): ?int
     {
@@ -1305,7 +1372,7 @@ class SystemInfo
     /**
      * Number of event listeners subscribed.
      *
-     * @param int $nEventsListener
+     * @param int|null $nEventsListener
      *
      * @return self
      */
@@ -1324,7 +1391,7 @@ class SystemInfo
     registry value, for example _"10.0 14393 (14393.1198.amd64fre.rs1_release_sec.170427-1353)"_.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getKernelVersion(): ?string
     {
@@ -1339,7 +1406,7 @@ class SystemInfo
     registry value, for example _"10.0 14393 (14393.1198.amd64fre.rs1_release_sec.170427-1353)"_.
 
      *
-     * @param string $kernelVersion
+     * @param string|null $kernelVersion
      *
      * @return self
      */
@@ -1355,7 +1422,7 @@ class SystemInfo
     or "Windows Server 2016 Datacenter"
 
      *
-     * @return string
+     * @return string|null
      */
     public function getOperatingSystem(): ?string
     {
@@ -1367,13 +1434,51 @@ class SystemInfo
     or "Windows Server 2016 Datacenter"
 
      *
-     * @param string $operatingSystem
+     * @param string|null $operatingSystem
      *
      * @return self
      */
     public function setOperatingSystem(?string $operatingSystem): self
     {
         $this->operatingSystem = $operatingSystem;
+
+        return $this;
+    }
+
+    /**
+     * Version of the host's operating system.
+
+    <p><br /></p>
+
+    > **Note**: The information returned in this field, including its
+    > very existence, and the formatting of values, should not be considered
+    > stable, and may change without notice.
+
+     *
+     * @return string|null
+     */
+    public function getOSVersion(): ?string
+    {
+        return $this->oSVersion;
+    }
+
+    /**
+     * Version of the host's operating system.
+
+    <p><br /></p>
+
+    > **Note**: The information returned in this field, including its
+    > very existence, and the formatting of values, should not be considered
+    > stable, and may change without notice.
+
+     *
+     * @param string|null $oSVersion
+     *
+     * @return self
+     */
+    public function setOSVersion(?string $oSVersion): self
+    {
+        $this->oSVersion = $oSVersion;
 
         return $this;
     }
@@ -1386,7 +1491,7 @@ class SystemInfo
     possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
 
      *
-     * @return string
+     * @return string|null
      */
     public function getOSType(): ?string
     {
@@ -1401,7 +1506,7 @@ class SystemInfo
     possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
 
      *
-     * @param string $oSType
+     * @param string|null $oSType
      *
      * @return self
      */
@@ -1419,7 +1524,7 @@ class SystemInfo
     A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
 
      *
-     * @return string
+     * @return string|null
      */
     public function getArchitecture(): ?string
     {
@@ -1433,7 +1538,7 @@ class SystemInfo
     A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
 
      *
-     * @param string $architecture
+     * @param string|null $architecture
      *
      * @return self
      */
@@ -1452,7 +1557,7 @@ class SystemInfo
     allocation after the daemon is started are not reflected.
 
      *
-     * @return int
+     * @return int|null
      */
     public function getNCPU(): ?int
     {
@@ -1467,7 +1572,7 @@ class SystemInfo
     allocation after the daemon is started are not reflected.
 
      *
-     * @param int $nCPU
+     * @param int|null $nCPU
      *
      * @return self
      */
@@ -1481,7 +1586,7 @@ class SystemInfo
     /**
      * Total amount of physical memory available on the host, in kilobytes (kB).
      *
-     * @return int
+     * @return int|null
      */
     public function getMemTotal(): ?int
     {
@@ -1491,7 +1596,7 @@ class SystemInfo
     /**
      * Total amount of physical memory available on the host, in kilobytes (kB).
      *
-     * @param int $memTotal
+     * @param int|null $memTotal
      *
      * @return self
      */
@@ -1507,7 +1612,7 @@ class SystemInfo
     and as a default for user authentication for Docker Hub and Docker Cloud.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getIndexServerAddress(): ?string
     {
@@ -1519,7 +1624,7 @@ class SystemInfo
     and as a default for user authentication for Docker Hub and Docker Cloud.
 
      *
-     * @param string $indexServerAddress
+     * @param string|null $indexServerAddress
      *
      * @return self
      */
@@ -1533,7 +1638,7 @@ class SystemInfo
     /**
      * RegistryServiceConfig stores daemon registry services configuration.
      *
-     * @return RegistryServiceConfig
+     * @return RegistryServiceConfig|null
      */
     public function getRegistryConfig(): ?RegistryServiceConfig
     {
@@ -1543,7 +1648,7 @@ class SystemInfo
     /**
      * RegistryServiceConfig stores daemon registry services configuration.
      *
-     * @param RegistryServiceConfig $registryConfig
+     * @param RegistryServiceConfig|null $registryConfig
      *
      * @return self
      */
@@ -1557,7 +1662,7 @@ class SystemInfo
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @return GenericResourcesItem[]
+     * @return GenericResourcesItem[]|null
      */
     public function getGenericResources(): ?array
     {
@@ -1567,7 +1672,7 @@ class SystemInfo
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @param GenericResourcesItem[] $genericResources
+     * @param GenericResourcesItem[]|null $genericResources
      *
      * @return self
      */
@@ -1581,11 +1686,13 @@ class SystemInfo
     /**
      * HTTP-proxy configured for the daemon. This value is obtained from the.
     [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+    Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+    are masked in the API response.
 
     Containers do not automatically inherit this configuration.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getHttpProxy(): ?string
     {
@@ -1595,11 +1702,13 @@ class SystemInfo
     /**
      * HTTP-proxy configured for the daemon. This value is obtained from the.
     [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+    Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+    are masked in the API response.
 
     Containers do not automatically inherit this configuration.
 
      *
-     * @param string $httpProxy
+     * @param string|null $httpProxy
      *
      * @return self
      */
@@ -1613,11 +1722,13 @@ class SystemInfo
     /**
      * HTTPS-proxy configured for the daemon. This value is obtained from the.
     [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+    Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+    are masked in the API response.
 
     Containers do not automatically inherit this configuration.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getHttpsProxy(): ?string
     {
@@ -1627,11 +1738,13 @@ class SystemInfo
     /**
      * HTTPS-proxy configured for the daemon. This value is obtained from the.
     [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+    Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+    are masked in the API response.
 
     Containers do not automatically inherit this configuration.
 
      *
-     * @param string $httpsProxy
+     * @param string|null $httpsProxy
      *
      * @return self
      */
@@ -1650,7 +1763,7 @@ class SystemInfo
     Containers do not automatically inherit this configuration.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getNoProxy(): ?string
     {
@@ -1665,7 +1778,7 @@ class SystemInfo
     Containers do not automatically inherit this configuration.
 
      *
-     * @param string $noProxy
+     * @param string|null $noProxy
      *
      * @return self
      */
@@ -1679,7 +1792,7 @@ class SystemInfo
     /**
      * Hostname of the host.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -1689,7 +1802,7 @@ class SystemInfo
     /**
      * Hostname of the host.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -1712,7 +1825,7 @@ class SystemInfo
     > on a manager node in the Swarm.
 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?array
     {
@@ -1731,7 +1844,7 @@ class SystemInfo
     > on a manager node in the Swarm.
 
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -1745,7 +1858,7 @@ class SystemInfo
     /**
      * Indicates if experimental features are enabled on the daemon.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getExperimentalBuild(): ?bool
     {
@@ -1755,7 +1868,7 @@ class SystemInfo
     /**
      * Indicates if experimental features are enabled on the daemon.
      *
-     * @param bool $experimentalBuild
+     * @param bool|null $experimentalBuild
      *
      * @return self
      */
@@ -1774,7 +1887,7 @@ class SystemInfo
     > `swarm/1.2.8`.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getServerVersion(): ?string
     {
@@ -1789,7 +1902,7 @@ class SystemInfo
     > `swarm/1.2.8`.
 
      *
-     * @param string $serverVersion
+     * @param string|null $serverVersion
      *
      * @return self
      */
@@ -1815,7 +1928,7 @@ class SystemInfo
     > this field will be empty.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getClusterStore(): ?string
     {
@@ -1837,7 +1950,7 @@ class SystemInfo
     > this field will be empty.
 
      *
-     * @param string $clusterStore
+     * @param string|null $clusterStore
      *
      * @return self
      */
@@ -1861,7 +1974,7 @@ class SystemInfo
     > this field will be empty.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getClusterAdvertise(): ?string
     {
@@ -1881,7 +1994,7 @@ class SystemInfo
     > this field will be empty.
 
      *
-     * @param string $clusterAdvertise
+     * @param string|null $clusterAdvertise
      *
      * @return self
      */
@@ -1905,7 +2018,7 @@ class SystemInfo
     runtimes can be configured by the user and will be listed here.
 
      *
-     * @return Runtime[]
+     * @return Runtime[]|null
      */
     public function getRuntimes(): ?\ArrayObject
     {
@@ -1925,7 +2038,7 @@ class SystemInfo
     runtimes can be configured by the user and will be listed here.
 
      *
-     * @param Runtime[] $runtimes
+     * @param Runtime[]|null $runtimes
      *
      * @return self
      */
@@ -1942,7 +2055,7 @@ class SystemInfo
     The default can be overridden per-container at create time.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getDefaultRuntime(): ?string
     {
@@ -1955,7 +2068,7 @@ class SystemInfo
     The default can be overridden per-container at create time.
 
      *
-     * @param string $defaultRuntime
+     * @param string|null $defaultRuntime
      *
      * @return self
      */
@@ -1969,7 +2082,7 @@ class SystemInfo
     /**
      * Represents generic information about swarm.
      *
-     * @return SwarmInfo
+     * @return SwarmInfo|null
      */
     public function getSwarm(): ?SwarmInfo
     {
@@ -1979,7 +2092,7 @@ class SystemInfo
     /**
      * Represents generic information about swarm.
      *
-     * @param SwarmInfo $swarm
+     * @param SwarmInfo|null $swarm
      *
      * @return self
      */
@@ -1997,7 +2110,7 @@ class SystemInfo
     or upon daemon start if running containers are detected.
 
      *
-     * @return bool
+     * @return bool|null
      */
     public function getLiveRestoreEnabled(): ?bool
     {
@@ -2011,7 +2124,7 @@ class SystemInfo
     or upon daemon start if running containers are detected.
 
      *
-     * @param bool $liveRestoreEnabled
+     * @param bool|null $liveRestoreEnabled
      *
      * @return self
      */
@@ -2032,7 +2145,7 @@ class SystemInfo
     This option is currently not used on other platforms.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getIsolation(): ?string
     {
@@ -2049,7 +2162,7 @@ class SystemInfo
     This option is currently not used on other platforms.
 
      *
-     * @param string $isolation
+     * @param string|null $isolation
      *
      * @return self
      */
@@ -2061,13 +2174,13 @@ class SystemInfo
     }
 
     /**
-     * Name and, optional, path of the the `docker-init` binary.
+     * Name and, optional, path of the `docker-init` binary.
 
     If the path is omitted, the daemon searches the host's `$PATH` for the
     binary and uses the first result.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getInitBinary(): ?string
     {
@@ -2075,13 +2188,13 @@ class SystemInfo
     }
 
     /**
-     * Name and, optional, path of the the `docker-init` binary.
+     * Name and, optional, path of the `docker-init` binary.
 
     If the path is omitted, the daemon searches the host's `$PATH` for the
     binary and uses the first result.
 
      *
-     * @param string $initBinary
+     * @param string|null $initBinary
      *
      * @return self
      */
@@ -2098,7 +2211,7 @@ class SystemInfo
     or `runC`.
 
      *
-     * @return Commit
+     * @return Commit|null
      */
     public function getContainerdCommit(): ?Commit
     {
@@ -2111,7 +2224,7 @@ class SystemInfo
     or `runC`.
 
      *
-     * @param Commit $containerdCommit
+     * @param Commit|null $containerdCommit
      *
      * @return self
      */
@@ -2128,7 +2241,7 @@ class SystemInfo
     or `runC`.
 
      *
-     * @return Commit
+     * @return Commit|null
      */
     public function getRuncCommit(): ?Commit
     {
@@ -2141,7 +2254,7 @@ class SystemInfo
     or `runC`.
 
      *
-     * @param Commit $runcCommit
+     * @param Commit|null $runcCommit
      *
      * @return self
      */
@@ -2158,7 +2271,7 @@ class SystemInfo
     or `runC`.
 
      *
-     * @return Commit
+     * @return Commit|null
      */
     public function getInitCommit(): ?Commit
     {
@@ -2171,7 +2284,7 @@ class SystemInfo
     or `runC`.
 
      *
-     * @param Commit $initCommit
+     * @param Commit|null $initCommit
      *
      * @return self
      */
@@ -2184,14 +2297,14 @@ class SystemInfo
 
     /**
      * List of security features that are enabled on the daemon, such as.
-    apparmor, seccomp, SELinux, and user-namespaces (userns).
+    apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
 
     Additional configuration options for each security feature may
     be present, and are included as a comma-separated list of key/value
     pairs.
 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getSecurityOptions(): ?array
     {
@@ -2200,20 +2313,84 @@ class SystemInfo
 
     /**
      * List of security features that are enabled on the daemon, such as.
-    apparmor, seccomp, SELinux, and user-namespaces (userns).
+    apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
 
     Additional configuration options for each security feature may
     be present, and are included as a comma-separated list of key/value
     pairs.
 
      *
-     * @param string[] $securityOptions
+     * @param string[]|null $securityOptions
      *
      * @return self
      */
     public function setSecurityOptions(?array $securityOptions): self
     {
         $this->securityOptions = $securityOptions;
+
+        return $this;
+    }
+
+    /**
+     * Reports a summary of the product license on the daemon.
+
+    If a commercial license has been applied to the daemon, information
+    such as number of nodes, and expiration are included.
+
+     *
+     * @return string|null
+     */
+    public function getProductLicense(): ?string
+    {
+        return $this->productLicense;
+    }
+
+    /**
+     * Reports a summary of the product license on the daemon.
+
+    If a commercial license has been applied to the daemon, information
+    such as number of nodes, and expiration are included.
+
+     *
+     * @param string|null $productLicense
+     *
+     * @return self
+     */
+    public function setProductLicense(?string $productLicense): self
+    {
+        $this->productLicense = $productLicense;
+
+        return $this;
+    }
+
+    /**
+     * List of warnings / informational messages about missing features, or.
+    issues related to the daemon configuration.
+
+    These messages can be printed by the client as information to the user.
+
+     *
+     * @return string[]|null
+     */
+    public function getWarnings(): ?array
+    {
+        return $this->warnings;
+    }
+
+    /**
+     * List of warnings / informational messages about missing features, or.
+    issues related to the daemon configuration.
+
+    These messages can be printed by the client as information to the user.
+
+     *
+     * @param string[]|null $warnings
+     *
+     * @return self
+     */
+    public function setWarnings(?array $warnings): self
+    {
+        $this->warnings = $warnings;
 
         return $this;
     }

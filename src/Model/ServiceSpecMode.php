@@ -22,7 +22,7 @@ class ServiceSpecMode
     protected $global;
 
     /**
-     * @return ServiceSpecModeReplicated
+     * @return ServiceSpecModeReplicated|null
      */
     public function getReplicated(): ?ServiceSpecModeReplicated
     {
@@ -30,7 +30,7 @@ class ServiceSpecMode
     }
 
     /**
-     * @param ServiceSpecModeReplicated $replicated
+     * @param ServiceSpecModeReplicated|null $replicated
      *
      * @return self
      */

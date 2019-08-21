@@ -22,7 +22,7 @@ class PluginConfigRootfs
     protected $diffIds;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -30,7 +30,7 @@ class PluginConfigRootfs
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class PluginConfigRootfs
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getDiffIds(): ?array
     {
@@ -50,7 +50,7 @@ class PluginConfigRootfs
     }
 
     /**
-     * @param string[] $diffIds
+     * @param string[]|null $diffIds
      *
      * @return self
      */

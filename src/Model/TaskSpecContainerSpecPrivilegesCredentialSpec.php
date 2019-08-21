@@ -13,6 +13,19 @@ namespace Docker\API\Model;
 class TaskSpecContainerSpecPrivilegesCredentialSpec
 {
     /**
+     * Load credential spec from a Swarm Config with the given ID.
+    The specified config must also be present in the Configs field with the Runtime property set.
+
+    <p><br /></p>
+
+
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
+
+     *
+     * @var string
+     */
+    protected $config;
+    /**
      * Load credential spec from this file. The file is read by the daemon, and must be present in the.
     `CredentialSpecs` subdirectory in the docker data directory, which defaults to
     `C:\ProgramData\Docker\` on Windows.
@@ -21,7 +34,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
 
     <p><br /></p>
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
 
      *
      * @var string
@@ -36,12 +49,50 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     <p><br /></p>
 
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
 
      *
      * @var string
      */
     protected $registry;
+
+    /**
+     * Load credential spec from a Swarm Config with the given ID.
+    The specified config must also be present in the Configs field with the Runtime property set.
+
+    <p><br /></p>
+
+
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
+
+     *
+     * @return string|null
+     */
+    public function getConfig(): ?string
+    {
+        return $this->config;
+    }
+
+    /**
+     * Load credential spec from a Swarm Config with the given ID.
+    The specified config must also be present in the Configs field with the Runtime property set.
+
+    <p><br /></p>
+
+
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
+
+     *
+     * @param string|null $config
+     *
+     * @return self
+     */
+    public function setConfig(?string $config): self
+    {
+        $this->config = $config;
+
+        return $this;
+    }
 
     /**
      * Load credential spec from this file. The file is read by the daemon, and must be present in the.
@@ -52,10 +103,10 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
 
     <p><br /></p>
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getFile(): ?string
     {
@@ -71,10 +122,10 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
 
     <p><br /></p>
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
 
      *
-     * @param string $file
+     * @param string|null $file
      *
      * @return self
      */
@@ -94,10 +145,10 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     <p><br /></p>
 
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getRegistry(): ?string
     {
@@ -113,10 +164,10 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     <p><br /></p>
 
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
 
      *
-     * @param string $registry
+     * @param string|null $registry
      *
      * @return self
      */

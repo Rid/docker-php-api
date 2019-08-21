@@ -42,7 +42,7 @@ class ConfigsCreatePostBody
     /**
      * User-defined name of the config.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -52,7 +52,7 @@ class ConfigsCreatePostBody
     /**
      * User-defined name of the config.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ConfigsCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -76,7 +76,7 @@ class ConfigsCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -92,7 +92,7 @@ class ConfigsCreatePostBody
     config data.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getData(): ?string
     {
@@ -104,7 +104,7 @@ class ConfigsCreatePostBody
     config data.
 
      *
-     * @param string $data
+     * @param string|null $data
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class ConfigsCreatePostBody
     /**
      * Driver represents a driver (network, logging, secrets).
      *
-     * @return Driver
+     * @return Driver|null
      */
     public function getTemplating(): ?Driver
     {
@@ -128,7 +128,7 @@ class ConfigsCreatePostBody
     /**
      * Driver represents a driver (network, logging, secrets).
      *
-     * @param Driver $templating
+     * @param Driver|null $templating
      *
      * @return self
      */

@@ -18,7 +18,7 @@ class VersionGetResponse200Platform
     protected $name;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -26,7 +26,7 @@ class VersionGetResponse200Platform
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */

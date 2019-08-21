@@ -19,6 +19,7 @@ class NormalizerFactory
         $normalizers[] = new PortNormalizer();
         $normalizers[] = new MountPointNormalizer();
         $normalizers[] = new DeviceMappingNormalizer();
+        $normalizers[] = new DeviceRequestNormalizer();
         $normalizers[] = new ThrottleDeviceNormalizer();
         $normalizers[] = new MountNormalizer();
         $normalizers[] = new MountBindOptionsNormalizer();
@@ -53,6 +54,7 @@ class NormalizerFactory
         $normalizers[] = new IPAMNormalizer();
         $normalizers[] = new NetworkContainerNormalizer();
         $normalizers[] = new BuildInfoNormalizer();
+        $normalizers[] = new BuildCacheNormalizer();
         $normalizers[] = new ImageIDNormalizer();
         $normalizers[] = new CreateImageInfoNormalizer();
         $normalizers[] = new PushImageInfoNormalizer();
@@ -109,6 +111,7 @@ class NormalizerFactory
         $normalizers[] = new TaskSpecContainerSpecSecretsItemFileNormalizer();
         $normalizers[] = new TaskSpecContainerSpecConfigsItemNormalizer();
         $normalizers[] = new TaskSpecContainerSpecConfigsItemFileNormalizer();
+        $normalizers[] = new TaskSpecNetworkAttachmentSpecNormalizer();
         $normalizers[] = new TaskSpecResourcesNormalizer();
         $normalizers[] = new TaskSpecRestartPolicyNormalizer();
         $normalizers[] = new TaskSpecPlacementNormalizer();

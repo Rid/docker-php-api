@@ -30,7 +30,7 @@ class SwarmSpecTaskDefaultsLogDriver
     /**
      * The log driver to use as a default for new tasks.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -40,7 +40,7 @@ class SwarmSpecTaskDefaultsLogDriver
     /**
      * The log driver to use as a default for new tasks.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -56,7 +56,7 @@ class SwarmSpecTaskDefaultsLogDriver
     as key/value pairs.
 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getOptions(): ?\ArrayObject
     {
@@ -68,7 +68,7 @@ class SwarmSpecTaskDefaultsLogDriver
     as key/value pairs.
 
      *
-     * @param string[] $options
+     * @param string[]|null $options
      *
      * @return self
      */

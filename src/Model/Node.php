@@ -78,7 +78,7 @@ class Node
     protected $managerStatus;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getID(): ?string
     {
@@ -86,7 +86,7 @@ class Node
     }
 
     /**
-     * @param string $iD
+     * @param string|null $iD
      *
      * @return self
      */
@@ -107,7 +107,7 @@ class Node
     unintentionally overwrite each other.
 
      *
-     * @return ObjectVersion
+     * @return ObjectVersion|null
      */
     public function getVersion(): ?ObjectVersion
     {
@@ -124,7 +124,7 @@ class Node
     unintentionally overwrite each other.
 
      *
-     * @param ObjectVersion $version
+     * @param ObjectVersion|null $version
      *
      * @return self
      */
@@ -140,7 +140,7 @@ class Node
     [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getCreatedAt(): ?string
     {
@@ -152,7 +152,7 @@ class Node
     [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
 
      *
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
@@ -168,7 +168,7 @@ class Node
     [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getUpdatedAt(): ?string
     {
@@ -180,7 +180,7 @@ class Node
     [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
 
      *
-     * @param string $updatedAt
+     * @param string|null $updatedAt
      *
      * @return self
      */
@@ -192,7 +192,7 @@ class Node
     }
 
     /**
-     * @return NodeSpec
+     * @return NodeSpec|null
      */
     public function getSpec(): ?NodeSpec
     {
@@ -200,7 +200,7 @@ class Node
     }
 
     /**
-     * @param NodeSpec $spec
+     * @param NodeSpec|null $spec
      *
      * @return self
      */
@@ -216,7 +216,7 @@ class Node
     agent.
 
      *
-     * @return NodeDescription
+     * @return NodeDescription|null
      */
     public function getDescription(): ?NodeDescription
     {
@@ -228,7 +228,7 @@ class Node
     agent.
 
      *
-     * @param NodeDescription $description
+     * @param NodeDescription|null $description
      *
      * @return self
      */
@@ -245,7 +245,7 @@ class Node
     It provides the current status of the node, as seen by the manager.
 
      *
-     * @return NodeStatus
+     * @return NodeStatus|null
      */
     public function getStatus(): ?NodeStatus
     {
@@ -258,7 +258,7 @@ class Node
     It provides the current status of the node, as seen by the manager.
 
      *
-     * @param NodeStatus $status
+     * @param NodeStatus|null $status
      *
      * @return self
      */
@@ -276,7 +276,7 @@ class Node
     is a manager.
 
      *
-     * @return ManagerStatus
+     * @return ManagerStatus|null
      */
     public function getManagerStatus(): ?ManagerStatus
     {
@@ -290,7 +290,7 @@ class Node
     is a manager.
 
      *
-     * @param ManagerStatus $managerStatus
+     * @param ManagerStatus|null $managerStatus
      *
      * @return self
      */

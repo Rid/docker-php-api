@@ -65,11 +65,32 @@ class ClusterInfo
      * @var bool
      */
     protected $rootRotationInProgress;
+    /**
+     * DataPathPort specifies the data path port number for data traffic.
+    Acceptable port range is 1024 to 49151.
+    If no port is set or is set to 0, the default port (4789) is used.
+
+     *
+     * @var int
+     */
+    protected $dataPathPort = 4789;
+    /**
+     * Default Address Pool specifies default subnet pools for global scope networks.
+     *
+     * @var string[]
+     */
+    protected $defaultAddrPool;
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the default subnet pool.
+     *
+     * @var int
+     */
+    protected $subnetSize = 24;
 
     /**
      * The ID of the swarm.
      *
-     * @return string
+     * @return string|null
      */
     public function getID(): ?string
     {
@@ -79,7 +100,7 @@ class ClusterInfo
     /**
      * The ID of the swarm.
      *
-     * @param string $iD
+     * @param string|null $iD
      *
      * @return self
      */
@@ -100,7 +121,7 @@ class ClusterInfo
     unintentionally overwrite each other.
 
      *
-     * @return ObjectVersion
+     * @return ObjectVersion|null
      */
     public function getVersion(): ?ObjectVersion
     {
@@ -117,7 +138,7 @@ class ClusterInfo
     unintentionally overwrite each other.
 
      *
-     * @param ObjectVersion $version
+     * @param ObjectVersion|null $version
      *
      * @return self
      */
@@ -133,7 +154,7 @@ class ClusterInfo
     [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getCreatedAt(): ?string
     {
@@ -145,7 +166,7 @@ class ClusterInfo
     [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
 
      *
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
@@ -161,7 +182,7 @@ class ClusterInfo
     [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getUpdatedAt(): ?string
     {
@@ -173,7 +194,7 @@ class ClusterInfo
     [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
 
      *
-     * @param string $updatedAt
+     * @param string|null $updatedAt
      *
      * @return self
      */
@@ -187,7 +208,7 @@ class ClusterInfo
     /**
      * User modifiable swarm configuration.
      *
-     * @return SwarmSpec
+     * @return SwarmSpec|null
      */
     public function getSpec(): ?SwarmSpec
     {
@@ -197,7 +218,7 @@ class ClusterInfo
     /**
      * User modifiable swarm configuration.
      *
-     * @param SwarmSpec $spec
+     * @param SwarmSpec|null $spec
      *
      * @return self
      */
@@ -211,7 +232,7 @@ class ClusterInfo
     /**
      * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
      *
-     * @return TLSInfo
+     * @return TLSInfo|null
      */
     public function getTLSInfo(): ?TLSInfo
     {
@@ -221,7 +242,7 @@ class ClusterInfo
     /**
      * Information about the issuer of leaf TLS certificates and the trusted root CA certificate.
      *
-     * @param TLSInfo $tLSInfo
+     * @param TLSInfo|null $tLSInfo
      *
      * @return self
      */
@@ -235,7 +256,7 @@ class ClusterInfo
     /**
      * Whether there is currently a root CA rotation in progress for the swarm.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getRootRotationInProgress(): ?bool
     {
@@ -245,13 +266,91 @@ class ClusterInfo
     /**
      * Whether there is currently a root CA rotation in progress for the swarm.
      *
-     * @param bool $rootRotationInProgress
+     * @param bool|null $rootRotationInProgress
      *
      * @return self
      */
     public function setRootRotationInProgress(?bool $rootRotationInProgress): self
     {
         $this->rootRotationInProgress = $rootRotationInProgress;
+
+        return $this;
+    }
+
+    /**
+     * DataPathPort specifies the data path port number for data traffic.
+    Acceptable port range is 1024 to 49151.
+    If no port is set or is set to 0, the default port (4789) is used.
+
+     *
+     * @return int|null
+     */
+    public function getDataPathPort(): ?int
+    {
+        return $this->dataPathPort;
+    }
+
+    /**
+     * DataPathPort specifies the data path port number for data traffic.
+    Acceptable port range is 1024 to 49151.
+    If no port is set or is set to 0, the default port (4789) is used.
+
+     *
+     * @param int|null $dataPathPort
+     *
+     * @return self
+     */
+    public function setDataPathPort(?int $dataPathPort): self
+    {
+        $this->dataPathPort = $dataPathPort;
+
+        return $this;
+    }
+
+    /**
+     * Default Address Pool specifies default subnet pools for global scope networks.
+     *
+     * @return string[]|null
+     */
+    public function getDefaultAddrPool(): ?array
+    {
+        return $this->defaultAddrPool;
+    }
+
+    /**
+     * Default Address Pool specifies default subnet pools for global scope networks.
+     *
+     * @param string[]|null $defaultAddrPool
+     *
+     * @return self
+     */
+    public function setDefaultAddrPool(?array $defaultAddrPool): self
+    {
+        $this->defaultAddrPool = $defaultAddrPool;
+
+        return $this;
+    }
+
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the default subnet pool.
+     *
+     * @return int|null
+     */
+    public function getSubnetSize(): ?int
+    {
+        return $this->subnetSize;
+    }
+
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the default subnet pool.
+     *
+     * @param int|null $subnetSize
+     *
+     * @return self
+     */
+    public function setSubnetSize(?int $subnetSize): self
+    {
+        $this->subnetSize = $subnetSize;
 
         return $this;
     }

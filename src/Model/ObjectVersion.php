@@ -18,7 +18,7 @@ class ObjectVersion
     protected $index;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getIndex(): ?int
     {
@@ -26,7 +26,7 @@ class ObjectVersion
     }
 
     /**
-     * @param int $index
+     * @param int|null $index
      *
      * @return self
      */

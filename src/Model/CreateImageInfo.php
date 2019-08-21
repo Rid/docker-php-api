@@ -34,7 +34,7 @@ class CreateImageInfo
     protected $progressDetail;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -42,7 +42,7 @@ class CreateImageInfo
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class CreateImageInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getError(): ?string
     {
@@ -62,7 +62,7 @@ class CreateImageInfo
     }
 
     /**
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class CreateImageInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStatus(): ?string
     {
@@ -82,7 +82,7 @@ class CreateImageInfo
     }
 
     /**
-     * @param string $status
+     * @param string|null $status
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class CreateImageInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getProgress(): ?string
     {
@@ -102,7 +102,7 @@ class CreateImageInfo
     }
 
     /**
-     * @param string $progress
+     * @param string|null $progress
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class CreateImageInfo
     }
 
     /**
-     * @return ProgressDetail
+     * @return ProgressDetail|null
      */
     public function getProgressDetail(): ?ProgressDetail
     {
@@ -122,7 +122,7 @@ class CreateImageInfo
     }
 
     /**
-     * @param ProgressDetail $progressDetail
+     * @param ProgressDetail|null $progressDetail
      *
      * @return self
      */

@@ -26,7 +26,7 @@ class TaskStatusContainerStatus
     protected $exitCode;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getContainerID(): ?string
     {
@@ -34,7 +34,7 @@ class TaskStatusContainerStatus
     }
 
     /**
-     * @param string $containerID
+     * @param string|null $containerID
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class TaskStatusContainerStatus
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getPID(): ?int
     {
@@ -54,7 +54,7 @@ class TaskStatusContainerStatus
     }
 
     /**
-     * @param int $pID
+     * @param int|null $pID
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class TaskStatusContainerStatus
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getExitCode(): ?int
     {
@@ -74,7 +74,7 @@ class TaskStatusContainerStatus
     }
 
     /**
-     * @param int $exitCode
+     * @param int|null $exitCode
      *
      * @return self
      */

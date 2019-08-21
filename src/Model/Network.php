@@ -66,7 +66,7 @@ class Network
     protected $labels;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -74,7 +74,7 @@ class Network
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class Network
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -94,7 +94,7 @@ class Network
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class Network
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreated(): ?string
     {
@@ -114,7 +114,7 @@ class Network
     }
 
     /**
-     * @param string $created
+     * @param string|null $created
      *
      * @return self
      */
@@ -126,7 +126,7 @@ class Network
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getScope(): ?string
     {
@@ -134,7 +134,7 @@ class Network
     }
 
     /**
-     * @param string $scope
+     * @param string|null $scope
      *
      * @return self
      */
@@ -146,7 +146,7 @@ class Network
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDriver(): ?string
     {
@@ -154,7 +154,7 @@ class Network
     }
 
     /**
-     * @param string $driver
+     * @param string|null $driver
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class Network
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEnableIPv6(): ?bool
     {
@@ -174,7 +174,7 @@ class Network
     }
 
     /**
-     * @param bool $enableIPv6
+     * @param bool|null $enableIPv6
      *
      * @return self
      */
@@ -186,7 +186,7 @@ class Network
     }
 
     /**
-     * @return IPAM
+     * @return IPAM|null
      */
     public function getIPAM(): ?IPAM
     {
@@ -194,7 +194,7 @@ class Network
     }
 
     /**
-     * @param IPAM $iPAM
+     * @param IPAM|null $iPAM
      *
      * @return self
      */
@@ -206,7 +206,7 @@ class Network
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getInternal(): ?bool
     {
@@ -214,7 +214,7 @@ class Network
     }
 
     /**
-     * @param bool $internal
+     * @param bool|null $internal
      *
      * @return self
      */
@@ -226,7 +226,7 @@ class Network
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAttachable(): ?bool
     {
@@ -234,7 +234,7 @@ class Network
     }
 
     /**
-     * @param bool $attachable
+     * @param bool|null $attachable
      *
      * @return self
      */
@@ -246,7 +246,7 @@ class Network
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIngress(): ?bool
     {
@@ -254,7 +254,7 @@ class Network
     }
 
     /**
-     * @param bool $ingress
+     * @param bool|null $ingress
      *
      * @return self
      */
@@ -266,7 +266,7 @@ class Network
     }
 
     /**
-     * @return NetworkContainer[]
+     * @return NetworkContainer[]|null
      */
     public function getContainers(): ?\ArrayObject
     {
@@ -274,7 +274,7 @@ class Network
     }
 
     /**
-     * @param NetworkContainer[] $containers
+     * @param NetworkContainer[]|null $containers
      *
      * @return self
      */
@@ -286,7 +286,7 @@ class Network
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getOptions(): ?\ArrayObject
     {
@@ -294,7 +294,7 @@ class Network
     }
 
     /**
-     * @param string[] $options
+     * @param string[]|null $options
      *
      * @return self
      */
@@ -306,7 +306,7 @@ class Network
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -314,7 +314,7 @@ class Network
     }
 
     /**
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */

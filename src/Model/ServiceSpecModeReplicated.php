@@ -18,7 +18,7 @@ class ServiceSpecModeReplicated
     protected $replicas;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getReplicas(): ?int
     {
@@ -26,7 +26,7 @@ class ServiceSpecModeReplicated
     }
 
     /**
-     * @param int $replicas
+     * @param int|null $replicas
      *
      * @return self
      */

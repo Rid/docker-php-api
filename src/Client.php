@@ -32,7 +32,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerListBadRequestException
      * @throws \Docker\API\Exception\ContainerListInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainerSummaryItem[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ContainerSummaryItem[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function containerList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -43,7 +43,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \Docker\API\Model\ContainersCreatePostBody $body            Container to create
      * @param array                                      $queryParameters {
      *
-     *     @var string $name Assign the specified name to the container. Must match `/?[a-zA-Z0-9_-]+`.
+     *     @var string $name Assign the specified name to the container. Must match `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -53,7 +53,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerCreateConflictException
      * @throws \Docker\API\Exception\ContainerCreateInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersCreatePostResponse201|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ContainersCreatePostResponse201|\Psr\Http\Message\ResponseInterface|null
      */
     public function containerCreate(\Docker\API\Model\ContainersCreatePostBody $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -74,7 +74,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerInspectNotFoundException
      * @throws \Docker\API\Exception\ContainerInspectInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersIdJsonGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ContainersIdJsonGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function containerInspect(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -95,7 +95,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerTopNotFoundException
      * @throws \Docker\API\Exception\ContainerTopInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersIdTopGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ContainersIdTopGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function containerTop(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -111,8 +111,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var bool $follow return the logs as a stream
-
+     *     @var bool $follow keep connection after returning logs
      *     @var bool $stdout Return logs from `stdout`
      *     @var bool $stderr Return logs from `stderr`
      *     @var int $since Only return logs since this time, as a UNIX timestamp
@@ -126,7 +125,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerLogsNotFoundException
      * @throws \Docker\API\Exception\ContainerLogsInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerLogs(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -148,7 +147,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerChangesNotFoundException
      * @throws \Docker\API\Exception\ContainerChangesInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersIdChangesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ContainersIdChangesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function containerChanges(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -164,7 +163,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerExportNotFoundException
      * @throws \Docker\API\Exception\ContainerExportInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerExport(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -175,9 +174,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * This endpoint returns a live stream of a container’s resource usage.
     statistics.
 
-    The `precpu_stats` is the CPU statistic of last read, which is used
-    for calculating the CPU usage percentage. It is not the same as the
-    `cpu_stats` field.
+    The `precpu_stats` is the CPU statistic of the *previous* read, and is
+    used to calculate the CPU usage percentage. It is not an exact copy
+    of the `cpu_stats` field.
 
     If either `precpu_stats.online_cpus` or `cpu_stats.online_cpus` is
     nil then for compatibility with older daemons the length of the
@@ -195,7 +194,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerStatsNotFoundException
      * @throws \Docker\API\Exception\ContainerStatsInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerStats(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -203,7 +202,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Resize the TTY for a container. You must restart the container for the resize to take effect.
+     * Resize the TTY for a container.
      *
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
@@ -217,7 +216,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerResizeNotFoundException
      * @throws \Docker\API\Exception\ContainerResizeInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerResize(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -236,7 +235,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerStartNotFoundException
      * @throws \Docker\API\Exception\ContainerStartInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerStart(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -255,7 +254,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerStopNotFoundException
      * @throws \Docker\API\Exception\ContainerStopInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerStop(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -274,7 +273,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerRestartNotFoundException
      * @throws \Docker\API\Exception\ContainerRestartInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerRestart(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -296,7 +295,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerKillConflictException
      * @throws \Docker\API\Exception\ContainerKillInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerKill(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -313,7 +312,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerUpdateNotFoundException
      * @throws \Docker\API\Exception\ContainerUpdateInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersIdUpdatePostResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ContainersIdUpdatePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function containerUpdate(string $id, \Docker\API\Model\ContainersIdUpdatePostBody $update, string $fetch = self::FETCH_OBJECT)
     {
@@ -333,7 +332,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerRenameConflictException
      * @throws \Docker\API\Exception\ContainerRenameInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerRename(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -341,9 +340,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Use the cgroups freezer to suspend all processes in a container.
+     * Use the freezer cgroup to suspend all processes in a container.
 
-    Traditionally, when suspending a process the `SIGSTOP` signal is used, which is observable by the process being suspended. With the cgroups freezer the process is unaware, and unable to capture, that it is being suspended, and subsequently resumed.
+    Traditionally, when suspending a process the `SIGSTOP` signal is used, which is observable by the process being suspended. With the freezer cgroup the process is unaware, and unable to capture, that it is being suspended, and subsequently resumed.
 
      *
      * @param string $id    ID or name of the container
@@ -352,7 +351,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerPauseNotFoundException
      * @throws \Docker\API\Exception\ContainerPauseInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerPause(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -368,7 +367,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerUnpauseNotFoundException
      * @throws \Docker\API\Exception\ContainerUnpauseInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerUnpause(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -457,7 +456,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array  $queryParameters {
      *
      *     @var string $detachKeys Override the key sequence for detaching a container.Format is a single character `[a-Z]` or `ctrl-<value>` where `<value>` is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
-     *     @var bool $logs replay previous logs from the container
+     *     @var bool $logs Replay previous logs from the container.
 
      *     @var bool $stream Stream attached streams from the time the request was made onwards
      *     @var bool $stdin Attach to `stdin`
@@ -471,7 +470,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerAttachNotFoundException
      * @throws \Docker\API\Exception\ContainerAttachInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerAttach(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -496,7 +495,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerAttachWebsocketNotFoundException
      * @throws \Docker\API\Exception\ContainerAttachWebsocketInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerAttachWebsocket(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -517,7 +516,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerWaitNotFoundException
      * @throws \Docker\API\Exception\ContainerWaitInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersIdWaitPostResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ContainersIdWaitPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function containerWait(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -540,7 +539,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerDeleteConflictException
      * @throws \Docker\API\Exception\ContainerDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerDelete(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -562,7 +561,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerArchiveNotFoundException
      * @throws \Docker\API\Exception\ContainerArchiveInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerArchive(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -584,7 +583,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerArchiveInfoNotFoundException
      * @throws \Docker\API\Exception\ContainerArchiveInfoInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerArchiveInfo(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -594,12 +593,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * Upload a tar archive to be extracted to a path in the filesystem of container id.
      *
-     * @param string $id              ID or name of the container
-     * @param string $inputStream     the input stream must be a tar archive compressed with one of the following algorithms: identity (no compression), gzip, bzip2, xz
-     * @param array  $queryParameters {
+     * @param string                                            $id              ID or name of the container
+     * @param string|resource|\Psr\Http\Message\StreamInterface $inputStream     the input stream must be a tar archive compressed with one of the following algorithms: identity (no compression), gzip, bzip2, xz
+     * @param array                                             $queryParameters {
      *
-     *     @var string $path Path to a directory in the container to extract the archive’s contents into.
-     *     @var string $noOverwriteDirNonDir If “1”, “true”, or “True” then it will be an error if unpacking the given content would cause an existing directory to be replaced with a non-directory and vice versa.
+     *     @var string $path path to a directory in the container to extract the archive’s contents into
+     *     @var string $noOverwriteDirNonDir if “1”, “true”, or “True” then it will be an error if unpacking the given content would cause an existing directory to be replaced with a non-directory and vice versa
+     *     @var string $copyUIDGID If “1”, “true”, then it will copy UID/GID maps to the dest file or dir
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -609,9 +609,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\PutContainerArchiveNotFoundException
      * @throws \Docker\API\Exception\PutContainerArchiveInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function putContainerArchive(string $id, string $inputStream, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function putContainerArchive(string $id, $inputStream, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Docker\API\Endpoint\PutContainerArchive($id, $inputStream, $queryParameters), $fetch);
     }
@@ -619,14 +619,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters filters to process on the prune list, encoded as JSON (a `map[string][]string`)
+     *     @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`).
 
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\ContainerPruneInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersPrunePostResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ContainersPrunePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function containerPrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -648,7 +648,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\ImageListInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ImageSummary[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ImageSummary[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function imageList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -689,14 +689,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var int $shmsize Size of `/dev/shm` in bytes. The size must be greater than 0. If omitted the system uses 64MB.
      *     @var bool $squash Squash the resulting images layers into a single layer. *(Experimental release only.)*
      *     @var string $labels arbitrary key/value labels to set on the image, as a JSON map of string pairs
-     *     @var string $networkmode Sets the networking mode for the run commands during build. Supported standard values are: `bridge`, `host`, `none`, and `container:<name|id>`. Any other value is taken as a custom network's name to which this container should connect to.
+     *     @var string $networkmode Sets the networking mode for the run commands during build. Supported
      *     @var string $platform Platform in the format os[/arch[/variant]]
+     *     @var string $target Target build stage
+     *     @var string $outputs BuildKit output configuration
      * }
      *
      * @param array $headerParameters {
      *
      *     @var string $Content-type
-     *     @var string $X-Registry-Config This is a base64-encoded JSON object with auth configurations for multiple registries that a build may refer to
+     *     @var string $X-Registry-Config This is a base64-encoded JSON object with auth configurations for multiple registries that a build may refer to.
 
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -704,7 +706,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ImageBuildBadRequestException
      * @throws \Docker\API\Exception\ImageBuildInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function imageBuild($inputStream, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -712,15 +714,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
+     * @param array $queryParameters {
+     *
+     *     @var int $keep-storage Amount of disk space in bytes to keep for cache
+     *     @var bool $all Remove all types of build cache
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to process on the list of build cache objects. Available filters:
+     * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\BuildPruneInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\BuildPrunePostResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\BuildPrunePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function buildPrune(string $fetch = self::FETCH_OBJECT)
+    public function buildPrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \Docker\API\Endpoint\BuildPrune(), $fetch);
+        return $this->executePsr7Endpoint(new \Docker\API\Endpoint\BuildPrune($queryParameters), $fetch);
     }
 
     /**
@@ -746,7 +754,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ImageCreateNotFoundException
      * @throws \Docker\API\Exception\ImageCreateInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function imageCreate(string $inputImage, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -762,7 +770,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ImageInspectNotFoundException
      * @throws \Docker\API\Exception\ImageInspectInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Image|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Image|\Psr\Http\Message\ResponseInterface|null
      */
     public function imageInspect(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -778,7 +786,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ImageHistoryNotFoundException
      * @throws \Docker\API\Exception\ImageHistoryInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ImagesNameHistoryGetResponse200Item[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ImagesNameHistoryGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function imageHistory(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -809,7 +817,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ImagePushNotFoundException
      * @throws \Docker\API\Exception\ImagePushInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function imagePush(string $name, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -833,7 +841,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ImageTagConflictException
      * @throws \Docker\API\Exception\ImageTagInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function imageTag(string $name, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -861,7 +869,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ImageDeleteConflictException
      * @throws \Docker\API\Exception\ImageDeleteInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ImageDeleteResponseItem[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ImageDeleteResponseItem[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function imageDelete(string $name, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -882,7 +890,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\ImageSearchInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ImagesSearchGetResponse200Item[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ImagesSearchGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function imageSearch(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -901,7 +909,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\ImagePruneInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ImagesPrunePostResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ImagesPrunePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function imagePrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -916,7 +924,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\SystemAuthInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\AuthPostResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\AuthPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function systemAuth(\Docker\API\Model\AuthConfig $authConfig, string $fetch = self::FETCH_OBJECT)
     {
@@ -928,7 +936,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\SystemInfoInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\SystemInfo|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\SystemInfo|\Psr\Http\Message\ResponseInterface|null
      */
     public function systemInfo(string $fetch = self::FETCH_OBJECT)
     {
@@ -940,7 +948,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\SystemVersionInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\VersionGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\VersionGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function systemVersion(string $fetch = self::FETCH_OBJECT)
     {
@@ -952,11 +960,23 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\SystemPingInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function systemPing(string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Docker\API\Endpoint\SystemPing(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @throws \Docker\API\Exception\SystemPingHeadInternalServerErrorException
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function systemPingHead(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Docker\API\Endpoint\SystemPingHead(), $fetch);
     }
 
     /**
@@ -977,7 +997,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ImageCommitNotFoundException
      * @throws \Docker\API\Exception\ImageCommitInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\IdResponse|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\IdResponse|\Psr\Http\Message\ResponseInterface|null
      */
     public function imageCommit(\Docker\API\Model\ContainerConfig $containerConfig, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1020,7 +1040,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SystemEventsBadRequestException
      * @throws \Docker\API\Exception\SystemEventsInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\EventsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\EventsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function systemEvents(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1032,7 +1052,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\SystemDataUsageInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\SystemDfGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\SystemDfGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function systemDataUsage(string $fetch = self::FETCH_OBJECT)
     {
@@ -1070,7 +1090,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\ImageGetInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function imageGet(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -1094,7 +1114,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\ImageGetAllInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function imageGetAll(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1117,7 +1137,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\ImageLoadInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function imageLoad($imagesTarball, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1135,7 +1155,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerExecConflictException
      * @throws \Docker\API\Exception\ContainerExecInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\IdResponse|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\IdResponse|\Psr\Http\Message\ResponseInterface|null
      */
     public function containerExec(string $id, \Docker\API\Model\ContainersIdExecPostBody $execConfig, string $fetch = self::FETCH_OBJECT)
     {
@@ -1152,7 +1172,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ExecStartNotFoundException
      * @throws \Docker\API\Exception\ExecStartConflictException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function execStart(string $id, \Docker\API\Model\ExecIdStartPostBody $execStartConfig, string $fetch = self::FETCH_OBJECT)
     {
@@ -1173,7 +1193,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\ExecResizeNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function execResize(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1189,7 +1209,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ExecInspectNotFoundException
      * @throws \Docker\API\Exception\ExecInspectInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ExecIdJsonGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ExecIdJsonGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function execInspect(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -1205,7 +1225,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\VolumeListInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\VolumesGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\VolumesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function volumeList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1218,7 +1238,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\VolumeCreateInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Volume|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Volume|\Psr\Http\Message\ResponseInterface|null
      */
     public function volumeCreate(\Docker\API\Model\VolumesCreatePostBody $volumeConfig, string $fetch = self::FETCH_OBJECT)
     {
@@ -1240,7 +1260,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\VolumeDeleteConflictException
      * @throws \Docker\API\Exception\VolumeDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function volumeDelete(string $name, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1254,7 +1274,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\VolumeInspectNotFoundException
      * @throws \Docker\API\Exception\VolumeInspectInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Volume|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Volume|\Psr\Http\Message\ResponseInterface|null
      */
     public function volumeInspect(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -1264,14 +1284,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters filters to process on the prune list, encoded as JSON (a `map[string][]string`)
+     *     @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`).
 
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\VolumePruneInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\VolumesPrunePostResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\VolumesPrunePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function volumePrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1294,7 +1314,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\NetworkListInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Network[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Network[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function networkList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1309,7 +1329,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\NetworkDeleteNotFoundException
      * @throws \Docker\API\Exception\NetworkDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function networkDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -1329,7 +1349,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\NetworkInspectNotFoundException
      * @throws \Docker\API\Exception\NetworkInspectInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Network|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Network|\Psr\Http\Message\ResponseInterface|null
      */
     public function networkInspect(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1344,7 +1364,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\NetworkCreateNotFoundException
      * @throws \Docker\API\Exception\NetworkCreateInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\NetworksCreatePostResponse201|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\NetworksCreatePostResponse201|\Psr\Http\Message\ResponseInterface|null
      */
     public function networkCreate(\Docker\API\Model\NetworksCreatePostBody $networkConfig, string $fetch = self::FETCH_OBJECT)
     {
@@ -1360,7 +1380,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\NetworkConnectNotFoundException
      * @throws \Docker\API\Exception\NetworkConnectInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function networkConnect(string $id, \Docker\API\Model\NetworksIdConnectPostBody $container, string $fetch = self::FETCH_OBJECT)
     {
@@ -1376,7 +1396,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\NetworkDisconnectNotFoundException
      * @throws \Docker\API\Exception\NetworkDisconnectInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function networkDisconnect(string $id, \Docker\API\Model\NetworksIdDisconnectPostBody $container, string $fetch = self::FETCH_OBJECT)
     {
@@ -1386,14 +1406,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters filters to process on the prune list, encoded as JSON (a `map[string][]string`)
+     *     @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`).
 
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\NetworkPruneInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\NetworksPrunePostResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\NetworksPrunePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function networkPrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1412,7 +1432,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\PluginListInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Plugin[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Plugin[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function pluginList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1429,7 +1449,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\GetPluginPrivilegesInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\PluginsPrivilegesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\PluginsPrivilegesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getPluginPrivileges(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1443,9 +1463,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $body
      * @param array $queryParameters {
      *
-     *     @var string $remote remote reference for plugin to install
+     *     @var string $remote Remote reference for plugin to install.
 
-     *     @var string $name local name for the pulled plugin
+     *     @var string $name Local name for the pulled plugin.
 
     The `:latest` tag is optional, and is used as the default if omitted.
 
@@ -1460,7 +1480,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\PluginPullInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function pluginPull(array $body, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1474,7 +1494,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\PluginInspectNotFoundException
      * @throws \Docker\API\Exception\PluginInspectInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Plugin|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Plugin|\Psr\Http\Message\ResponseInterface|null
      */
     public function pluginInspect(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -1493,7 +1513,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\PluginDeleteNotFoundException
      * @throws \Docker\API\Exception\PluginDeleteInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Plugin|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Plugin|\Psr\Http\Message\ResponseInterface|null
      */
     public function pluginDelete(string $name, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1512,7 +1532,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\PluginEnableNotFoundException
      * @throws \Docker\API\Exception\PluginEnableInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function pluginEnable(string $name, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1526,7 +1546,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\PluginDisableNotFoundException
      * @throws \Docker\API\Exception\PluginDisableInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function pluginDisable(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -1538,7 +1558,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array  $body
      * @param array  $queryParameters {
      *
-     *     @var string $remote remote reference to upgrade to
+     *     @var string $remote Remote reference to upgrade to.
 
     The `:latest` tag is optional, and is used as the default if omitted.
 
@@ -1554,7 +1574,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\PluginUpgradeNotFoundException
      * @throws \Docker\API\Exception\PluginUpgradeInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function pluginUpgrade(string $name, array $body, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1572,7 +1592,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @throws \Docker\API\Exception\PluginCreateInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function pluginCreate($tarContext, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1588,7 +1608,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\PluginPushNotFoundException
      * @throws \Docker\API\Exception\PluginPushInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function pluginPush(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -1603,7 +1623,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\PluginSetNotFoundException
      * @throws \Docker\API\Exception\PluginSetInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function pluginSet(string $name, array $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -1613,7 +1633,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters filters to process on the nodes list, encoded as JSON (a `map[string][]string`)
+     *     @var string $filters Filters to process on the nodes list, encoded as JSON (a `map[string][]string`).
 
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1621,7 +1641,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\NodeListInternalServerErrorException
      * @throws \Docker\API\Exception\NodeListServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Node[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Node[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function nodeList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1641,7 +1661,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\NodeDeleteInternalServerErrorException
      * @throws \Docker\API\Exception\NodeDeleteServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function nodeDelete(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1656,7 +1676,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\NodeInspectInternalServerErrorException
      * @throws \Docker\API\Exception\NodeInspectServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Node|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Node|\Psr\Http\Message\ResponseInterface|null
      */
     public function nodeInspect(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -1678,7 +1698,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\NodeUpdateInternalServerErrorException
      * @throws \Docker\API\Exception\NodeUpdateServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function nodeUpdate(string $id, \Docker\API\Model\NodeSpec $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1692,7 +1712,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SwarmInspectInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmInspectServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Swarm|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Swarm|\Psr\Http\Message\ResponseInterface|null
      */
     public function swarmInspect(string $fetch = self::FETCH_OBJECT)
     {
@@ -1707,7 +1727,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SwarmInitInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmInitServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function swarmInit(\Docker\API\Model\SwarmInitPostBody $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -1722,7 +1742,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SwarmJoinInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmJoinServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function swarmJoin(\Docker\API\Model\SwarmJoinPostBody $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -1740,7 +1760,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SwarmLeaveInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmLeaveServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function swarmLeave(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1763,7 +1783,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SwarmUpdateInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmUpdateServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function swarmUpdate(\Docker\API\Model\SwarmSpec $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1776,7 +1796,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SwarmUnlockkeyInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmUnlockkeyServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\SwarmUnlockkeyGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\SwarmUnlockkeyGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function swarmUnlockkey(string $fetch = self::FETCH_OBJECT)
     {
@@ -1790,7 +1810,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SwarmUnlockInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmUnlockServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function swarmUnlock(\Docker\API\Model\SwarmUnlockPostBody $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -1808,7 +1828,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ServiceListInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceListServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Service[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Service[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function serviceList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1830,7 +1850,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ServiceCreateInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceCreateServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\ServicesCreatePostResponse201|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ServicesCreatePostResponse201|\Psr\Http\Message\ResponseInterface|null
      */
     public function serviceCreate(\Docker\API\Model\ServicesCreatePostBody $body, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1845,7 +1865,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ServiceDeleteInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceDeleteServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function serviceDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -1865,7 +1885,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ServiceInspectInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceInspectServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Service|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Service|\Psr\Http\Message\ResponseInterface|null
      */
     public function serviceInspect(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1877,11 +1897,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \Docker\API\Model\ServicesIdUpdatePostBody $body
      * @param array                                      $queryParameters {
      *
-     *     @var int $version The version number of the service object being updated. This is required to avoid conflicting writes.
-     *     @var string $registryAuthFrom If the X-Registry-Auth header is not specified, this parameter indicates where to find registry authorization credentials. The valid values are `spec` and `previous-spec`.
-     *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback to the previous service spec. The supplied spec will be ignored in this case.
+     *     @var int $version The version number of the service object being updated. This is required to avoid conflicting writes. This version number should be the value as currently set on the service *before* the update. You can find the current version by calling `GET /services/{id}`
+     *     @var string $registryAuthFrom If the `X-Registry-Auth` header is not specified, this parameter
+     *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback
      * }
-     *
      * @param array $headerParameters {
      *
      *     @var string $X-Registry-Auth A base64-encoded auth configuration for pulling from private registries. [See the authentication section for details.](#section/Authentication)
@@ -1894,7 +1913,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ServiceUpdateInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceUpdateServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\ServiceUpdateResponse|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\ServiceUpdateResponse|\Psr\Http\Message\ResponseInterface|null
      */
     public function serviceUpdate(string $id, \Docker\API\Model\ServicesIdUpdatePostBody $body, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1902,17 +1921,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Get `stdout` and `stderr` logs from a service.
-
-     **Note**: This endpoint works only for services with the `json-file` or `journald` logging drivers.
-
+     * Get `stdout` and `stderr` logs from a service. See also [`/containers/{id}/logs`](#operation/ContainerLogs).
+     **Note**: This endpoint works only for services with the `local`, `json-file` or `journald` logging drivers.
      *
      * @param string $id              ID or name of the service
      * @param array  $queryParameters {
      *
      *     @var bool $details show service context and extra details provided to logs
-     *     @var bool $follow return the logs as a stream
-
+     *     @var bool $follow keep connection after returning logs
      *     @var bool $stdout Return logs from `stdout`
      *     @var bool $stderr Return logs from `stderr`
      *     @var int $since Only return logs since this time, as a UNIX timestamp
@@ -1926,7 +1942,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ServiceLogsInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceLogsServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function serviceLogs(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1944,7 +1960,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\TaskListInternalServerErrorException
      * @throws \Docker\API\Exception\TaskListServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Task[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Task[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function taskList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1959,7 +1975,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\TaskInspectInternalServerErrorException
      * @throws \Docker\API\Exception\TaskInspectServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Task|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Task|\Psr\Http\Message\ResponseInterface|null
      */
     public function taskInspect(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -1967,17 +1983,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Get `stdout` and `stderr` logs from a task.
-
-     **Note**: This endpoint works only for services with the `json-file` or `journald` logging drivers.
-
+     * Get `stdout` and `stderr` logs from a task. See also [`/containers/{id}/logs`](#operation/ContainerLogs).
+     **Note**: This endpoint works only for services with the `local`, `json-file` or `journald` logging drivers.
      *
      * @param string $id              ID of the task
      * @param array  $queryParameters {
      *
      *     @var bool $details show task context and extra details provided to logs
-     *     @var bool $follow return the logs as a stream
-
+     *     @var bool $follow keep connection after returning logs
      *     @var bool $stdout Return logs from `stdout`
      *     @var bool $stderr Return logs from `stderr`
      *     @var int $since Only return logs since this time, as a UNIX timestamp
@@ -1991,7 +2004,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\TaskLogsInternalServerErrorException
      * @throws \Docker\API\Exception\TaskLogsServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function taskLogs(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2009,7 +2022,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SecretListInternalServerErrorException
      * @throws \Docker\API\Exception\SecretListServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Secret[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Secret[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function secretList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2024,7 +2037,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SecretCreateInternalServerErrorException
      * @throws \Docker\API\Exception\SecretCreateServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\IdResponse|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\IdResponse|\Psr\Http\Message\ResponseInterface|null
      */
     public function secretCreate(\Docker\API\Model\SecretsCreatePostBody $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -2039,7 +2052,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SecretDeleteInternalServerErrorException
      * @throws \Docker\API\Exception\SecretDeleteServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function secretDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -2054,7 +2067,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SecretInspectInternalServerErrorException
      * @throws \Docker\API\Exception\SecretInspectServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Secret|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Secret|\Psr\Http\Message\ResponseInterface|null
      */
     public function secretInspect(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -2076,7 +2089,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SecretUpdateInternalServerErrorException
      * @throws \Docker\API\Exception\SecretUpdateServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function secretUpdate(string $id, \Docker\API\Model\SecretSpec $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2094,7 +2107,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ConfigListInternalServerErrorException
      * @throws \Docker\API\Exception\ConfigListServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Config[]|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Config[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function configList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2109,7 +2122,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ConfigCreateInternalServerErrorException
      * @throws \Docker\API\Exception\ConfigCreateServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\IdResponse|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\IdResponse|\Psr\Http\Message\ResponseInterface|null
      */
     public function configCreate(\Docker\API\Model\ConfigsCreatePostBody $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -2124,7 +2137,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ConfigDeleteInternalServerErrorException
      * @throws \Docker\API\Exception\ConfigDeleteServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function configDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -2139,7 +2152,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ConfigInspectInternalServerErrorException
      * @throws \Docker\API\Exception\ConfigInspectServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Config|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\Config|\Psr\Http\Message\ResponseInterface|null
      */
     public function configInspect(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -2161,7 +2174,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ConfigUpdateInternalServerErrorException
      * @throws \Docker\API\Exception\ConfigUpdateServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function configUpdate(string $id, \Docker\API\Model\ConfigSpec $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2177,7 +2190,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\DistributionInspectUnauthorizedException
      * @throws \Docker\API\Exception\DistributionInspectInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\DistributionNameJsonGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return \Docker\API\Model\DistributionNameJsonGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function distributionInspect(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -2190,7 +2203,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\SessionBadRequestException
      * @throws \Docker\API\Exception\SessionInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function session(string $fetch = self::FETCH_OBJECT)
     {
@@ -2202,7 +2215,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\HttpClientDiscovery::find();
             $plugins = [];
-            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('v1.37');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('v1.41');
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }

@@ -150,11 +150,36 @@ class TaskSpecContainerSpec
      * @var string
      */
     protected $isolation;
+    /**
+     * Run an init inside the container that forwards signals and reaps processes. This field is omitted if empty, and the default (as configured on the daemon) is used.
+     *
+     * @var bool
+     */
+    protected $init;
+    /**
+     * Set kernel namedspaced parameters (sysctls) in the container.
+    The Sysctls option on services accepts the same sysctls as the
+    are supported on containers. Note that while the same sysctls are
+    supported, no guarantees or checks are made about their
+    suitability for a clustered environment, and it's up to the user
+    to determine whether a given sysctl will work properly in a
+    Service.
+
+     *
+     * @var string[]
+     */
+    protected $sysctls;
+    /**
+     * A list of kernel capabilities to be available for container (this overrides the default set).
+     *
+     * @var string[]
+     */
+    protected $capabilities;
 
     /**
      * The image name to use for the container.
      *
-     * @return string
+     * @return string|null
      */
     public function getImage(): ?string
     {
@@ -164,7 +189,7 @@ class TaskSpecContainerSpec
     /**
      * The image name to use for the container.
      *
-     * @param string $image
+     * @param string|null $image
      *
      * @return self
      */
@@ -178,7 +203,7 @@ class TaskSpecContainerSpec
     /**
      * User-defined key/value data.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -188,7 +213,7 @@ class TaskSpecContainerSpec
     /**
      * User-defined key/value data.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -202,7 +227,7 @@ class TaskSpecContainerSpec
     /**
      * The command to be run in the image.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getCommand(): ?array
     {
@@ -212,7 +237,7 @@ class TaskSpecContainerSpec
     /**
      * The command to be run in the image.
      *
-     * @param string[] $command
+     * @param string[]|null $command
      *
      * @return self
      */
@@ -226,7 +251,7 @@ class TaskSpecContainerSpec
     /**
      * Arguments to the command.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getArgs(): ?array
     {
@@ -236,7 +261,7 @@ class TaskSpecContainerSpec
     /**
      * Arguments to the command.
      *
-     * @param string[] $args
+     * @param string[]|null $args
      *
      * @return self
      */
@@ -250,7 +275,7 @@ class TaskSpecContainerSpec
     /**
      * The hostname to use for the container, as a valid RFC 1123 hostname.
      *
-     * @return string
+     * @return string|null
      */
     public function getHostname(): ?string
     {
@@ -260,7 +285,7 @@ class TaskSpecContainerSpec
     /**
      * The hostname to use for the container, as a valid RFC 1123 hostname.
      *
-     * @param string $hostname
+     * @param string|null $hostname
      *
      * @return self
      */
@@ -274,7 +299,7 @@ class TaskSpecContainerSpec
     /**
      * A list of environment variables in the form `VAR=value`.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getEnv(): ?array
     {
@@ -284,7 +309,7 @@ class TaskSpecContainerSpec
     /**
      * A list of environment variables in the form `VAR=value`.
      *
-     * @param string[] $env
+     * @param string[]|null $env
      *
      * @return self
      */
@@ -298,7 +323,7 @@ class TaskSpecContainerSpec
     /**
      * The working directory for commands to run in.
      *
-     * @return string
+     * @return string|null
      */
     public function getDir(): ?string
     {
@@ -308,7 +333,7 @@ class TaskSpecContainerSpec
     /**
      * The working directory for commands to run in.
      *
-     * @param string $dir
+     * @param string|null $dir
      *
      * @return self
      */
@@ -322,7 +347,7 @@ class TaskSpecContainerSpec
     /**
      * The user inside the container.
      *
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -332,7 +357,7 @@ class TaskSpecContainerSpec
     /**
      * The user inside the container.
      *
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */
@@ -346,7 +371,7 @@ class TaskSpecContainerSpec
     /**
      * A list of additional groups that the container process will run as.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getGroups(): ?array
     {
@@ -356,7 +381,7 @@ class TaskSpecContainerSpec
     /**
      * A list of additional groups that the container process will run as.
      *
-     * @param string[] $groups
+     * @param string[]|null $groups
      *
      * @return self
      */
@@ -370,7 +395,7 @@ class TaskSpecContainerSpec
     /**
      * Security options for the container.
      *
-     * @return TaskSpecContainerSpecPrivileges
+     * @return TaskSpecContainerSpecPrivileges|null
      */
     public function getPrivileges(): ?TaskSpecContainerSpecPrivileges
     {
@@ -380,7 +405,7 @@ class TaskSpecContainerSpec
     /**
      * Security options for the container.
      *
-     * @param TaskSpecContainerSpecPrivileges $privileges
+     * @param TaskSpecContainerSpecPrivileges|null $privileges
      *
      * @return self
      */
@@ -394,7 +419,7 @@ class TaskSpecContainerSpec
     /**
      * Whether a pseudo-TTY should be allocated.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getTTY(): ?bool
     {
@@ -404,7 +429,7 @@ class TaskSpecContainerSpec
     /**
      * Whether a pseudo-TTY should be allocated.
      *
-     * @param bool $tTY
+     * @param bool|null $tTY
      *
      * @return self
      */
@@ -418,7 +443,7 @@ class TaskSpecContainerSpec
     /**
      * Open `stdin`.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getOpenStdin(): ?bool
     {
@@ -428,7 +453,7 @@ class TaskSpecContainerSpec
     /**
      * Open `stdin`.
      *
-     * @param bool $openStdin
+     * @param bool|null $openStdin
      *
      * @return self
      */
@@ -442,7 +467,7 @@ class TaskSpecContainerSpec
     /**
      * Mount the container's root filesystem as read only.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getReadOnly(): ?bool
     {
@@ -452,7 +477,7 @@ class TaskSpecContainerSpec
     /**
      * Mount the container's root filesystem as read only.
      *
-     * @param bool $readOnly
+     * @param bool|null $readOnly
      *
      * @return self
      */
@@ -466,7 +491,7 @@ class TaskSpecContainerSpec
     /**
      * Specification for mounts to be added to containers created as part of the service.
      *
-     * @return Mount[]
+     * @return Mount[]|null
      */
     public function getMounts(): ?array
     {
@@ -476,7 +501,7 @@ class TaskSpecContainerSpec
     /**
      * Specification for mounts to be added to containers created as part of the service.
      *
-     * @param Mount[] $mounts
+     * @param Mount[]|null $mounts
      *
      * @return self
      */
@@ -490,7 +515,7 @@ class TaskSpecContainerSpec
     /**
      * Signal to stop the container.
      *
-     * @return string
+     * @return string|null
      */
     public function getStopSignal(): ?string
     {
@@ -500,7 +525,7 @@ class TaskSpecContainerSpec
     /**
      * Signal to stop the container.
      *
-     * @param string $stopSignal
+     * @param string|null $stopSignal
      *
      * @return self
      */
@@ -514,7 +539,7 @@ class TaskSpecContainerSpec
     /**
      * Amount of time to wait for the container to terminate before forcefully killing it.
      *
-     * @return int
+     * @return int|null
      */
     public function getStopGracePeriod(): ?int
     {
@@ -524,7 +549,7 @@ class TaskSpecContainerSpec
     /**
      * Amount of time to wait for the container to terminate before forcefully killing it.
      *
-     * @param int $stopGracePeriod
+     * @param int|null $stopGracePeriod
      *
      * @return self
      */
@@ -538,7 +563,7 @@ class TaskSpecContainerSpec
     /**
      * A test to perform to check that the container is healthy.
      *
-     * @return HealthConfig
+     * @return HealthConfig|null
      */
     public function getHealthCheck(): ?HealthConfig
     {
@@ -548,7 +573,7 @@ class TaskSpecContainerSpec
     /**
      * A test to perform to check that the container is healthy.
      *
-     * @param HealthConfig $healthCheck
+     * @param HealthConfig|null $healthCheck
      *
      * @return self
      */
@@ -568,7 +593,7 @@ class TaskSpecContainerSpec
        IP_address canonical_hostname [aliases...]
 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getHosts(): ?array
     {
@@ -584,7 +609,7 @@ class TaskSpecContainerSpec
        IP_address canonical_hostname [aliases...]
 
      *
-     * @param string[] $hosts
+     * @param string[]|null $hosts
      *
      * @return self
      */
@@ -598,7 +623,7 @@ class TaskSpecContainerSpec
     /**
      * Specification for DNS related configurations in resolver configuration file (`resolv.conf`).
      *
-     * @return TaskSpecContainerSpecDNSConfig
+     * @return TaskSpecContainerSpecDNSConfig|null
      */
     public function getDNSConfig(): ?TaskSpecContainerSpecDNSConfig
     {
@@ -608,7 +633,7 @@ class TaskSpecContainerSpec
     /**
      * Specification for DNS related configurations in resolver configuration file (`resolv.conf`).
      *
-     * @param TaskSpecContainerSpecDNSConfig $dNSConfig
+     * @param TaskSpecContainerSpecDNSConfig|null $dNSConfig
      *
      * @return self
      */
@@ -622,7 +647,7 @@ class TaskSpecContainerSpec
     /**
      * Secrets contains references to zero or more secrets that will be exposed to the service.
      *
-     * @return TaskSpecContainerSpecSecretsItem[]
+     * @return TaskSpecContainerSpecSecretsItem[]|null
      */
     public function getSecrets(): ?array
     {
@@ -632,7 +657,7 @@ class TaskSpecContainerSpec
     /**
      * Secrets contains references to zero or more secrets that will be exposed to the service.
      *
-     * @param TaskSpecContainerSpecSecretsItem[] $secrets
+     * @param TaskSpecContainerSpecSecretsItem[]|null $secrets
      *
      * @return self
      */
@@ -646,7 +671,7 @@ class TaskSpecContainerSpec
     /**
      * Configs contains references to zero or more configs that will be exposed to the service.
      *
-     * @return TaskSpecContainerSpecConfigsItem[]
+     * @return TaskSpecContainerSpecConfigsItem[]|null
      */
     public function getConfigs(): ?array
     {
@@ -656,7 +681,7 @@ class TaskSpecContainerSpec
     /**
      * Configs contains references to zero or more configs that will be exposed to the service.
      *
-     * @param TaskSpecContainerSpecConfigsItem[] $configs
+     * @param TaskSpecContainerSpecConfigsItem[]|null $configs
      *
      * @return self
      */
@@ -670,7 +695,7 @@ class TaskSpecContainerSpec
     /**
      * Isolation technology of the containers running the service. (Windows only).
      *
-     * @return string
+     * @return string|null
      */
     public function getIsolation(): ?string
     {
@@ -680,13 +705,99 @@ class TaskSpecContainerSpec
     /**
      * Isolation technology of the containers running the service. (Windows only).
      *
-     * @param string $isolation
+     * @param string|null $isolation
      *
      * @return self
      */
     public function setIsolation(?string $isolation): self
     {
         $this->isolation = $isolation;
+
+        return $this;
+    }
+
+    /**
+     * Run an init inside the container that forwards signals and reaps processes. This field is omitted if empty, and the default (as configured on the daemon) is used.
+     *
+     * @return bool|null
+     */
+    public function getInit(): ?bool
+    {
+        return $this->init;
+    }
+
+    /**
+     * Run an init inside the container that forwards signals and reaps processes. This field is omitted if empty, and the default (as configured on the daemon) is used.
+     *
+     * @param bool|null $init
+     *
+     * @return self
+     */
+    public function setInit(?bool $init): self
+    {
+        $this->init = $init;
+
+        return $this;
+    }
+
+    /**
+     * Set kernel namedspaced parameters (sysctls) in the container.
+    The Sysctls option on services accepts the same sysctls as the
+    are supported on containers. Note that while the same sysctls are
+    supported, no guarantees or checks are made about their
+    suitability for a clustered environment, and it's up to the user
+    to determine whether a given sysctl will work properly in a
+    Service.
+
+     *
+     * @return string[]|null
+     */
+    public function getSysctls(): ?\ArrayObject
+    {
+        return $this->sysctls;
+    }
+
+    /**
+     * Set kernel namedspaced parameters (sysctls) in the container.
+    The Sysctls option on services accepts the same sysctls as the
+    are supported on containers. Note that while the same sysctls are
+    supported, no guarantees or checks are made about their
+    suitability for a clustered environment, and it's up to the user
+    to determine whether a given sysctl will work properly in a
+    Service.
+
+     *
+     * @param string[]|null $sysctls
+     *
+     * @return self
+     */
+    public function setSysctls(?\ArrayObject $sysctls): self
+    {
+        $this->sysctls = $sysctls;
+
+        return $this;
+    }
+
+    /**
+     * A list of kernel capabilities to be available for container (this overrides the default set).
+     *
+     * @return string[]|null
+     */
+    public function getCapabilities(): ?array
+    {
+        return $this->capabilities;
+    }
+
+    /**
+     * A list of kernel capabilities to be available for container (this overrides the default set).
+     *
+     * @param string[]|null $capabilities
+     *
+     * @return self
+     */
+    public function setCapabilities(?array $capabilities): self
+    {
+        $this->capabilities = $capabilities;
 
         return $this;
     }

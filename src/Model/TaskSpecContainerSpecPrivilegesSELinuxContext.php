@@ -46,7 +46,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * Disable SELinux.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getDisable(): ?bool
     {
@@ -56,7 +56,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * Disable SELinux.
      *
-     * @param bool $disable
+     * @param bool|null $disable
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux user label.
      *
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -80,7 +80,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux user label.
      *
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux role label.
      *
-     * @return string
+     * @return string|null
      */
     public function getRole(): ?string
     {
@@ -104,7 +104,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux role label.
      *
-     * @param string $role
+     * @param string|null $role
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux type label.
      *
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -128,7 +128,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux type label.
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux level label.
      *
-     * @return string
+     * @return string|null
      */
     public function getLevel(): ?string
     {
@@ -152,7 +152,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
     /**
      * SELinux level label.
      *
-     * @param string $level
+     * @param string|null $level
      *
      * @return self
      */

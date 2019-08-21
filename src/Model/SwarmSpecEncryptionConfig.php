@@ -22,7 +22,7 @@ class SwarmSpecEncryptionConfig
     /**
      * If set, generate a key and use it to lock data stored on the managers.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getAutoLockManagers(): ?bool
     {
@@ -32,7 +32,7 @@ class SwarmSpecEncryptionConfig
     /**
      * If set, generate a key and use it to lock data stored on the managers.
      *
-     * @param bool $autoLockManagers
+     * @param bool|null $autoLockManagers
      *
      * @return self
      */

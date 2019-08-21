@@ -46,14 +46,16 @@ class ImageBuild extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *     @var int $shmsize Size of `/dev/shm` in bytes. The size must be greater than 0. If omitted the system uses 64MB.
      *     @var bool $squash Squash the resulting images layers into a single layer. *(Experimental release only.)*
      *     @var string $labels arbitrary key/value labels to set on the image, as a JSON map of string pairs
-     *     @var string $networkmode Sets the networking mode for the run commands during build. Supported standard values are: `bridge`, `host`, `none`, and `container:<name|id>`. Any other value is taken as a custom network's name to which this container should connect to.
+     *     @var string $networkmode Sets the networking mode for the run commands during build. Supported
      *     @var string $platform Platform in the format os[/arch[/variant]]
+     *     @var string $target Target build stage
+     *     @var string $outputs BuildKit output configuration
      * }
      *
      * @param array $headerParameters {
      *
      *     @var string $Content-type
-     *     @var string $X-Registry-Config This is a base64-encoded JSON object with auth configurations for multiple registries that a build may refer to
+     *     @var string $X-Registry-Config This is a base64-encoded JSON object with auth configurations for multiple registries that a build may refer to.
 
     The key is a registry URL, and the value is an auth configuration object, [as described in the authentication section](#section/Authentication). For example:
 
@@ -81,7 +83,8 @@ class ImageBuild extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->headerParameters = $headerParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -106,9 +109,9 @@ class ImageBuild extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['dockerfile', 't', 'extrahosts', 'remote', 'q', 'nocache', 'cachefrom', 'pull', 'rm', 'forcerm', 'memory', 'memswap', 'cpushares', 'cpusetcpus', 'cpuperiod', 'cpuquota', 'buildargs', 'shmsize', 'squash', 'labels', 'networkmode', 'platform']);
+        $optionsResolver->setDefined(['dockerfile', 't', 'extrahosts', 'remote', 'q', 'nocache', 'cachefrom', 'pull', 'rm', 'forcerm', 'memory', 'memswap', 'cpushares', 'cpusetcpus', 'cpuperiod', 'cpuquota', 'buildargs', 'shmsize', 'squash', 'labels', 'networkmode', 'platform', 'target', 'outputs']);
         $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults(['dockerfile' => 'Dockerfile', 'q' => false, 'nocache' => false, 'rm' => true, 'forcerm' => false, 'platform' => '']);
+        $optionsResolver->setDefaults(['dockerfile' => 'Dockerfile', 'q' => false, 'nocache' => false, 'rm' => true, 'forcerm' => false, 'platform' => '', 'target' => '', 'outputs' => '']);
         $optionsResolver->setAllowedTypes('dockerfile', ['string']);
         $optionsResolver->setAllowedTypes('t', ['string']);
         $optionsResolver->setAllowedTypes('extrahosts', ['string']);
@@ -131,6 +134,8 @@ class ImageBuild extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $optionsResolver->setAllowedTypes('labels', ['string']);
         $optionsResolver->setAllowedTypes('networkmode', ['string']);
         $optionsResolver->setAllowedTypes('platform', ['string']);
+        $optionsResolver->setAllowedTypes('target', ['string']);
+        $optionsResolver->setAllowedTypes('outputs', ['string']);
 
         return $optionsResolver;
     }

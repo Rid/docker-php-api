@@ -22,7 +22,7 @@ class SwarmSpecOrchestration
     /**
      * The number of historic tasks to keep per instance or node. If negative, never remove completed or failed tasks.
      *
-     * @return int
+     * @return int|null
      */
     public function getTaskHistoryRetentionLimit(): ?int
     {
@@ -32,7 +32,7 @@ class SwarmSpecOrchestration
     /**
      * The number of historic tasks to keep per instance or node. If negative, never remove completed or failed tasks.
      *
-     * @param int $taskHistoryRetentionLimit
+     * @param int|null $taskHistoryRetentionLimit
      *
      * @return self
      */

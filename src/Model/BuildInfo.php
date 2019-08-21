@@ -48,7 +48,7 @@ class BuildInfo
     protected $aux;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -56,7 +56,7 @@ class BuildInfo
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -68,7 +68,7 @@ class BuildInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStream(): ?string
     {
@@ -76,7 +76,7 @@ class BuildInfo
     }
 
     /**
-     * @param string $stream
+     * @param string|null $stream
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class BuildInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getError(): ?string
     {
@@ -96,7 +96,7 @@ class BuildInfo
     }
 
     /**
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
@@ -108,7 +108,7 @@ class BuildInfo
     }
 
     /**
-     * @return ErrorDetail
+     * @return ErrorDetail|null
      */
     public function getErrorDetail(): ?ErrorDetail
     {
@@ -116,7 +116,7 @@ class BuildInfo
     }
 
     /**
-     * @param ErrorDetail $errorDetail
+     * @param ErrorDetail|null $errorDetail
      *
      * @return self
      */
@@ -128,7 +128,7 @@ class BuildInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStatus(): ?string
     {
@@ -136,7 +136,7 @@ class BuildInfo
     }
 
     /**
-     * @param string $status
+     * @param string|null $status
      *
      * @return self
      */
@@ -148,7 +148,7 @@ class BuildInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getProgress(): ?string
     {
@@ -156,7 +156,7 @@ class BuildInfo
     }
 
     /**
-     * @param string $progress
+     * @param string|null $progress
      *
      * @return self
      */
@@ -168,7 +168,7 @@ class BuildInfo
     }
 
     /**
-     * @return ProgressDetail
+     * @return ProgressDetail|null
      */
     public function getProgressDetail(): ?ProgressDetail
     {
@@ -176,7 +176,7 @@ class BuildInfo
     }
 
     /**
-     * @param ProgressDetail $progressDetail
+     * @param ProgressDetail|null $progressDetail
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class BuildInfo
     /**
      * Image ID or Digest.
      *
-     * @return ImageID
+     * @return ImageID|null
      */
     public function getAux(): ?ImageID
     {
@@ -200,7 +200,7 @@ class BuildInfo
     /**
      * Image ID or Digest.
      *
-     * @param ImageID $aux
+     * @param ImageID|null $aux
      *
      * @return self
      */

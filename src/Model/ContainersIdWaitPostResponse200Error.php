@@ -22,7 +22,7 @@ class ContainersIdWaitPostResponse200Error
     /**
      * Details of an error.
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage(): ?string
     {
@@ -32,7 +32,7 @@ class ContainersIdWaitPostResponse200Error
     /**
      * Details of an error.
      *
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */

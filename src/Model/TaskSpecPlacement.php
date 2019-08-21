@@ -25,6 +25,12 @@ class TaskSpecPlacement
      */
     protected $preferences;
     /**
+     * Maximum number of replicas for per node (default value is 0, which is unlimited).
+     *
+     * @var int
+     */
+    protected $maxReplicas = 0;
+    /**
      * Platforms stores all the platforms that the service's image can.
     run on. This field is used in the platform filter for scheduling.
     If empty, then the platform filter is off, meaning there are no
@@ -38,7 +44,7 @@ class TaskSpecPlacement
     /**
      * An array of constraints.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getConstraints(): ?array
     {
@@ -48,7 +54,7 @@ class TaskSpecPlacement
     /**
      * An array of constraints.
      *
-     * @param string[] $constraints
+     * @param string[]|null $constraints
      *
      * @return self
      */
@@ -62,7 +68,7 @@ class TaskSpecPlacement
     /**
      * Preferences provide a way to make the scheduler aware of factors such as topology. They are provided in order from highest to lowest precedence.
      *
-     * @return TaskSpecPlacementPreferencesItem[]
+     * @return TaskSpecPlacementPreferencesItem[]|null
      */
     public function getPreferences(): ?array
     {
@@ -72,7 +78,7 @@ class TaskSpecPlacement
     /**
      * Preferences provide a way to make the scheduler aware of factors such as topology. They are provided in order from highest to lowest precedence.
      *
-     * @param TaskSpecPlacementPreferencesItem[] $preferences
+     * @param TaskSpecPlacementPreferencesItem[]|null $preferences
      *
      * @return self
      */
@@ -84,13 +90,37 @@ class TaskSpecPlacement
     }
 
     /**
+     * Maximum number of replicas for per node (default value is 0, which is unlimited).
+     *
+     * @return int|null
+     */
+    public function getMaxReplicas(): ?int
+    {
+        return $this->maxReplicas;
+    }
+
+    /**
+     * Maximum number of replicas for per node (default value is 0, which is unlimited).
+     *
+     * @param int|null $maxReplicas
+     *
+     * @return self
+     */
+    public function setMaxReplicas(?int $maxReplicas): self
+    {
+        $this->maxReplicas = $maxReplicas;
+
+        return $this;
+    }
+
+    /**
      * Platforms stores all the platforms that the service's image can.
     run on. This field is used in the platform filter for scheduling.
     If empty, then the platform filter is off, meaning there are no
     scheduling restrictions.
 
      *
-     * @return Platform[]
+     * @return Platform[]|null
      */
     public function getPlatforms(): ?array
     {
@@ -104,7 +134,7 @@ class TaskSpecPlacement
     scheduling restrictions.
 
      *
-     * @param Platform[] $platforms
+     * @param Platform[]|null $platforms
      *
      * @return self
      */

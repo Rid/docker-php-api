@@ -17,7 +17,7 @@ class SwarmSpecCAConfigExternalCAsItem
      *
      * @var string
      */
-    protected $protocol;
+    protected $protocol = 'cfssl';
     /**
      * URL where certificate signing requests should be sent.
      *
@@ -40,7 +40,7 @@ class SwarmSpecCAConfigExternalCAsItem
     /**
      * Protocol for communication with the external CA (currently only `cfssl` is supported).
      *
-     * @return string
+     * @return string|null
      */
     public function getProtocol(): ?string
     {
@@ -50,7 +50,7 @@ class SwarmSpecCAConfigExternalCAsItem
     /**
      * Protocol for communication with the external CA (currently only `cfssl` is supported).
      *
-     * @param string $protocol
+     * @param string|null $protocol
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class SwarmSpecCAConfigExternalCAsItem
     /**
      * URL where certificate signing requests should be sent.
      *
-     * @return string
+     * @return string|null
      */
     public function getURL(): ?string
     {
@@ -74,7 +74,7 @@ class SwarmSpecCAConfigExternalCAsItem
     /**
      * URL where certificate signing requests should be sent.
      *
-     * @param string $uRL
+     * @param string|null $uRL
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class SwarmSpecCAConfigExternalCAsItem
     /**
      * An object with key/value pairs that are interpreted as protocol-specific options for the external CA driver.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getOptions(): ?\ArrayObject
     {
@@ -98,7 +98,7 @@ class SwarmSpecCAConfigExternalCAsItem
     /**
      * An object with key/value pairs that are interpreted as protocol-specific options for the external CA driver.
      *
-     * @param string[] $options
+     * @param string[]|null $options
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class SwarmSpecCAConfigExternalCAsItem
     /**
      * The root CA certificate (in PEM format) this external CA uses to issue TLS certificates (assumed to be to the current swarm root CA certificate if not provided).
      *
-     * @return string
+     * @return string|null
      */
     public function getCACert(): ?string
     {
@@ -122,7 +122,7 @@ class SwarmSpecCAConfigExternalCAsItem
     /**
      * The root CA certificate (in PEM format) this external CA uses to issue TLS certificates (assumed to be to the current swarm root CA certificate if not provided).
      *
-     * @param string $cACert
+     * @param string|null $cACert
      *
      * @return self
      */

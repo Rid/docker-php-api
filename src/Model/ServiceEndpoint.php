@@ -30,7 +30,7 @@ class ServiceEndpoint
     /**
      * Properties that can be configured to access and load balance a service.
      *
-     * @return EndpointSpec
+     * @return EndpointSpec|null
      */
     public function getSpec(): ?EndpointSpec
     {
@@ -40,7 +40,7 @@ class ServiceEndpoint
     /**
      * Properties that can be configured to access and load balance a service.
      *
-     * @param EndpointSpec $spec
+     * @param EndpointSpec|null $spec
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class ServiceEndpoint
     }
 
     /**
-     * @return EndpointPortConfig[]
+     * @return EndpointPortConfig[]|null
      */
     public function getPorts(): ?array
     {
@@ -60,7 +60,7 @@ class ServiceEndpoint
     }
 
     /**
-     * @param EndpointPortConfig[] $ports
+     * @param EndpointPortConfig[]|null $ports
      *
      * @return self
      */
@@ -72,7 +72,7 @@ class ServiceEndpoint
     }
 
     /**
-     * @return ServiceEndpointVirtualIPsItem[]
+     * @return ServiceEndpointVirtualIPsItem[]|null
      */
     public function getVirtualIPs(): ?array
     {
@@ -80,7 +80,7 @@ class ServiceEndpoint
     }
 
     /**
-     * @param ServiceEndpointVirtualIPsItem[] $virtualIPs
+     * @param ServiceEndpointVirtualIPsItem[]|null $virtualIPs
      *
      * @return self
      */

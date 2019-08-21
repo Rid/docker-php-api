@@ -38,7 +38,7 @@ class ImagesNameHistoryGetResponse200Item
     protected $comment;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -46,7 +46,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -66,7 +66,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -78,7 +78,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreatedBy(): ?string
     {
@@ -86,7 +86,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @param string $createdBy
+     * @param string|null $createdBy
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getTags(): ?array
     {
@@ -106,7 +106,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @param string[] $tags
+     * @param string[]|null $tags
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getSize(): ?int
     {
@@ -126,7 +126,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @param int $size
+     * @param int|null $size
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getComment(): ?string
     {
@@ -146,7 +146,7 @@ class ImagesNameHistoryGetResponse200Item
     }
 
     /**
-     * @param string $comment
+     * @param string|null $comment
      *
      * @return self
      */

@@ -12,7 +12,8 @@ namespace Docker\API\Endpoint;
 
 class SystemVersion extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\AmpArtaxEndpoint, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -39,7 +40,7 @@ class SystemVersion extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      *
      * @throws \Docker\API\Exception\SystemVersionInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\VersionGetResponse200
+     * @return \Docker\API\Model\VersionGetResponse200|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

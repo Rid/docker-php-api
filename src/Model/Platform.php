@@ -32,7 +32,7 @@ class Platform
     `x86_64`).
 
      *
-     * @return string
+     * @return string|null
      */
     public function getArchitecture(): ?string
     {
@@ -44,7 +44,7 @@ class Platform
     `x86_64`).
 
      *
-     * @param string $architecture
+     * @param string|null $architecture
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class Platform
     /**
      * OS represents the Operating System (for example, `linux` or `windows`).
      *
-     * @return string
+     * @return string|null
      */
     public function getOS(): ?string
     {
@@ -68,7 +68,7 @@ class Platform
     /**
      * OS represents the Operating System (for example, `linux` or `windows`).
      *
-     * @param string $oS
+     * @param string|null $oS
      *
      * @return self
      */

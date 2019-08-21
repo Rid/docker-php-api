@@ -38,7 +38,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     protected $features;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getArchitecture(): ?string
     {
@@ -46,7 +46,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @param string $architecture
+     * @param string|null $architecture
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getOS(): ?string
     {
@@ -66,7 +66,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @param string $oS
+     * @param string|null $oS
      *
      * @return self
      */
@@ -78,7 +78,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getOSVersion(): ?string
     {
@@ -86,7 +86,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @param string $oSVersion
+     * @param string|null $oSVersion
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getOSFeatures(): ?array
     {
@@ -106,7 +106,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @param string[] $oSFeatures
+     * @param string[]|null $oSFeatures
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getVariant(): ?string
     {
@@ -126,7 +126,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @param string $variant
+     * @param string|null $variant
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getFeatures(): ?array
     {
@@ -146,7 +146,7 @@ class DistributionNameJsonGetResponse200PlatformsItem
     }
 
     /**
-     * @param string[] $features
+     * @param string[]|null $features
      *
      * @return self
      */

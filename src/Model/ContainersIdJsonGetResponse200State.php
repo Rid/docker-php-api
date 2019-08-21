@@ -24,7 +24,7 @@ class ContainersIdJsonGetResponse200State
     Note that a running container can be _paused_. The `Running` and `Paused`
     booleans are not mutually exclusive:
 
-    When pausing a container (on Linux), the cgroups freezer is used to suspend
+    When pausing a container (on Linux), the freezer cgroup is used to suspend
     all processes in the container. Freezing the process requires the process to
     be running. As a result, paused containers are both `Running` _and_ `Paused`.
 
@@ -88,7 +88,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The status of the container. For example, `"running"` or `"exited"`.
      *
-     * @return string
+     * @return string|null
      */
     public function getStatus(): ?string
     {
@@ -98,7 +98,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The status of the container. For example, `"running"` or `"exited"`.
      *
-     * @param string $status
+     * @param string|null $status
      *
      * @return self
      */
@@ -115,14 +115,14 @@ class ContainersIdJsonGetResponse200State
     Note that a running container can be _paused_. The `Running` and `Paused`
     booleans are not mutually exclusive:
 
-    When pausing a container (on Linux), the cgroups freezer is used to suspend
+    When pausing a container (on Linux), the freezer cgroup is used to suspend
     all processes in the container. Freezing the process requires the process to
     be running. As a result, paused containers are both `Running` _and_ `Paused`.
 
     Use the `Status` field instead to determine if a container's state is "running".
 
      *
-     * @return bool
+     * @return bool|null
      */
     public function getRunning(): ?bool
     {
@@ -135,14 +135,14 @@ class ContainersIdJsonGetResponse200State
     Note that a running container can be _paused_. The `Running` and `Paused`
     booleans are not mutually exclusive:
 
-    When pausing a container (on Linux), the cgroups freezer is used to suspend
+    When pausing a container (on Linux), the freezer cgroup is used to suspend
     all processes in the container. Freezing the process requires the process to
     be running. As a result, paused containers are both `Running` _and_ `Paused`.
 
     Use the `Status` field instead to determine if a container's state is "running".
 
      *
-     * @param bool $running
+     * @param bool|null $running
      *
      * @return self
      */
@@ -156,7 +156,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container is paused.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getPaused(): ?bool
     {
@@ -166,7 +166,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container is paused.
      *
-     * @param bool $paused
+     * @param bool|null $paused
      *
      * @return self
      */
@@ -180,7 +180,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container is restarting.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getRestarting(): ?bool
     {
@@ -190,7 +190,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container is restarting.
      *
-     * @param bool $restarting
+     * @param bool|null $restarting
      *
      * @return self
      */
@@ -204,7 +204,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container has been killed because it ran out of memory.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getOOMKilled(): ?bool
     {
@@ -214,7 +214,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * Whether this container has been killed because it ran out of memory.
      *
-     * @param bool $oOMKilled
+     * @param bool|null $oOMKilled
      *
      * @return self
      */
@@ -226,7 +226,7 @@ class ContainersIdJsonGetResponse200State
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDead(): ?bool
     {
@@ -234,7 +234,7 @@ class ContainersIdJsonGetResponse200State
     }
 
     /**
-     * @param bool $dead
+     * @param bool|null $dead
      *
      * @return self
      */
@@ -248,7 +248,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The process ID of this container.
      *
-     * @return int
+     * @return int|null
      */
     public function getPid(): ?int
     {
@@ -258,7 +258,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The process ID of this container.
      *
-     * @param int $pid
+     * @param int|null $pid
      *
      * @return self
      */
@@ -272,7 +272,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The last exit code of this container.
      *
-     * @return int
+     * @return int|null
      */
     public function getExitCode(): ?int
     {
@@ -282,7 +282,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The last exit code of this container.
      *
-     * @param int $exitCode
+     * @param int|null $exitCode
      *
      * @return self
      */
@@ -294,7 +294,7 @@ class ContainersIdJsonGetResponse200State
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getError(): ?string
     {
@@ -302,7 +302,7 @@ class ContainersIdJsonGetResponse200State
     }
 
     /**
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
@@ -316,7 +316,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The time when this container was last started.
      *
-     * @return string
+     * @return string|null
      */
     public function getStartedAt(): ?string
     {
@@ -326,7 +326,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The time when this container was last started.
      *
-     * @param string $startedAt
+     * @param string|null $startedAt
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The time when this container last exited.
      *
-     * @return string
+     * @return string|null
      */
     public function getFinishedAt(): ?string
     {
@@ -350,7 +350,7 @@ class ContainersIdJsonGetResponse200State
     /**
      * The time when this container last exited.
      *
-     * @param string $finishedAt
+     * @param string|null $finishedAt
      *
      * @return self
      */

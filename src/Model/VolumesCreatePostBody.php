@@ -23,7 +23,7 @@ class VolumesCreatePostBody
      *
      * @var string
      */
-    protected $driver;
+    protected $driver = 'local';
     /**
      * A mapping of driver options and values. These options are passed directly to the driver and are driver specific.
      *
@@ -40,7 +40,7 @@ class VolumesCreatePostBody
     /**
      * The new volume's name. If not specified, Docker generates a name.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -50,7 +50,7 @@ class VolumesCreatePostBody
     /**
      * The new volume's name. If not specified, Docker generates a name.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class VolumesCreatePostBody
     /**
      * Name of the volume driver to use.
      *
-     * @return string
+     * @return string|null
      */
     public function getDriver(): ?string
     {
@@ -74,7 +74,7 @@ class VolumesCreatePostBody
     /**
      * Name of the volume driver to use.
      *
-     * @param string $driver
+     * @param string|null $driver
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class VolumesCreatePostBody
     /**
      * A mapping of driver options and values. These options are passed directly to the driver and are driver specific.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getDriverOpts(): ?\ArrayObject
     {
@@ -98,7 +98,7 @@ class VolumesCreatePostBody
     /**
      * A mapping of driver options and values. These options are passed directly to the driver and are driver specific.
      *
-     * @param string[] $driverOpts
+     * @param string[]|null $driverOpts
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class VolumesCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -122,7 +122,7 @@ class VolumesCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */

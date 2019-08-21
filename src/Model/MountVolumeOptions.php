@@ -17,7 +17,7 @@ class MountVolumeOptions
      *
      * @var bool
      */
-    protected $noCopy;
+    protected $noCopy = false;
     /**
      * User-defined key/value metadata.
      *
@@ -34,7 +34,7 @@ class MountVolumeOptions
     /**
      * Populate volume with data from the target.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getNoCopy(): ?bool
     {
@@ -44,7 +44,7 @@ class MountVolumeOptions
     /**
      * Populate volume with data from the target.
      *
-     * @param bool $noCopy
+     * @param bool|null $noCopy
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class MountVolumeOptions
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -68,7 +68,7 @@ class MountVolumeOptions
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class MountVolumeOptions
     /**
      * Map of driver specific options.
      *
-     * @return MountVolumeOptionsDriverConfig
+     * @return MountVolumeOptionsDriverConfig|null
      */
     public function getDriverConfig(): ?MountVolumeOptionsDriverConfig
     {
@@ -92,7 +92,7 @@ class MountVolumeOptions
     /**
      * Map of driver specific options.
      *
-     * @param MountVolumeOptionsDriverConfig $driverConfig
+     * @param MountVolumeOptionsDriverConfig|null $driverConfig
      *
      * @return self
      */

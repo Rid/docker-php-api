@@ -22,7 +22,7 @@ class EngineDescriptionPluginsItem
     protected $name;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -30,7 +30,7 @@ class EngineDescriptionPluginsItem
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class EngineDescriptionPluginsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -50,7 +50,7 @@ class EngineDescriptionPluginsItem
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */

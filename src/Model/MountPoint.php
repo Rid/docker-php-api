@@ -46,7 +46,7 @@ class MountPoint
     protected $propagation;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -54,7 +54,7 @@ class MountPoint
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class MountPoint
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -74,7 +74,7 @@ class MountPoint
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class MountPoint
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSource(): ?string
     {
@@ -94,7 +94,7 @@ class MountPoint
     }
 
     /**
-     * @param string $source
+     * @param string|null $source
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class MountPoint
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDestination(): ?string
     {
@@ -114,7 +114,7 @@ class MountPoint
     }
 
     /**
-     * @param string $destination
+     * @param string|null $destination
      *
      * @return self
      */
@@ -126,7 +126,7 @@ class MountPoint
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDriver(): ?string
     {
@@ -134,7 +134,7 @@ class MountPoint
     }
 
     /**
-     * @param string $driver
+     * @param string|null $driver
      *
      * @return self
      */
@@ -146,7 +146,7 @@ class MountPoint
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMode(): ?string
     {
@@ -154,7 +154,7 @@ class MountPoint
     }
 
     /**
-     * @param string $mode
+     * @param string|null $mode
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class MountPoint
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getRW(): ?bool
     {
@@ -174,7 +174,7 @@ class MountPoint
     }
 
     /**
-     * @param bool $rW
+     * @param bool|null $rW
      *
      * @return self
      */
@@ -186,7 +186,7 @@ class MountPoint
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPropagation(): ?string
     {
@@ -194,7 +194,7 @@ class MountPoint
     }
 
     /**
-     * @param string $propagation
+     * @param string|null $propagation
      *
      * @return self
      */

@@ -38,7 +38,7 @@ class TaskSpecPluginSpec
     /**
      * The name or 'alias' to use for the plugin.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -48,7 +48,7 @@ class TaskSpecPluginSpec
     /**
      * The name or 'alias' to use for the plugin.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -62,7 +62,7 @@ class TaskSpecPluginSpec
     /**
      * The plugin image reference to use.
      *
-     * @return string
+     * @return string|null
      */
     public function getRemote(): ?string
     {
@@ -72,7 +72,7 @@ class TaskSpecPluginSpec
     /**
      * The plugin image reference to use.
      *
-     * @param string $remote
+     * @param string|null $remote
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class TaskSpecPluginSpec
     /**
      * Disable the plugin once scheduled.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getDisabled(): ?bool
     {
@@ -96,7 +96,7 @@ class TaskSpecPluginSpec
     /**
      * Disable the plugin once scheduled.
      *
-     * @param bool $disabled
+     * @param bool|null $disabled
      *
      * @return self
      */
@@ -108,7 +108,7 @@ class TaskSpecPluginSpec
     }
 
     /**
-     * @return TaskSpecPluginSpecPluginPrivilegeItem[]
+     * @return TaskSpecPluginSpecPluginPrivilegeItem[]|null
      */
     public function getPluginPrivilege(): ?array
     {
@@ -116,7 +116,7 @@ class TaskSpecPluginSpec
     }
 
     /**
-     * @param TaskSpecPluginSpecPluginPrivilegeItem[] $pluginPrivilege
+     * @param TaskSpecPluginSpecPluginPrivilegeItem[]|null $pluginPrivilege
      *
      * @return self
      */

@@ -18,7 +18,7 @@ class PluginConfigNetwork
     protected $type;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -26,7 +26,7 @@ class PluginConfigNetwork
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */

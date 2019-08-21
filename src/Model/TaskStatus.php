@@ -34,7 +34,7 @@ class TaskStatus
     protected $containerStatus;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTimestamp(): ?string
     {
@@ -42,7 +42,7 @@ class TaskStatus
     }
 
     /**
-     * @param string $timestamp
+     * @param string|null $timestamp
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class TaskStatus
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getState(): ?string
     {
@@ -62,7 +62,7 @@ class TaskStatus
     }
 
     /**
-     * @param string $state
+     * @param string|null $state
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class TaskStatus
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMessage(): ?string
     {
@@ -82,7 +82,7 @@ class TaskStatus
     }
 
     /**
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class TaskStatus
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getErr(): ?string
     {
@@ -102,7 +102,7 @@ class TaskStatus
     }
 
     /**
-     * @param string $err
+     * @param string|null $err
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class TaskStatus
     }
 
     /**
-     * @return TaskStatusContainerStatus
+     * @return TaskStatusContainerStatus|null
      */
     public function getContainerStatus(): ?TaskStatusContainerStatus
     {
@@ -122,7 +122,7 @@ class TaskStatus
     }
 
     /**
-     * @param TaskStatusContainerStatus $containerStatus
+     * @param TaskStatusContainerStatus|null $containerStatus
      *
      * @return self
      */

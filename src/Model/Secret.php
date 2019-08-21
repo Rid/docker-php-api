@@ -43,7 +43,7 @@ class Secret
     protected $spec;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getID(): ?string
     {
@@ -51,7 +51,7 @@ class Secret
     }
 
     /**
-     * @param string $iD
+     * @param string|null $iD
      *
      * @return self
      */
@@ -72,7 +72,7 @@ class Secret
     unintentionally overwrite each other.
 
      *
-     * @return ObjectVersion
+     * @return ObjectVersion|null
      */
     public function getVersion(): ?ObjectVersion
     {
@@ -89,7 +89,7 @@ class Secret
     unintentionally overwrite each other.
 
      *
-     * @param ObjectVersion $version
+     * @param ObjectVersion|null $version
      *
      * @return self
      */
@@ -101,7 +101,7 @@ class Secret
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreatedAt(): ?string
     {
@@ -109,7 +109,7 @@ class Secret
     }
 
     /**
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
@@ -121,7 +121,7 @@ class Secret
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUpdatedAt(): ?string
     {
@@ -129,7 +129,7 @@ class Secret
     }
 
     /**
-     * @param string $updatedAt
+     * @param string|null $updatedAt
      *
      * @return self
      */
@@ -141,7 +141,7 @@ class Secret
     }
 
     /**
-     * @return SecretSpec
+     * @return SecretSpec|null
      */
     public function getSpec(): ?SecretSpec
     {
@@ -149,7 +149,7 @@ class Secret
     }
 
     /**
-     * @param SecretSpec $spec
+     * @param SecretSpec|null $spec
      *
      * @return self
      */

@@ -28,7 +28,7 @@ class Address
     /**
      * IP address.
      *
-     * @return string
+     * @return string|null
      */
     public function getAddr(): ?string
     {
@@ -38,7 +38,7 @@ class Address
     /**
      * IP address.
      *
-     * @param string $addr
+     * @param string|null $addr
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class Address
     /**
      * Mask length of the IP address.
      *
-     * @return int
+     * @return int|null
      */
     public function getPrefixLen(): ?int
     {
@@ -62,7 +62,7 @@ class Address
     /**
      * Mask length of the IP address.
      *
-     * @param int $prefixLen
+     * @param int|null $prefixLen
      *
      * @return self
      */

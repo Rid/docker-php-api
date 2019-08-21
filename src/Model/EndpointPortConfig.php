@@ -37,7 +37,7 @@ class EndpointPortConfig
 
     <p><br /></p>
 
-    - "ingress" makes the target port accessible on on every node,
+    - "ingress" makes the target port accessible on every node,
      regardless of whether there is a task for the service running on
      that node or not.
     - "host" bypasses the routing mesh and publish the port directly on
@@ -46,10 +46,10 @@ class EndpointPortConfig
      *
      * @var string
      */
-    protected $publishMode;
+    protected $publishMode = 'ingress';
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -57,7 +57,7 @@ class EndpointPortConfig
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -69,7 +69,7 @@ class EndpointPortConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getProtocol(): ?string
     {
@@ -77,7 +77,7 @@ class EndpointPortConfig
     }
 
     /**
-     * @param string $protocol
+     * @param string|null $protocol
      *
      * @return self
      */
@@ -91,7 +91,7 @@ class EndpointPortConfig
     /**
      * The port inside the container.
      *
-     * @return int
+     * @return int|null
      */
     public function getTargetPort(): ?int
     {
@@ -101,7 +101,7 @@ class EndpointPortConfig
     /**
      * The port inside the container.
      *
-     * @param int $targetPort
+     * @param int|null $targetPort
      *
      * @return self
      */
@@ -115,7 +115,7 @@ class EndpointPortConfig
     /**
      * The port on the swarm hosts.
      *
-     * @return int
+     * @return int|null
      */
     public function getPublishedPort(): ?int
     {
@@ -125,7 +125,7 @@ class EndpointPortConfig
     /**
      * The port on the swarm hosts.
      *
-     * @param int $publishedPort
+     * @param int|null $publishedPort
      *
      * @return self
      */
@@ -141,14 +141,14 @@ class EndpointPortConfig
 
     <p><br /></p>
 
-    - "ingress" makes the target port accessible on on every node,
+    - "ingress" makes the target port accessible on every node,
      regardless of whether there is a task for the service running on
      that node or not.
     - "host" bypasses the routing mesh and publish the port directly on
      the swarm node where that service is running.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getPublishMode(): ?string
     {
@@ -160,14 +160,14 @@ class EndpointPortConfig
 
     <p><br /></p>
 
-    - "ingress" makes the target port accessible on on every node,
+    - "ingress" makes the target port accessible on every node,
      regardless of whether there is a task for the service running on
      that node or not.
     - "host" bypasses the routing mesh and publish the port directly on
      the swarm node where that service is running.
 
      *
-     * @param string $publishMode
+     * @param string|null $publishMode
      *
      * @return self
      */

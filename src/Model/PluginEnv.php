@@ -30,7 +30,7 @@ class PluginEnv
     protected $value;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -38,7 +38,7 @@ class PluginEnv
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class PluginEnv
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -58,7 +58,7 @@ class PluginEnv
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class PluginEnv
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getSettable(): ?array
     {
@@ -78,7 +78,7 @@ class PluginEnv
     }
 
     /**
-     * @param string[] $settable
+     * @param string[]|null $settable
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class PluginEnv
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getValue(): ?string
     {
@@ -98,7 +98,7 @@ class PluginEnv
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      *
      * @return self
      */

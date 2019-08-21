@@ -27,7 +27,8 @@ class ServiceInspect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -67,7 +68,7 @@ class ServiceInspect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * @throws \Docker\API\Exception\ServiceInspectInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceInspectServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Service
+     * @return \Docker\API\Model\Service|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

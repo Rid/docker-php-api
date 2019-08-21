@@ -34,7 +34,7 @@ class ProcessConfig
     protected $arguments;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPrivileged(): ?bool
     {
@@ -42,7 +42,7 @@ class ProcessConfig
     }
 
     /**
-     * @param bool $privileged
+     * @param bool|null $privileged
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class ProcessConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -62,7 +62,7 @@ class ProcessConfig
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class ProcessConfig
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getTty(): ?bool
     {
@@ -82,7 +82,7 @@ class ProcessConfig
     }
 
     /**
-     * @param bool $tty
+     * @param bool|null $tty
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class ProcessConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEntrypoint(): ?string
     {
@@ -102,7 +102,7 @@ class ProcessConfig
     }
 
     /**
-     * @param string $entrypoint
+     * @param string|null $entrypoint
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class ProcessConfig
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getArguments(): ?array
     {
@@ -122,7 +122,7 @@ class ProcessConfig
     }
 
     /**
-     * @param string[] $arguments
+     * @param string[]|null $arguments
      *
      * @return self
      */

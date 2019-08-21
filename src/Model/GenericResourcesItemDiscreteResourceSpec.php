@@ -22,7 +22,7 @@ class GenericResourcesItemDiscreteResourceSpec
     protected $value;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getKind(): ?string
     {
@@ -30,7 +30,7 @@ class GenericResourcesItemDiscreteResourceSpec
     }
 
     /**
-     * @param string $kind
+     * @param string|null $kind
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class GenericResourcesItemDiscreteResourceSpec
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getValue(): ?int
     {
@@ -50,7 +50,7 @@ class GenericResourcesItemDiscreteResourceSpec
     }
 
     /**
-     * @param int $value
+     * @param int|null $value
      *
      * @return self
      */

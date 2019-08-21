@@ -52,7 +52,7 @@ class SwarmSpecRaft
     /**
      * The number of log entries between snapshots.
      *
-     * @return int
+     * @return int|null
      */
     public function getSnapshotInterval(): ?int
     {
@@ -62,7 +62,7 @@ class SwarmSpecRaft
     /**
      * The number of log entries between snapshots.
      *
-     * @param int $snapshotInterval
+     * @param int|null $snapshotInterval
      *
      * @return self
      */
@@ -76,7 +76,7 @@ class SwarmSpecRaft
     /**
      * The number of snapshots to keep beyond the current snapshot.
      *
-     * @return int
+     * @return int|null
      */
     public function getKeepOldSnapshots(): ?int
     {
@@ -86,7 +86,7 @@ class SwarmSpecRaft
     /**
      * The number of snapshots to keep beyond the current snapshot.
      *
-     * @param int $keepOldSnapshots
+     * @param int|null $keepOldSnapshots
      *
      * @return self
      */
@@ -100,7 +100,7 @@ class SwarmSpecRaft
     /**
      * The number of log entries to keep around to sync up slow followers after a snapshot is created.
      *
-     * @return int
+     * @return int|null
      */
     public function getLogEntriesForSlowFollowers(): ?int
     {
@@ -110,7 +110,7 @@ class SwarmSpecRaft
     /**
      * The number of log entries to keep around to sync up slow followers after a snapshot is created.
      *
-     * @param int $logEntriesForSlowFollowers
+     * @param int|null $logEntriesForSlowFollowers
      *
      * @return self
      */
@@ -127,7 +127,7 @@ class SwarmSpecRaft
     A tick currently defaults to one second, so these translate directly to seconds currently, but this is NOT guaranteed.
 
      *
-     * @return int
+     * @return int|null
      */
     public function getElectionTick(): ?int
     {
@@ -140,7 +140,7 @@ class SwarmSpecRaft
     A tick currently defaults to one second, so these translate directly to seconds currently, but this is NOT guaranteed.
 
      *
-     * @param int $electionTick
+     * @param int|null $electionTick
      *
      * @return self
      */
@@ -157,7 +157,7 @@ class SwarmSpecRaft
     A tick currently defaults to one second, so these translate directly to seconds currently, but this is NOT guaranteed.
 
      *
-     * @return int
+     * @return int|null
      */
     public function getHeartbeatTick(): ?int
     {
@@ -170,7 +170,7 @@ class SwarmSpecRaft
     A tick currently defaults to one second, so these translate directly to seconds currently, but this is NOT guaranteed.
 
      *
-     * @param int $heartbeatTick
+     * @param int|null $heartbeatTick
      *
      * @return self
      */

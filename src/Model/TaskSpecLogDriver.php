@@ -22,7 +22,7 @@ class TaskSpecLogDriver
     protected $options;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -30,7 +30,7 @@ class TaskSpecLogDriver
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class TaskSpecLogDriver
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getOptions(): ?\ArrayObject
     {
@@ -50,7 +50,7 @@ class TaskSpecLogDriver
     }
 
     /**
-     * @param string[] $options
+     * @param string[]|null $options
      *
      * @return self
      */

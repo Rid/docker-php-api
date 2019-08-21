@@ -18,7 +18,7 @@ class TaskSpecPlacementPreferencesItem
     protected $spread;
 
     /**
-     * @return TaskSpecPlacementPreferencesItemSpread
+     * @return TaskSpecPlacementPreferencesItemSpread|null
      */
     public function getSpread(): ?TaskSpecPlacementPreferencesItemSpread
     {
@@ -26,7 +26,7 @@ class TaskSpecPlacementPreferencesItem
     }
 
     /**
-     * @param TaskSpecPlacementPreferencesItemSpread $spread
+     * @param TaskSpecPlacementPreferencesItemSpread|null $spread
      *
      * @return self
      */

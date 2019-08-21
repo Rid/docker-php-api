@@ -36,7 +36,7 @@ class TaskSpecContainerSpecSecretsItem
     /**
      * File represents a specific target that is backed by a file.
      *
-     * @return TaskSpecContainerSpecSecretsItemFile
+     * @return TaskSpecContainerSpecSecretsItemFile|null
      */
     public function getFile(): ?TaskSpecContainerSpecSecretsItemFile
     {
@@ -46,7 +46,7 @@ class TaskSpecContainerSpecSecretsItem
     /**
      * File represents a specific target that is backed by a file.
      *
-     * @param TaskSpecContainerSpecSecretsItemFile $file
+     * @param TaskSpecContainerSpecSecretsItemFile|null $file
      *
      * @return self
      */
@@ -60,7 +60,7 @@ class TaskSpecContainerSpecSecretsItem
     /**
      * SecretID represents the ID of the specific secret that we're referencing.
      *
-     * @return string
+     * @return string|null
      */
     public function getSecretID(): ?string
     {
@@ -70,7 +70,7 @@ class TaskSpecContainerSpecSecretsItem
     /**
      * SecretID represents the ID of the specific secret that we're referencing.
      *
-     * @param string $secretID
+     * @param string|null $secretID
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class TaskSpecContainerSpecSecretsItem
     lookup/display purposes. The secret in the reference will be identified by its ID.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getSecretName(): ?string
     {
@@ -98,7 +98,7 @@ class TaskSpecContainerSpecSecretsItem
     lookup/display purposes. The secret in the reference will be identified by its ID.
 
      *
-     * @param string $secretName
+     * @param string|null $secretName
      *
      * @return self
      */

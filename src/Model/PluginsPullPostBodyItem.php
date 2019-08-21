@@ -26,7 +26,7 @@ class PluginsPullPostBodyItem
     protected $value;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -34,7 +34,7 @@ class PluginsPullPostBodyItem
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class PluginsPullPostBodyItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -54,7 +54,7 @@ class PluginsPullPostBodyItem
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class PluginsPullPostBodyItem
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getValue(): ?array
     {
@@ -74,7 +74,7 @@ class PluginsPullPostBodyItem
     }
 
     /**
-     * @param string[] $value
+     * @param string[]|null $value
      *
      * @return self
      */

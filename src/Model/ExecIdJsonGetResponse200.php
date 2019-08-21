@@ -60,7 +60,7 @@ class ExecIdJsonGetResponse200
     protected $pid;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getCanRemove(): ?bool
     {
@@ -68,7 +68,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @param bool $canRemove
+     * @param bool|null $canRemove
      *
      * @return self
      */
@@ -80,7 +80,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDetachKeys(): ?string
     {
@@ -88,7 +88,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @param string $detachKeys
+     * @param string|null $detachKeys
      *
      * @return self
      */
@@ -100,7 +100,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getID(): ?string
     {
@@ -108,7 +108,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @param string $iD
+     * @param string|null $iD
      *
      * @return self
      */
@@ -120,7 +120,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getRunning(): ?bool
     {
@@ -128,7 +128,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @param bool $running
+     * @param bool|null $running
      *
      * @return self
      */
@@ -140,7 +140,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getExitCode(): ?int
     {
@@ -148,7 +148,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @param int $exitCode
+     * @param int|null $exitCode
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @return ProcessConfig
+     * @return ProcessConfig|null
      */
     public function getProcessConfig(): ?ProcessConfig
     {
@@ -168,7 +168,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @param ProcessConfig $processConfig
+     * @param ProcessConfig|null $processConfig
      *
      * @return self
      */
@@ -180,7 +180,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOpenStdin(): ?bool
     {
@@ -188,7 +188,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @param bool $openStdin
+     * @param bool|null $openStdin
      *
      * @return self
      */
@@ -200,7 +200,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOpenStderr(): ?bool
     {
@@ -208,7 +208,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @param bool $openStderr
+     * @param bool|null $openStderr
      *
      * @return self
      */
@@ -220,7 +220,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOpenStdout(): ?bool
     {
@@ -228,7 +228,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @param bool $openStdout
+     * @param bool|null $openStdout
      *
      * @return self
      */
@@ -240,7 +240,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getContainerID(): ?string
     {
@@ -248,7 +248,7 @@ class ExecIdJsonGetResponse200
     }
 
     /**
-     * @param string $containerID
+     * @param string|null $containerID
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class ExecIdJsonGetResponse200
     /**
      * The system process ID for the exec process.
      *
-     * @return int
+     * @return int|null
      */
     public function getPid(): ?int
     {
@@ -272,7 +272,7 @@ class ExecIdJsonGetResponse200
     /**
      * The system process ID for the exec process.
      *
-     * @param int $pid
+     * @param int|null $pid
      *
      * @return self
      */

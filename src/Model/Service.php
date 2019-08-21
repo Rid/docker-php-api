@@ -55,7 +55,7 @@ class Service
     protected $updateStatus;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getID(): ?string
     {
@@ -63,7 +63,7 @@ class Service
     }
 
     /**
-     * @param string $iD
+     * @param string|null $iD
      *
      * @return self
      */
@@ -84,7 +84,7 @@ class Service
     unintentionally overwrite each other.
 
      *
-     * @return ObjectVersion
+     * @return ObjectVersion|null
      */
     public function getVersion(): ?ObjectVersion
     {
@@ -101,7 +101,7 @@ class Service
     unintentionally overwrite each other.
 
      *
-     * @param ObjectVersion $version
+     * @param ObjectVersion|null $version
      *
      * @return self
      */
@@ -113,7 +113,7 @@ class Service
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreatedAt(): ?string
     {
@@ -121,7 +121,7 @@ class Service
     }
 
     /**
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class Service
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUpdatedAt(): ?string
     {
@@ -141,7 +141,7 @@ class Service
     }
 
     /**
-     * @param string $updatedAt
+     * @param string|null $updatedAt
      *
      * @return self
      */
@@ -155,7 +155,7 @@ class Service
     /**
      * User modifiable configuration for a service.
      *
-     * @return ServiceSpec
+     * @return ServiceSpec|null
      */
     public function getSpec(): ?ServiceSpec
     {
@@ -165,7 +165,7 @@ class Service
     /**
      * User modifiable configuration for a service.
      *
-     * @param ServiceSpec $spec
+     * @param ServiceSpec|null $spec
      *
      * @return self
      */
@@ -177,7 +177,7 @@ class Service
     }
 
     /**
-     * @return ServiceEndpoint
+     * @return ServiceEndpoint|null
      */
     public function getEndpoint(): ?ServiceEndpoint
     {
@@ -185,7 +185,7 @@ class Service
     }
 
     /**
-     * @param ServiceEndpoint $endpoint
+     * @param ServiceEndpoint|null $endpoint
      *
      * @return self
      */
@@ -199,7 +199,7 @@ class Service
     /**
      * The status of a service update.
      *
-     * @return ServiceUpdateStatus
+     * @return ServiceUpdateStatus|null
      */
     public function getUpdateStatus(): ?ServiceUpdateStatus
     {
@@ -209,7 +209,7 @@ class Service
     /**
      * The status of a service update.
      *
-     * @param ServiceUpdateStatus $updateStatus
+     * @param ServiceUpdateStatus|null $updateStatus
      *
      * @return self
      */

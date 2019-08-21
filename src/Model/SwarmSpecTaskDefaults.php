@@ -32,7 +32,7 @@ class SwarmSpecTaskDefaults
     to use their previously configured log driver until recreated.
 
      *
-     * @return SwarmSpecTaskDefaultsLogDriver
+     * @return SwarmSpecTaskDefaultsLogDriver|null
      */
     public function getLogDriver(): ?SwarmSpecTaskDefaultsLogDriver
     {
@@ -47,7 +47,7 @@ class SwarmSpecTaskDefaults
     to use their previously configured log driver until recreated.
 
      *
-     * @param SwarmSpecTaskDefaultsLogDriver $logDriver
+     * @param SwarmSpecTaskDefaultsLogDriver|null $logDriver
      *
      * @return self
      */

@@ -23,6 +23,10 @@ class NetworkList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      *     @var string $filters JSON encoded value of the filters (a `map[string][]string`) to process on the networks list. Available filters:
 
+    - `dangling=<boolean>` When set to `true` (or `1`), returns all
+      networks that are not in use by a container. When set to `false`
+      (or `0`), only networks that are in use by one or more
+      containers are returned.
     - `driver=<driver-name>` Matches a network's driver.
     - `id=<network-id>` Matches all or part of a network ID.
     - `label=<key>` or `label=<key>=<value>` of a network label.
@@ -37,7 +41,8 @@ class NetworkList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -75,7 +80,7 @@ class NetworkList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @throws \Docker\API\Exception\NetworkListInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Network[]
+     * @return \Docker\API\Model\Network[]|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

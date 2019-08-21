@@ -22,7 +22,7 @@ class ProgressDetail
     protected $total;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCurrent(): ?int
     {
@@ -30,7 +30,7 @@ class ProgressDetail
     }
 
     /**
-     * @param int $current
+     * @param int|null $current
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ProgressDetail
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getTotal(): ?int
     {
@@ -50,7 +50,7 @@ class ProgressDetail
     }
 
     /**
-     * @param int $total
+     * @param int|null $total
      *
      * @return self
      */

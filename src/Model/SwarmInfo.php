@@ -17,7 +17,7 @@ class SwarmInfo
      *
      * @var string
      */
-    protected $nodeID;
+    protected $nodeID = '';
     /**
      * IP address at which this node can be reached by other nodes in the.
     swarm.
@@ -25,21 +25,21 @@ class SwarmInfo
      *
      * @var string
      */
-    protected $nodeAddr;
+    protected $nodeAddr = '';
     /**
      * Current local status of this node.
      *
      * @var string
      */
-    protected $localNodeState;
+    protected $localNodeState = '';
     /**
      * @var bool
      */
-    protected $controlAvailable;
+    protected $controlAvailable = false;
     /**
      * @var string
      */
-    protected $error;
+    protected $error = '';
     /**
      * List of ID's and addresses of other managers in the swarm.
      *
@@ -70,7 +70,7 @@ class SwarmInfo
     /**
      * Unique identifier of for this node in the swarm.
      *
-     * @return string
+     * @return string|null
      */
     public function getNodeID(): ?string
     {
@@ -80,7 +80,7 @@ class SwarmInfo
     /**
      * Unique identifier of for this node in the swarm.
      *
-     * @param string $nodeID
+     * @param string|null $nodeID
      *
      * @return self
      */
@@ -96,7 +96,7 @@ class SwarmInfo
     swarm.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getNodeAddr(): ?string
     {
@@ -108,7 +108,7 @@ class SwarmInfo
     swarm.
 
      *
-     * @param string $nodeAddr
+     * @param string|null $nodeAddr
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class SwarmInfo
     /**
      * Current local status of this node.
      *
-     * @return string
+     * @return string|null
      */
     public function getLocalNodeState(): ?string
     {
@@ -132,7 +132,7 @@ class SwarmInfo
     /**
      * Current local status of this node.
      *
-     * @param string $localNodeState
+     * @param string|null $localNodeState
      *
      * @return self
      */
@@ -144,7 +144,7 @@ class SwarmInfo
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getControlAvailable(): ?bool
     {
@@ -152,7 +152,7 @@ class SwarmInfo
     }
 
     /**
-     * @param bool $controlAvailable
+     * @param bool|null $controlAvailable
      *
      * @return self
      */
@@ -164,7 +164,7 @@ class SwarmInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getError(): ?string
     {
@@ -172,7 +172,7 @@ class SwarmInfo
     }
 
     /**
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
@@ -186,7 +186,7 @@ class SwarmInfo
     /**
      * List of ID's and addresses of other managers in the swarm.
      *
-     * @return PeerNode[]
+     * @return PeerNode[]|null
      */
     public function getRemoteManagers(): ?array
     {
@@ -196,7 +196,7 @@ class SwarmInfo
     /**
      * List of ID's and addresses of other managers in the swarm.
      *
-     * @param PeerNode[] $remoteManagers
+     * @param PeerNode[]|null $remoteManagers
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class SwarmInfo
     /**
      * Total number of nodes in the swarm.
      *
-     * @return int
+     * @return int|null
      */
     public function getNodes(): ?int
     {
@@ -220,7 +220,7 @@ class SwarmInfo
     /**
      * Total number of nodes in the swarm.
      *
-     * @param int $nodes
+     * @param int|null $nodes
      *
      * @return self
      */
@@ -234,7 +234,7 @@ class SwarmInfo
     /**
      * Total number of managers in the swarm.
      *
-     * @return int
+     * @return int|null
      */
     public function getManagers(): ?int
     {
@@ -244,7 +244,7 @@ class SwarmInfo
     /**
      * Total number of managers in the swarm.
      *
-     * @param int $managers
+     * @param int|null $managers
      *
      * @return self
      */
@@ -260,7 +260,7 @@ class SwarmInfo
     "/info" endpoint. Join-tokens are not included.
 
      *
-     * @return ClusterInfo
+     * @return ClusterInfo|null
      */
     public function getCluster(): ?ClusterInfo
     {
@@ -272,7 +272,7 @@ class SwarmInfo
     "/info" endpoint. Join-tokens are not included.
 
      *
-     * @param ClusterInfo $cluster
+     * @param ClusterInfo|null $cluster
      *
      * @return self
      */

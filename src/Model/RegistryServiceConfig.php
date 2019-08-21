@@ -131,7 +131,7 @@ class RegistryServiceConfig
     > nondistributable artifacts.
 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getAllowNondistributableArtifactsCIDRs(): ?array
     {
@@ -162,7 +162,7 @@ class RegistryServiceConfig
     > nondistributable artifacts.
 
      *
-     * @param string[] $allowNondistributableArtifactsCIDRs
+     * @param string[]|null $allowNondistributableArtifactsCIDRs
      *
      * @return self
      */
@@ -196,7 +196,7 @@ class RegistryServiceConfig
     > nondistributable artifacts.
 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getAllowNondistributableArtifactsHostnames(): ?array
     {
@@ -226,7 +226,7 @@ class RegistryServiceConfig
     > nondistributable artifacts.
 
      *
-     * @param string[] $allowNondistributableArtifactsHostnames
+     * @param string[]|null $allowNondistributableArtifactsHostnames
      *
      * @return self
      */
@@ -263,7 +263,7 @@ class RegistryServiceConfig
     > CAs instead of enabling this option.
 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getInsecureRegistryCIDRs(): ?array
     {
@@ -296,7 +296,7 @@ class RegistryServiceConfig
     > CAs instead of enabling this option.
 
      *
-     * @param string[] $insecureRegistryCIDRs
+     * @param string[]|null $insecureRegistryCIDRs
      *
      * @return self
      */
@@ -308,7 +308,7 @@ class RegistryServiceConfig
     }
 
     /**
-     * @return IndexInfo[]
+     * @return IndexInfo[]|null
      */
     public function getIndexConfigs(): ?\ArrayObject
     {
@@ -316,7 +316,7 @@ class RegistryServiceConfig
     }
 
     /**
-     * @param IndexInfo[] $indexConfigs
+     * @param IndexInfo[]|null $indexConfigs
      *
      * @return self
      */
@@ -332,7 +332,7 @@ class RegistryServiceConfig
     (`docker.io`) registry.
 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getMirrors(): ?array
     {
@@ -344,7 +344,7 @@ class RegistryServiceConfig
     (`docker.io`) registry.
 
      *
-     * @param string[] $mirrors
+     * @param string[]|null $mirrors
      *
      * @return self
      */

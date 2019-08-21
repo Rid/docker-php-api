@@ -30,7 +30,8 @@ class ContainerChanges extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
         $this->id = $id;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -58,7 +59,7 @@ class ContainerChanges extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * @throws \Docker\API\Exception\ContainerChangesNotFoundException
      * @throws \Docker\API\Exception\ContainerChangesInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersIdChangesGetResponse200Item[]
+     * @return \Docker\API\Model\ContainersIdChangesGetResponse200Item[]|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

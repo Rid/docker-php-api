@@ -26,7 +26,7 @@ class ImageRootFS
     protected $baseLayer;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -34,7 +34,7 @@ class ImageRootFS
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ImageRootFS
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getLayers(): ?array
     {
@@ -54,7 +54,7 @@ class ImageRootFS
     }
 
     /**
-     * @param string[] $layers
+     * @param string[]|null $layers
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ImageRootFS
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getBaseLayer(): ?string
     {
@@ -74,7 +74,7 @@ class ImageRootFS
     }
 
     /**
-     * @param string $baseLayer
+     * @param string|null $baseLayer
      *
      * @return self
      */

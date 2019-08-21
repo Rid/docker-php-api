@@ -34,7 +34,7 @@ class NetworkContainer
     protected $iPv6Address;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -42,7 +42,7 @@ class NetworkContainer
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class NetworkContainer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEndpointID(): ?string
     {
@@ -62,7 +62,7 @@ class NetworkContainer
     }
 
     /**
-     * @param string $endpointID
+     * @param string|null $endpointID
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class NetworkContainer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMacAddress(): ?string
     {
@@ -82,7 +82,7 @@ class NetworkContainer
     }
 
     /**
-     * @param string $macAddress
+     * @param string|null $macAddress
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class NetworkContainer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getIPv4Address(): ?string
     {
@@ -102,7 +102,7 @@ class NetworkContainer
     }
 
     /**
-     * @param string $iPv4Address
+     * @param string|null $iPv4Address
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class NetworkContainer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getIPv6Address(): ?string
     {
@@ -122,7 +122,7 @@ class NetworkContainer
     }
 
     /**
-     * @param string $iPv6Address
+     * @param string|null $iPv6Address
      *
      * @return self
      */

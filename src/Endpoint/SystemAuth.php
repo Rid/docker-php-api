@@ -22,7 +22,8 @@ class SystemAuth extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->body = $authConfig;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -49,7 +50,7 @@ class SystemAuth extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      * @throws \Docker\API\Exception\SystemAuthInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\AuthPostResponse200
+     * @return \Docker\API\Model\AuthPostResponse200|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

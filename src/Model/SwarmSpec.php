@@ -64,7 +64,7 @@ class SwarmSpec
     /**
      * Name of the swarm.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -74,7 +74,7 @@ class SwarmSpec
     /**
      * Name of the swarm.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class SwarmSpec
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -98,7 +98,7 @@ class SwarmSpec
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class SwarmSpec
     /**
      * Orchestration configuration.
      *
-     * @return SwarmSpecOrchestration
+     * @return SwarmSpecOrchestration|null
      */
     public function getOrchestration(): ?SwarmSpecOrchestration
     {
@@ -122,7 +122,7 @@ class SwarmSpec
     /**
      * Orchestration configuration.
      *
-     * @param SwarmSpecOrchestration $orchestration
+     * @param SwarmSpecOrchestration|null $orchestration
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class SwarmSpec
     /**
      * Raft configuration.
      *
-     * @return SwarmSpecRaft
+     * @return SwarmSpecRaft|null
      */
     public function getRaft(): ?SwarmSpecRaft
     {
@@ -146,7 +146,7 @@ class SwarmSpec
     /**
      * Raft configuration.
      *
-     * @param SwarmSpecRaft $raft
+     * @param SwarmSpecRaft|null $raft
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class SwarmSpec
     /**
      * Dispatcher configuration.
      *
-     * @return SwarmSpecDispatcher
+     * @return SwarmSpecDispatcher|null
      */
     public function getDispatcher(): ?SwarmSpecDispatcher
     {
@@ -170,7 +170,7 @@ class SwarmSpec
     /**
      * Dispatcher configuration.
      *
-     * @param SwarmSpecDispatcher $dispatcher
+     * @param SwarmSpecDispatcher|null $dispatcher
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class SwarmSpec
     /**
      * CA configuration.
      *
-     * @return SwarmSpecCAConfig
+     * @return SwarmSpecCAConfig|null
      */
     public function getCAConfig(): ?SwarmSpecCAConfig
     {
@@ -194,7 +194,7 @@ class SwarmSpec
     /**
      * CA configuration.
      *
-     * @param SwarmSpecCAConfig $cAConfig
+     * @param SwarmSpecCAConfig|null $cAConfig
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class SwarmSpec
     /**
      * Parameters related to encryption-at-rest.
      *
-     * @return SwarmSpecEncryptionConfig
+     * @return SwarmSpecEncryptionConfig|null
      */
     public function getEncryptionConfig(): ?SwarmSpecEncryptionConfig
     {
@@ -218,7 +218,7 @@ class SwarmSpec
     /**
      * Parameters related to encryption-at-rest.
      *
-     * @param SwarmSpecEncryptionConfig $encryptionConfig
+     * @param SwarmSpecEncryptionConfig|null $encryptionConfig
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class SwarmSpec
     /**
      * Defaults for creating tasks in this cluster.
      *
-     * @return SwarmSpecTaskDefaults
+     * @return SwarmSpecTaskDefaults|null
      */
     public function getTaskDefaults(): ?SwarmSpecTaskDefaults
     {
@@ -242,7 +242,7 @@ class SwarmSpec
     /**
      * Defaults for creating tasks in this cluster.
      *
-     * @param SwarmSpecTaskDefaults $taskDefaults
+     * @param SwarmSpecTaskDefaults|null $taskDefaults
      *
      * @return self
      */

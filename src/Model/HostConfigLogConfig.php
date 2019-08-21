@@ -22,7 +22,7 @@ class HostConfigLogConfig
     protected $config;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -30,7 +30,7 @@ class HostConfigLogConfig
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class HostConfigLogConfig
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getConfig(): ?\ArrayObject
     {
@@ -50,7 +50,7 @@ class HostConfigLogConfig
     }
 
     /**
-     * @param string[] $config
+     * @param string[]|null $config
      *
      * @return self
      */

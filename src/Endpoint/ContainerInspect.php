@@ -29,7 +29,8 @@ class ContainerInspect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -68,7 +69,7 @@ class ContainerInspect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * @throws \Docker\API\Exception\ContainerInspectNotFoundException
      * @throws \Docker\API\Exception\ContainerInspectInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersIdJsonGetResponse200
+     * @return \Docker\API\Model\ContainersIdJsonGetResponse200|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

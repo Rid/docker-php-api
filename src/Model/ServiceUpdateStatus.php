@@ -30,7 +30,7 @@ class ServiceUpdateStatus
     protected $message;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getState(): ?string
     {
@@ -38,7 +38,7 @@ class ServiceUpdateStatus
     }
 
     /**
-     * @param string $state
+     * @param string|null $state
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class ServiceUpdateStatus
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStartedAt(): ?string
     {
@@ -58,7 +58,7 @@ class ServiceUpdateStatus
     }
 
     /**
-     * @param string $startedAt
+     * @param string|null $startedAt
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ServiceUpdateStatus
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCompletedAt(): ?string
     {
@@ -78,7 +78,7 @@ class ServiceUpdateStatus
     }
 
     /**
-     * @param string $completedAt
+     * @param string|null $completedAt
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ServiceUpdateStatus
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMessage(): ?string
     {
@@ -98,7 +98,7 @@ class ServiceUpdateStatus
     }
 
     /**
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */

@@ -21,7 +21,7 @@ class VolumeUsageData
      *
      * @var int
      */
-    protected $size;
+    protected $size = -1;
     /**
      * The number of containers referencing this volume. This field.
     is set to `-1` if the reference-count is not available.
@@ -29,7 +29,7 @@ class VolumeUsageData
      *
      * @var int
      */
-    protected $refCount;
+    protected $refCount = -1;
 
     /**
      * Amount of disk space used by the volume (in bytes). This information.
@@ -38,7 +38,7 @@ class VolumeUsageData
     is set to `-1` ("not available")
 
      *
-     * @return int
+     * @return int|null
      */
     public function getSize(): ?int
     {
@@ -52,7 +52,7 @@ class VolumeUsageData
     is set to `-1` ("not available")
 
      *
-     * @param int $size
+     * @param int|null $size
      *
      * @return self
      */
@@ -68,7 +68,7 @@ class VolumeUsageData
     is set to `-1` if the reference-count is not available.
 
      *
-     * @return int
+     * @return int|null
      */
     public function getRefCount(): ?int
     {
@@ -80,7 +80,7 @@ class VolumeUsageData
     is set to `-1` if the reference-count is not available.
 
      *
-     * @param int $refCount
+     * @param int|null $refCount
      *
      * @return self
      */

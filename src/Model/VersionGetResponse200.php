@@ -62,7 +62,7 @@ class VersionGetResponse200
     protected $buildTime;
 
     /**
-     * @return VersionGetResponse200Platform
+     * @return VersionGetResponse200Platform|null
      */
     public function getPlatform(): ?VersionGetResponse200Platform
     {
@@ -70,7 +70,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param VersionGetResponse200Platform $platform
+     * @param VersionGetResponse200Platform|null $platform
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return VersionGetResponse200ComponentsItem[]
+     * @return VersionGetResponse200ComponentsItem[]|null
      */
     public function getComponents(): ?array
     {
@@ -90,7 +90,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param VersionGetResponse200ComponentsItem[] $components
+     * @param VersionGetResponse200ComponentsItem[]|null $components
      *
      * @return self
      */
@@ -102,7 +102,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getVersion(): ?string
     {
@@ -110,7 +110,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param string $version
+     * @param string|null $version
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getApiVersion(): ?string
     {
@@ -130,7 +130,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param string $apiVersion
+     * @param string|null $apiVersion
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMinAPIVersion(): ?string
     {
@@ -150,7 +150,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param string $minAPIVersion
+     * @param string|null $minAPIVersion
      *
      * @return self
      */
@@ -162,7 +162,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getGitCommit(): ?string
     {
@@ -170,7 +170,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param string $gitCommit
+     * @param string|null $gitCommit
      *
      * @return self
      */
@@ -182,7 +182,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getGoVersion(): ?string
     {
@@ -190,7 +190,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param string $goVersion
+     * @param string|null $goVersion
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getOs(): ?string
     {
@@ -210,7 +210,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param string $os
+     * @param string|null $os
      *
      * @return self
      */
@@ -222,7 +222,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getArch(): ?string
     {
@@ -230,7 +230,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param string $arch
+     * @param string|null $arch
      *
      * @return self
      */
@@ -242,7 +242,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getKernelVersion(): ?string
     {
@@ -250,7 +250,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param string $kernelVersion
+     * @param string|null $kernelVersion
      *
      * @return self
      */
@@ -262,7 +262,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getExperimental(): ?bool
     {
@@ -270,7 +270,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param bool $experimental
+     * @param bool|null $experimental
      *
      * @return self
      */
@@ -282,7 +282,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getBuildTime(): ?string
     {
@@ -290,7 +290,7 @@ class VersionGetResponse200
     }
 
     /**
-     * @param string $buildTime
+     * @param string|null $buildTime
      *
      * @return self
      */

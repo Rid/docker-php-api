@@ -26,7 +26,7 @@ class VersionGetResponse200ComponentsItem
     protected $details;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -34,7 +34,7 @@ class VersionGetResponse200ComponentsItem
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class VersionGetResponse200ComponentsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getVersion(): ?string
     {
@@ -54,7 +54,7 @@ class VersionGetResponse200ComponentsItem
     }
 
     /**
-     * @param string $version
+     * @param string|null $version
      *
      * @return self
      */

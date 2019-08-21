@@ -31,7 +31,8 @@ class ImageCommit extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -76,7 +77,7 @@ class ImageCommit extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * @throws \Docker\API\Exception\ImageCommitNotFoundException
      * @throws \Docker\API\Exception\ImageCommitInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\IdResponse
+     * @return \Docker\API\Model\IdResponse|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

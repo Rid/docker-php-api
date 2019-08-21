@@ -64,7 +64,7 @@ class ServiceSpec
     /**
      * Name of the service.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -74,7 +74,7 @@ class ServiceSpec
     /**
      * Name of the service.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class ServiceSpec
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -98,7 +98,7 @@ class ServiceSpec
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class ServiceSpec
     /**
      * User modifiable task configuration.
      *
-     * @return TaskSpec
+     * @return TaskSpec|null
      */
     public function getTaskTemplate(): ?TaskSpec
     {
@@ -122,7 +122,7 @@ class ServiceSpec
     /**
      * User modifiable task configuration.
      *
-     * @param TaskSpec $taskTemplate
+     * @param TaskSpec|null $taskTemplate
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class ServiceSpec
     /**
      * Scheduling mode for the service.
      *
-     * @return ServiceSpecMode
+     * @return ServiceSpecMode|null
      */
     public function getMode(): ?ServiceSpecMode
     {
@@ -146,7 +146,7 @@ class ServiceSpec
     /**
      * Scheduling mode for the service.
      *
-     * @param ServiceSpecMode $mode
+     * @param ServiceSpecMode|null $mode
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class ServiceSpec
     /**
      * Specification for the update strategy of the service.
      *
-     * @return ServiceSpecUpdateConfig
+     * @return ServiceSpecUpdateConfig|null
      */
     public function getUpdateConfig(): ?ServiceSpecUpdateConfig
     {
@@ -170,7 +170,7 @@ class ServiceSpec
     /**
      * Specification for the update strategy of the service.
      *
-     * @param ServiceSpecUpdateConfig $updateConfig
+     * @param ServiceSpecUpdateConfig|null $updateConfig
      *
      * @return self
      */
@@ -184,7 +184,7 @@ class ServiceSpec
     /**
      * Specification for the rollback strategy of the service.
      *
-     * @return ServiceSpecRollbackConfig
+     * @return ServiceSpecRollbackConfig|null
      */
     public function getRollbackConfig(): ?ServiceSpecRollbackConfig
     {
@@ -194,7 +194,7 @@ class ServiceSpec
     /**
      * Specification for the rollback strategy of the service.
      *
-     * @param ServiceSpecRollbackConfig $rollbackConfig
+     * @param ServiceSpecRollbackConfig|null $rollbackConfig
      *
      * @return self
      */
@@ -208,7 +208,7 @@ class ServiceSpec
     /**
      * Array of network names or IDs to attach the service to.
      *
-     * @return ServiceSpecNetworksItem[]
+     * @return ServiceSpecNetworksItem[]|null
      */
     public function getNetworks(): ?array
     {
@@ -218,7 +218,7 @@ class ServiceSpec
     /**
      * Array of network names or IDs to attach the service to.
      *
-     * @param ServiceSpecNetworksItem[] $networks
+     * @param ServiceSpecNetworksItem[]|null $networks
      *
      * @return self
      */
@@ -232,7 +232,7 @@ class ServiceSpec
     /**
      * Properties that can be configured to access and load balance a service.
      *
-     * @return EndpointSpec
+     * @return EndpointSpec|null
      */
     public function getEndpointSpec(): ?EndpointSpec
     {
@@ -242,7 +242,7 @@ class ServiceSpec
     /**
      * Properties that can be configured to access and load balance a service.
      *
-     * @param EndpointSpec $endpointSpec
+     * @param EndpointSpec|null $endpointSpec
      *
      * @return self
      */

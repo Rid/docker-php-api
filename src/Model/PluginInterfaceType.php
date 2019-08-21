@@ -26,7 +26,7 @@ class PluginInterfaceType
     protected $version;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPrefix(): ?string
     {
@@ -34,7 +34,7 @@ class PluginInterfaceType
     }
 
     /**
-     * @param string $prefix
+     * @param string|null $prefix
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class PluginInterfaceType
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCapability(): ?string
     {
@@ -54,7 +54,7 @@ class PluginInterfaceType
     }
 
     /**
-     * @param string $capability
+     * @param string|null $capability
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class PluginInterfaceType
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getVersion(): ?string
     {
@@ -74,7 +74,7 @@ class PluginInterfaceType
     }
 
     /**
-     * @param string $version
+     * @param string|null $version
      *
      * @return self
      */

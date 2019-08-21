@@ -22,7 +22,7 @@ class ServiceEndpointVirtualIPsItem
     protected $addr;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNetworkID(): ?string
     {
@@ -30,7 +30,7 @@ class ServiceEndpointVirtualIPsItem
     }
 
     /**
-     * @param string $networkID
+     * @param string|null $networkID
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ServiceEndpointVirtualIPsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAddr(): ?string
     {
@@ -50,7 +50,7 @@ class ServiceEndpointVirtualIPsItem
     }
 
     /**
-     * @param string $addr
+     * @param string|null $addr
      *
      * @return self
      */

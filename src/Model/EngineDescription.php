@@ -26,7 +26,7 @@ class EngineDescription
     protected $plugins;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEngineVersion(): ?string
     {
@@ -34,7 +34,7 @@ class EngineDescription
     }
 
     /**
-     * @param string $engineVersion
+     * @param string|null $engineVersion
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class EngineDescription
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -54,7 +54,7 @@ class EngineDescription
     }
 
     /**
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class EngineDescription
     }
 
     /**
-     * @return EngineDescriptionPluginsItem[]
+     * @return EngineDescriptionPluginsItem[]|null
      */
     public function getPlugins(): ?array
     {
@@ -74,7 +74,7 @@ class EngineDescription
     }
 
     /**
-     * @param EngineDescriptionPluginsItem[] $plugins
+     * @param EngineDescriptionPluginsItem[]|null $plugins
      *
      * @return self
      */

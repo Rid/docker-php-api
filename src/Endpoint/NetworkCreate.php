@@ -20,7 +20,8 @@ class NetworkCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         $this->body = $networkConfig;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -49,7 +50,7 @@ class NetworkCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * @throws \Docker\API\Exception\NetworkCreateNotFoundException
      * @throws \Docker\API\Exception\NetworkCreateInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\NetworksCreatePostResponse201
+     * @return \Docker\API\Model\NetworksCreatePostResponse201|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

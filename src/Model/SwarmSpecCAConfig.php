@@ -46,7 +46,7 @@ class SwarmSpecCAConfig
     /**
      * The duration node certificates are issued for.
      *
-     * @return int
+     * @return int|null
      */
     public function getNodeCertExpiry(): ?int
     {
@@ -56,7 +56,7 @@ class SwarmSpecCAConfig
     /**
      * The duration node certificates are issued for.
      *
-     * @param int $nodeCertExpiry
+     * @param int|null $nodeCertExpiry
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class SwarmSpecCAConfig
     /**
      * Configuration for forwarding signing requests to an external certificate authority.
      *
-     * @return SwarmSpecCAConfigExternalCAsItem[]
+     * @return SwarmSpecCAConfigExternalCAsItem[]|null
      */
     public function getExternalCAs(): ?array
     {
@@ -80,7 +80,7 @@ class SwarmSpecCAConfig
     /**
      * Configuration for forwarding signing requests to an external certificate authority.
      *
-     * @param SwarmSpecCAConfigExternalCAsItem[] $externalCAs
+     * @param SwarmSpecCAConfigExternalCAsItem[]|null $externalCAs
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class SwarmSpecCAConfig
     /**
      * The desired signing CA certificate for all swarm node TLS leaf certificates, in PEM format.
      *
-     * @return string
+     * @return string|null
      */
     public function getSigningCACert(): ?string
     {
@@ -104,7 +104,7 @@ class SwarmSpecCAConfig
     /**
      * The desired signing CA certificate for all swarm node TLS leaf certificates, in PEM format.
      *
-     * @param string $signingCACert
+     * @param string|null $signingCACert
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class SwarmSpecCAConfig
     /**
      * The desired signing CA key for all swarm node TLS leaf certificates, in PEM format.
      *
-     * @return string
+     * @return string|null
      */
     public function getSigningCAKey(): ?string
     {
@@ -128,7 +128,7 @@ class SwarmSpecCAConfig
     /**
      * The desired signing CA key for all swarm node TLS leaf certificates, in PEM format.
      *
-     * @param string $signingCAKey
+     * @param string|null $signingCAKey
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class SwarmSpecCAConfig
     /**
      * An integer whose purpose is to force swarm to generate a new signing CA certificate and key, if none have been specified in `SigningCACert` and `SigningCAKey`.
      *
-     * @return int
+     * @return int|null
      */
     public function getForceRotate(): ?int
     {
@@ -152,7 +152,7 @@ class SwarmSpecCAConfig
     /**
      * An integer whose purpose is to force swarm to generate a new signing CA certificate and key, if none have been specified in `SigningCACert` and `SigningCAKey`.
      *
-     * @param int $forceRotate
+     * @param int|null $forceRotate
      *
      * @return self
      */

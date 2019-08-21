@@ -44,7 +44,7 @@ class EventsGetResponse200
     /**
      * The type of object emitting the event.
      *
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -54,7 +54,7 @@ class EventsGetResponse200
     /**
      * The type of object emitting the event.
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -68,7 +68,7 @@ class EventsGetResponse200
     /**
      * The type of event.
      *
-     * @return string
+     * @return string|null
      */
     public function getAction(): ?string
     {
@@ -78,7 +78,7 @@ class EventsGetResponse200
     /**
      * The type of event.
      *
-     * @param string $action
+     * @param string|null $action
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class EventsGetResponse200
     }
 
     /**
-     * @return EventsGetResponse200Actor
+     * @return EventsGetResponse200Actor|null
      */
     public function getActor(): ?EventsGetResponse200Actor
     {
@@ -98,7 +98,7 @@ class EventsGetResponse200
     }
 
     /**
-     * @param EventsGetResponse200Actor $actor
+     * @param EventsGetResponse200Actor|null $actor
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class EventsGetResponse200
     /**
      * Timestamp of event.
      *
-     * @return int
+     * @return int|null
      */
     public function getTime(): ?int
     {
@@ -122,7 +122,7 @@ class EventsGetResponse200
     /**
      * Timestamp of event.
      *
-     * @param int $time
+     * @param int|null $time
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class EventsGetResponse200
     /**
      * Timestamp of event, with nanosecond accuracy.
      *
-     * @return int
+     * @return int|null
      */
     public function getTimeNano(): ?int
     {
@@ -146,7 +146,7 @@ class EventsGetResponse200
     /**
      * Timestamp of event, with nanosecond accuracy.
      *
-     * @param int $timeNano
+     * @param int|null $timeNano
      *
      * @return self
      */

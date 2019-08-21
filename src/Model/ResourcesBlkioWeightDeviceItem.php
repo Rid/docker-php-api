@@ -22,7 +22,7 @@ class ResourcesBlkioWeightDeviceItem
     protected $weight;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPath(): ?string
     {
@@ -30,7 +30,7 @@ class ResourcesBlkioWeightDeviceItem
     }
 
     /**
-     * @param string $path
+     * @param string|null $path
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ResourcesBlkioWeightDeviceItem
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getWeight(): ?int
     {
@@ -50,7 +50,7 @@ class ResourcesBlkioWeightDeviceItem
     }
 
     /**
-     * @param int $weight
+     * @param int|null $weight
      *
      * @return self
      */

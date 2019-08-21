@@ -28,9 +28,13 @@ class SystemDfGetResponse200
      * @var Volume[]
      */
     protected $volumes;
+    /**
+     * @var BuildCache[]
+     */
+    protected $buildCache;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getLayersSize(): ?int
     {
@@ -38,7 +42,7 @@ class SystemDfGetResponse200
     }
 
     /**
-     * @param int $layersSize
+     * @param int|null $layersSize
      *
      * @return self
      */
@@ -50,7 +54,7 @@ class SystemDfGetResponse200
     }
 
     /**
-     * @return ImageSummary[]
+     * @return ImageSummary[]|null
      */
     public function getImages(): ?array
     {
@@ -58,7 +62,7 @@ class SystemDfGetResponse200
     }
 
     /**
-     * @param ImageSummary[] $images
+     * @param ImageSummary[]|null $images
      *
      * @return self
      */
@@ -70,7 +74,7 @@ class SystemDfGetResponse200
     }
 
     /**
-     * @return ContainerSummaryItem[][]
+     * @return ContainerSummaryItem[][]|null
      */
     public function getContainers(): ?array
     {
@@ -78,7 +82,7 @@ class SystemDfGetResponse200
     }
 
     /**
-     * @param ContainerSummaryItem[][] $containers
+     * @param ContainerSummaryItem[][]|null $containers
      *
      * @return self
      */
@@ -90,7 +94,7 @@ class SystemDfGetResponse200
     }
 
     /**
-     * @return Volume[]
+     * @return Volume[]|null
      */
     public function getVolumes(): ?array
     {
@@ -98,13 +102,33 @@ class SystemDfGetResponse200
     }
 
     /**
-     * @param Volume[] $volumes
+     * @param Volume[]|null $volumes
      *
      * @return self
      */
     public function setVolumes(?array $volumes): self
     {
         $this->volumes = $volumes;
+
+        return $this;
+    }
+
+    /**
+     * @return BuildCache[]|null
+     */
+    public function getBuildCache(): ?array
+    {
+        return $this->buildCache;
+    }
+
+    /**
+     * @param BuildCache[]|null $buildCache
+     *
+     * @return self
+     */
+    public function setBuildCache(?array $buildCache): self
+    {
+        $this->buildCache = $buildCache;
 
         return $this;
     }

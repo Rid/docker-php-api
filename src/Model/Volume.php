@@ -59,7 +59,7 @@ class Volume
      *
      * @var string
      */
-    protected $scope;
+    protected $scope = 'local';
     /**
      * The driver specific options used when creating the volume.
      *
@@ -78,7 +78,7 @@ class Volume
     /**
      * Name of the volume.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -88,7 +88,7 @@ class Volume
     /**
      * Name of the volume.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -102,7 +102,7 @@ class Volume
     /**
      * Name of the volume driver used by the volume.
      *
-     * @return string
+     * @return string|null
      */
     public function getDriver(): ?string
     {
@@ -112,7 +112,7 @@ class Volume
     /**
      * Name of the volume driver used by the volume.
      *
-     * @param string $driver
+     * @param string|null $driver
      *
      * @return self
      */
@@ -126,7 +126,7 @@ class Volume
     /**
      * Mount path of the volume on the host.
      *
-     * @return string
+     * @return string|null
      */
     public function getMountpoint(): ?string
     {
@@ -136,7 +136,7 @@ class Volume
     /**
      * Mount path of the volume on the host.
      *
-     * @param string $mountpoint
+     * @param string|null $mountpoint
      *
      * @return self
      */
@@ -150,7 +150,7 @@ class Volume
     /**
      * Date/Time the volume was created.
      *
-     * @return string
+     * @return string|null
      */
     public function getCreatedAt(): ?string
     {
@@ -160,7 +160,7 @@ class Volume
     /**
      * Date/Time the volume was created.
      *
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
@@ -180,7 +180,7 @@ class Volume
     does not support this feature.
 
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getStatus(): ?\ArrayObject
     {
@@ -196,7 +196,7 @@ class Volume
     does not support this feature.
 
      *
-     * @param mixed[] $status
+     * @param mixed[]|null $status
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class Volume
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -220,7 +220,7 @@ class Volume
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -234,7 +234,7 @@ class Volume
     /**
      * The level at which the volume exists. Either `global` for cluster-wide, or `local` for machine level.
      *
-     * @return string
+     * @return string|null
      */
     public function getScope(): ?string
     {
@@ -244,7 +244,7 @@ class Volume
     /**
      * The level at which the volume exists. Either `global` for cluster-wide, or `local` for machine level.
      *
-     * @param string $scope
+     * @param string|null $scope
      *
      * @return self
      */
@@ -258,7 +258,7 @@ class Volume
     /**
      * The driver specific options used when creating the volume.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getOptions(): ?\ArrayObject
     {
@@ -268,7 +268,7 @@ class Volume
     /**
      * The driver specific options used when creating the volume.
      *
-     * @param string[] $options
+     * @param string[]|null $options
      *
      * @return self
      */
@@ -284,7 +284,7 @@ class Volume
     `GET /system/df` endpoint, and omitted in other endpoints.
 
      *
-     * @return VolumeUsageData
+     * @return VolumeUsageData|null
      */
     public function getUsageData(): ?VolumeUsageData
     {
@@ -296,7 +296,7 @@ class Volume
     `GET /system/df` endpoint, and omitted in other endpoints.
 
      *
-     * @param VolumeUsageData $usageData
+     * @param VolumeUsageData|null $usageData
      *
      * @return self
      */

@@ -29,7 +29,8 @@ class ServiceList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -68,7 +69,7 @@ class ServiceList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * @throws \Docker\API\Exception\ServiceListInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceListServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Service[]
+     * @return \Docker\API\Model\Service[]|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

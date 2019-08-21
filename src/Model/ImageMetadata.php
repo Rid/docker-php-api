@@ -18,7 +18,7 @@ class ImageMetadata
     protected $lastTagTime;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastTagTime(): ?string
     {
@@ -26,7 +26,7 @@ class ImageMetadata
     }
 
     /**
-     * @param string $lastTagTime
+     * @param string|null $lastTagTime
      *
      * @return self
      */

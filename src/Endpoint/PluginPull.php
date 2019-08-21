@@ -19,9 +19,9 @@ class PluginPull extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * @param array $body
      * @param array $queryParameters {
      *
-     *     @var string $remote remote reference for plugin to install
+     *     @var string $remote Remote reference for plugin to install.
 
-     *     @var string $name local name for the pulled plugin
+     *     @var string $name Local name for the pulled plugin.
 
     The `:latest` tag is optional, and is used as the default if omitted.
 
@@ -39,7 +39,8 @@ class PluginPull extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->headerParameters = $headerParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {

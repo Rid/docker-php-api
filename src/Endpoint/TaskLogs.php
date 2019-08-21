@@ -15,17 +15,14 @@ class TaskLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     protected $id;
 
     /**
-     * Get `stdout` and `stderr` logs from a task.
-
-     **Note**: This endpoint works only for services with the `json-file` or `journald` logging drivers.
-
+     * Get `stdout` and `stderr` logs from a task. See also [`/containers/{id}/logs`](#operation/ContainerLogs).
+     **Note**: This endpoint works only for services with the `local`, `json-file` or `journald` logging drivers.
      *
      * @param string $id              ID of the task
      * @param array  $queryParameters {
      *
      *     @var bool $details show task context and extra details provided to logs
-     *     @var bool $follow return the logs as a stream
-
+     *     @var bool $follow keep connection after returning logs
      *     @var bool $stdout Return logs from `stdout`
      *     @var bool $stderr Return logs from `stderr`
      *     @var int $since Only return logs since this time, as a UNIX timestamp
@@ -39,7 +36,8 @@ class TaskLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -87,9 +85,6 @@ class TaskLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
-        if (101 === $status) {
-            return json_decode($body);
-        }
         if (200 === $status) {
             return json_decode($body);
         }

@@ -91,7 +91,7 @@ class Task
     /**
      * The ID of the task.
      *
-     * @return string
+     * @return string|null
      */
     public function getID(): ?string
     {
@@ -101,7 +101,7 @@ class Task
     /**
      * The ID of the task.
      *
-     * @param string $iD
+     * @param string|null $iD
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class Task
     unintentionally overwrite each other.
 
      *
-     * @return ObjectVersion
+     * @return ObjectVersion|null
      */
     public function getVersion(): ?ObjectVersion
     {
@@ -139,7 +139,7 @@ class Task
     unintentionally overwrite each other.
 
      *
-     * @param ObjectVersion $version
+     * @param ObjectVersion|null $version
      *
      * @return self
      */
@@ -151,7 +151,7 @@ class Task
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreatedAt(): ?string
     {
@@ -159,7 +159,7 @@ class Task
     }
 
     /**
-     * @param string $createdAt
+     * @param string|null $createdAt
      *
      * @return self
      */
@@ -171,7 +171,7 @@ class Task
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUpdatedAt(): ?string
     {
@@ -179,7 +179,7 @@ class Task
     }
 
     /**
-     * @param string $updatedAt
+     * @param string|null $updatedAt
      *
      * @return self
      */
@@ -193,7 +193,7 @@ class Task
     /**
      * Name of the task.
      *
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -203,7 +203,7 @@ class Task
     /**
      * Name of the task.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -217,7 +217,7 @@ class Task
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -227,7 +227,7 @@ class Task
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -241,7 +241,7 @@ class Task
     /**
      * User modifiable task configuration.
      *
-     * @return TaskSpec
+     * @return TaskSpec|null
      */
     public function getSpec(): ?TaskSpec
     {
@@ -251,7 +251,7 @@ class Task
     /**
      * User modifiable task configuration.
      *
-     * @param TaskSpec $spec
+     * @param TaskSpec|null $spec
      *
      * @return self
      */
@@ -265,7 +265,7 @@ class Task
     /**
      * The ID of the service this task is part of.
      *
-     * @return string
+     * @return string|null
      */
     public function getServiceID(): ?string
     {
@@ -275,7 +275,7 @@ class Task
     /**
      * The ID of the service this task is part of.
      *
-     * @param string $serviceID
+     * @param string|null $serviceID
      *
      * @return self
      */
@@ -287,7 +287,7 @@ class Task
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getSlot(): ?int
     {
@@ -295,7 +295,7 @@ class Task
     }
 
     /**
-     * @param int $slot
+     * @param int|null $slot
      *
      * @return self
      */
@@ -309,7 +309,7 @@ class Task
     /**
      * The ID of the node that this task is on.
      *
-     * @return string
+     * @return string|null
      */
     public function getNodeID(): ?string
     {
@@ -319,7 +319,7 @@ class Task
     /**
      * The ID of the node that this task is on.
      *
-     * @param string $nodeID
+     * @param string|null $nodeID
      *
      * @return self
      */
@@ -333,7 +333,7 @@ class Task
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @return GenericResourcesItem[]
+     * @return GenericResourcesItem[]|null
      */
     public function getAssignedGenericResources(): ?array
     {
@@ -343,7 +343,7 @@ class Task
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @param GenericResourcesItem[] $assignedGenericResources
+     * @param GenericResourcesItem[]|null $assignedGenericResources
      *
      * @return self
      */
@@ -355,7 +355,7 @@ class Task
     }
 
     /**
-     * @return TaskStatus
+     * @return TaskStatus|null
      */
     public function getStatus(): ?TaskStatus
     {
@@ -363,7 +363,7 @@ class Task
     }
 
     /**
-     * @param TaskStatus $status
+     * @param TaskStatus|null $status
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class Task
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDesiredState(): ?string
     {
@@ -383,7 +383,7 @@ class Task
     }
 
     /**
-     * @param string $desiredState
+     * @param string|null $desiredState
      *
      * @return self
      */

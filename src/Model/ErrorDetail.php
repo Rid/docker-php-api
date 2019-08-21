@@ -22,7 +22,7 @@ class ErrorDetail
     protected $message;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCode(): ?int
     {
@@ -30,7 +30,7 @@ class ErrorDetail
     }
 
     /**
-     * @param int $code
+     * @param int|null $code
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ErrorDetail
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMessage(): ?string
     {
@@ -50,7 +50,7 @@ class ErrorDetail
     }
 
     /**
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */

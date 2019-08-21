@@ -96,7 +96,7 @@ class Image
     protected $metadata;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -104,7 +104,7 @@ class Image
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -116,7 +116,7 @@ class Image
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getRepoTags(): ?array
     {
@@ -124,7 +124,7 @@ class Image
     }
 
     /**
-     * @param string[] $repoTags
+     * @param string[]|null $repoTags
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class Image
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getRepoDigests(): ?array
     {
@@ -144,7 +144,7 @@ class Image
     }
 
     /**
-     * @param string[] $repoDigests
+     * @param string[]|null $repoDigests
      *
      * @return self
      */
@@ -156,7 +156,7 @@ class Image
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getParent(): ?string
     {
@@ -164,7 +164,7 @@ class Image
     }
 
     /**
-     * @param string $parent
+     * @param string|null $parent
      *
      * @return self
      */
@@ -176,7 +176,7 @@ class Image
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getComment(): ?string
     {
@@ -184,7 +184,7 @@ class Image
     }
 
     /**
-     * @param string $comment
+     * @param string|null $comment
      *
      * @return self
      */
@@ -196,7 +196,7 @@ class Image
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreated(): ?string
     {
@@ -204,7 +204,7 @@ class Image
     }
 
     /**
-     * @param string $created
+     * @param string|null $created
      *
      * @return self
      */
@@ -216,7 +216,7 @@ class Image
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getContainer(): ?string
     {
@@ -224,7 +224,7 @@ class Image
     }
 
     /**
-     * @param string $container
+     * @param string|null $container
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class Image
     /**
      * Configuration for a container that is portable between hosts.
      *
-     * @return ContainerConfig
+     * @return ContainerConfig|null
      */
     public function getContainerConfig(): ?ContainerConfig
     {
@@ -248,7 +248,7 @@ class Image
     /**
      * Configuration for a container that is portable between hosts.
      *
-     * @param ContainerConfig $containerConfig
+     * @param ContainerConfig|null $containerConfig
      *
      * @return self
      */
@@ -260,7 +260,7 @@ class Image
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDockerVersion(): ?string
     {
@@ -268,7 +268,7 @@ class Image
     }
 
     /**
-     * @param string $dockerVersion
+     * @param string|null $dockerVersion
      *
      * @return self
      */
@@ -280,7 +280,7 @@ class Image
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAuthor(): ?string
     {
@@ -288,7 +288,7 @@ class Image
     }
 
     /**
-     * @param string $author
+     * @param string|null $author
      *
      * @return self
      */
@@ -302,7 +302,7 @@ class Image
     /**
      * Configuration for a container that is portable between hosts.
      *
-     * @return ContainerConfig
+     * @return ContainerConfig|null
      */
     public function getConfig(): ?ContainerConfig
     {
@@ -312,7 +312,7 @@ class Image
     /**
      * Configuration for a container that is portable between hosts.
      *
-     * @param ContainerConfig $config
+     * @param ContainerConfig|null $config
      *
      * @return self
      */
@@ -324,7 +324,7 @@ class Image
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getArchitecture(): ?string
     {
@@ -332,7 +332,7 @@ class Image
     }
 
     /**
-     * @param string $architecture
+     * @param string|null $architecture
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class Image
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getOs(): ?string
     {
@@ -352,7 +352,7 @@ class Image
     }
 
     /**
-     * @param string $os
+     * @param string|null $os
      *
      * @return self
      */
@@ -364,7 +364,7 @@ class Image
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getOsVersion(): ?string
     {
@@ -372,7 +372,7 @@ class Image
     }
 
     /**
-     * @param string $osVersion
+     * @param string|null $osVersion
      *
      * @return self
      */
@@ -384,7 +384,7 @@ class Image
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getSize(): ?int
     {
@@ -392,7 +392,7 @@ class Image
     }
 
     /**
-     * @param int $size
+     * @param int|null $size
      *
      * @return self
      */
@@ -404,7 +404,7 @@ class Image
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getVirtualSize(): ?int
     {
@@ -412,7 +412,7 @@ class Image
     }
 
     /**
-     * @param int $virtualSize
+     * @param int|null $virtualSize
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class Image
     /**
      * Information about a container's graph driver.
      *
-     * @return GraphDriverData
+     * @return GraphDriverData|null
      */
     public function getGraphDriver(): ?GraphDriverData
     {
@@ -436,7 +436,7 @@ class Image
     /**
      * Information about a container's graph driver.
      *
-     * @param GraphDriverData $graphDriver
+     * @param GraphDriverData|null $graphDriver
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class Image
     }
 
     /**
-     * @return ImageRootFS
+     * @return ImageRootFS|null
      */
     public function getRootFS(): ?ImageRootFS
     {
@@ -456,7 +456,7 @@ class Image
     }
 
     /**
-     * @param ImageRootFS $rootFS
+     * @param ImageRootFS|null $rootFS
      *
      * @return self
      */
@@ -468,7 +468,7 @@ class Image
     }
 
     /**
-     * @return ImageMetadata
+     * @return ImageMetadata|null
      */
     public function getMetadata(): ?ImageMetadata
     {
@@ -476,7 +476,7 @@ class Image
     }
 
     /**
-     * @param ImageMetadata $metadata
+     * @param ImageMetadata|null $metadata
      *
      * @return self
      */

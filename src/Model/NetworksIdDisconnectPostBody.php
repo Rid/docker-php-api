@@ -28,7 +28,7 @@ class NetworksIdDisconnectPostBody
     /**
      * The ID or name of the container to disconnect from the network.
      *
-     * @return string
+     * @return string|null
      */
     public function getContainer(): ?string
     {
@@ -38,7 +38,7 @@ class NetworksIdDisconnectPostBody
     /**
      * The ID or name of the container to disconnect from the network.
      *
-     * @param string $container
+     * @param string|null $container
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class NetworksIdDisconnectPostBody
     /**
      * Force the container to disconnect from the network.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getForce(): ?bool
     {
@@ -62,7 +62,7 @@ class NetworksIdDisconnectPostBody
     /**
      * Force the container to disconnect from the network.
      *
-     * @param bool $force
+     * @param bool|null $force
      *
      * @return self
      */

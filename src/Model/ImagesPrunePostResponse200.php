@@ -28,7 +28,7 @@ class ImagesPrunePostResponse200
     /**
      * Images that were deleted.
      *
-     * @return ImageDeleteResponseItem[]
+     * @return ImageDeleteResponseItem[]|null
      */
     public function getImagesDeleted(): ?array
     {
@@ -38,7 +38,7 @@ class ImagesPrunePostResponse200
     /**
      * Images that were deleted.
      *
-     * @param ImageDeleteResponseItem[] $imagesDeleted
+     * @param ImageDeleteResponseItem[]|null $imagesDeleted
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class ImagesPrunePostResponse200
     /**
      * Disk space reclaimed in bytes.
      *
-     * @return int
+     * @return int|null
      */
     public function getSpaceReclaimed(): ?int
     {
@@ -62,7 +62,7 @@ class ImagesPrunePostResponse200
     /**
      * Disk space reclaimed in bytes.
      *
-     * @param int $spaceReclaimed
+     * @param int|null $spaceReclaimed
      *
      * @return self
      */

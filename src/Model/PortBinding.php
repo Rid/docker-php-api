@@ -28,7 +28,7 @@ class PortBinding
     /**
      * Host IP address that the container's port is mapped to.
      *
-     * @return string
+     * @return string|null
      */
     public function getHostIp(): ?string
     {
@@ -38,7 +38,7 @@ class PortBinding
     /**
      * Host IP address that the container's port is mapped to.
      *
-     * @param string $hostIp
+     * @param string|null $hostIp
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class PortBinding
     /**
      * Host port number that the container's port is mapped to.
      *
-     * @return string
+     * @return string|null
      */
     public function getHostPort(): ?string
     {
@@ -62,7 +62,7 @@ class PortBinding
     /**
      * Host port number that the container's port is mapped to.
      *
-     * @param string $hostPort
+     * @param string|null $hostPort
      *
      * @return self
      */

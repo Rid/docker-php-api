@@ -22,7 +22,8 @@ class VolumeInspect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         $this->name = $name;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -50,7 +51,7 @@ class VolumeInspect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * @throws \Docker\API\Exception\VolumeInspectNotFoundException
      * @throws \Docker\API\Exception\VolumeInspectInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\Volume
+     * @return \Docker\API\Model\Volume|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

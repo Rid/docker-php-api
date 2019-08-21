@@ -34,7 +34,7 @@ class TLSInfo
     /**
      * The root CA certificate(s) that are used to validate leaf TLS certificates.
      *
-     * @return string
+     * @return string|null
      */
     public function getTrustRoot(): ?string
     {
@@ -44,7 +44,7 @@ class TLSInfo
     /**
      * The root CA certificate(s) that are used to validate leaf TLS certificates.
      *
-     * @param string $trustRoot
+     * @param string|null $trustRoot
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class TLSInfo
     /**
      * The base64-url-safe-encoded raw subject bytes of the issuer.
      *
-     * @return string
+     * @return string|null
      */
     public function getCertIssuerSubject(): ?string
     {
@@ -68,7 +68,7 @@ class TLSInfo
     /**
      * The base64-url-safe-encoded raw subject bytes of the issuer.
      *
-     * @param string $certIssuerSubject
+     * @param string|null $certIssuerSubject
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class TLSInfo
     /**
      * The base64-url-safe-encoded raw public key bytes of the issuer.
      *
-     * @return string
+     * @return string|null
      */
     public function getCertIssuerPublicKey(): ?string
     {
@@ -92,7 +92,7 @@ class TLSInfo
     /**
      * The base64-url-safe-encoded raw public key bytes of the issuer.
      *
-     * @param string $certIssuerPublicKey
+     * @param string|null $certIssuerPublicKey
      *
      * @return self
      */

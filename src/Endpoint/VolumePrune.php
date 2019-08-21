@@ -15,7 +15,7 @@ class VolumePrune extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     /**
      * @param array $queryParameters {
      *
-     *     @var string $filters filters to process on the prune list, encoded as JSON (a `map[string][]string`)
+     *     @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`).
 
     Available filters:
     - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune volumes with (or without, in case `label!=...` is used) the specified labels.
@@ -27,7 +27,8 @@ class VolumePrune extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -65,7 +66,7 @@ class VolumePrune extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @throws \Docker\API\Exception\VolumePruneInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\VolumesPrunePostResponse200
+     * @return \Docker\API\Model\VolumesPrunePostResponse200|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

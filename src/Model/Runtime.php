@@ -36,7 +36,7 @@ class Runtime
     binary and uses the first result.
 
      *
-     * @return string
+     * @return string|null
      */
     public function getPath(): ?string
     {
@@ -50,7 +50,7 @@ class Runtime
     binary and uses the first result.
 
      *
-     * @param string $path
+     * @param string|null $path
      *
      * @return self
      */
@@ -64,7 +64,7 @@ class Runtime
     /**
      * List of command-line arguments to pass to the runtime when invoked.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getRuntimeArgs(): ?array
     {
@@ -74,7 +74,7 @@ class Runtime
     /**
      * List of command-line arguments to pass to the runtime when invoked.
      *
-     * @param string[] $runtimeArgs
+     * @param string[]|null $runtimeArgs
      *
      * @return self
      */

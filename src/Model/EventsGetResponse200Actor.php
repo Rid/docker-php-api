@@ -28,7 +28,7 @@ class EventsGetResponse200Actor
     /**
      * The ID of the object emitting the event.
      *
-     * @return string
+     * @return string|null
      */
     public function getID(): ?string
     {
@@ -38,7 +38,7 @@ class EventsGetResponse200Actor
     /**
      * The ID of the object emitting the event.
      *
-     * @param string $iD
+     * @param string|null $iD
      *
      * @return self
      */
@@ -52,7 +52,7 @@ class EventsGetResponse200Actor
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getAttributes(): ?\ArrayObject
     {
@@ -62,7 +62,7 @@ class EventsGetResponse200Actor
     /**
      * Various key/value attributes of the object, depending on its type.
      *
-     * @param string[] $attributes
+     * @param string[]|null $attributes
      *
      * @return self
      */

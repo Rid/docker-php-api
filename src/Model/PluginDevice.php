@@ -30,7 +30,7 @@ class PluginDevice
     protected $path;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -38,7 +38,7 @@ class PluginDevice
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class PluginDevice
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -58,7 +58,7 @@ class PluginDevice
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class PluginDevice
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getSettable(): ?array
     {
@@ -78,7 +78,7 @@ class PluginDevice
     }
 
     /**
-     * @param string[] $settable
+     * @param string[]|null $settable
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class PluginDevice
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPath(): ?string
     {
@@ -98,7 +98,7 @@ class PluginDevice
     }
 
     /**
-     * @param string $path
+     * @param string|null $path
      *
      * @return self
      */

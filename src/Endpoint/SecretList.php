@@ -29,7 +29,8 @@ class SecretList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -68,7 +69,7 @@ class SecretList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * @throws \Docker\API\Exception\SecretListInternalServerErrorException
      * @throws \Docker\API\Exception\SecretListServiceUnavailableException
      *
-     * @return null|\Docker\API\Model\Secret[]
+     * @return \Docker\API\Model\Secret[]|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

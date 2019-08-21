@@ -16,7 +16,7 @@ class ContainerCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      * @param \Docker\API\Model\ContainersCreatePostBody $body            Container to create
      * @param array                                      $queryParameters {
      *
-     *     @var string $name Assign the specified name to the container. Must match `/?[a-zA-Z0-9_-]+`.
+     *     @var string $name Assign the specified name to the container. Must match `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
      * }
      */
     public function __construct(\Docker\API\Model\ContainersCreatePostBody $body, array $queryParameters = [])
@@ -25,7 +25,8 @@ class ContainerCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -66,7 +67,7 @@ class ContainerCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      * @throws \Docker\API\Exception\ContainerCreateConflictException
      * @throws \Docker\API\Exception\ContainerCreateInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersCreatePostResponse201
+     * @return \Docker\API\Model\ContainersCreatePostResponse201|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

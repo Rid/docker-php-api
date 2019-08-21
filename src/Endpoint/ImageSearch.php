@@ -32,7 +32,8 @@ class ImageSearch extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
@@ -72,7 +73,7 @@ class ImageSearch extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @throws \Docker\API\Exception\ImageSearchInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ImagesSearchGetResponse200Item[]
+     * @return \Docker\API\Model\ImagesSearchGetResponse200Item[]|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

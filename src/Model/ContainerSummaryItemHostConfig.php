@@ -18,7 +18,7 @@ class ContainerSummaryItemHostConfig
     protected $networkMode;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNetworkMode(): ?string
     {
@@ -26,7 +26,7 @@ class ContainerSummaryItemHostConfig
     }
 
     /**
-     * @param string $networkMode
+     * @param string|null $networkMode
      *
      * @return self
      */

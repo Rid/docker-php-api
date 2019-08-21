@@ -28,7 +28,7 @@ class ResourceObject
     protected $genericResources;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getNanoCPUs(): ?int
     {
@@ -36,7 +36,7 @@ class ResourceObject
     }
 
     /**
-     * @param int $nanoCPUs
+     * @param int|null $nanoCPUs
      *
      * @return self
      */
@@ -48,7 +48,7 @@ class ResourceObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getMemoryBytes(): ?int
     {
@@ -56,7 +56,7 @@ class ResourceObject
     }
 
     /**
-     * @param int $memoryBytes
+     * @param int|null $memoryBytes
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ResourceObject
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @return GenericResourcesItem[]
+     * @return GenericResourcesItem[]|null
      */
     public function getGenericResources(): ?array
     {
@@ -80,7 +80,7 @@ class ResourceObject
     /**
      * User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, `GPU=UUID1`).
      *
-     * @param GenericResourcesItem[] $genericResources
+     * @param GenericResourcesItem[]|null $genericResources
      *
      * @return self
      */

@@ -18,7 +18,7 @@ class ImageID
     protected $iD;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getID(): ?string
     {
@@ -26,7 +26,7 @@ class ImageID
     }
 
     /**
-     * @param string $iD
+     * @param string|null $iD
      *
      * @return self
      */

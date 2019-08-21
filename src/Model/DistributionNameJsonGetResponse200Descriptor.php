@@ -30,7 +30,7 @@ class DistributionNameJsonGetResponse200Descriptor
     protected $uRLs;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMediaType(): ?string
     {
@@ -38,7 +38,7 @@ class DistributionNameJsonGetResponse200Descriptor
     }
 
     /**
-     * @param string $mediaType
+     * @param string|null $mediaType
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class DistributionNameJsonGetResponse200Descriptor
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getSize(): ?int
     {
@@ -58,7 +58,7 @@ class DistributionNameJsonGetResponse200Descriptor
     }
 
     /**
-     * @param int $size
+     * @param int|null $size
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class DistributionNameJsonGetResponse200Descriptor
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDigest(): ?string
     {
@@ -78,7 +78,7 @@ class DistributionNameJsonGetResponse200Descriptor
     }
 
     /**
-     * @param string $digest
+     * @param string|null $digest
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class DistributionNameJsonGetResponse200Descriptor
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getURLs(): ?array
     {
@@ -98,7 +98,7 @@ class DistributionNameJsonGetResponse200Descriptor
     }
 
     /**
-     * @param string[] $uRLs
+     * @param string[]|null $uRLs
      *
      * @return self
      */

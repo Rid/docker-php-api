@@ -46,7 +46,7 @@ class Plugin
     protected $config;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -54,7 +54,7 @@ class Plugin
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class Plugin
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -74,7 +74,7 @@ class Plugin
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -88,7 +88,7 @@ class Plugin
     /**
      * True if the plugin is running. False if the plugin is not running, only installed.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getEnabled(): ?bool
     {
@@ -98,7 +98,7 @@ class Plugin
     /**
      * True if the plugin is running. False if the plugin is not running, only installed.
      *
-     * @param bool $enabled
+     * @param bool|null $enabled
      *
      * @return self
      */
@@ -112,7 +112,7 @@ class Plugin
     /**
      * Settings that can be modified by users.
      *
-     * @return PluginSettings
+     * @return PluginSettings|null
      */
     public function getSettings(): ?PluginSettings
     {
@@ -122,7 +122,7 @@ class Plugin
     /**
      * Settings that can be modified by users.
      *
-     * @param PluginSettings $settings
+     * @param PluginSettings|null $settings
      *
      * @return self
      */
@@ -136,7 +136,7 @@ class Plugin
     /**
      * plugin remote reference used to push/pull the plugin.
      *
-     * @return string
+     * @return string|null
      */
     public function getPluginReference(): ?string
     {
@@ -146,7 +146,7 @@ class Plugin
     /**
      * plugin remote reference used to push/pull the plugin.
      *
-     * @param string $pluginReference
+     * @param string|null $pluginReference
      *
      * @return self
      */
@@ -160,7 +160,7 @@ class Plugin
     /**
      * The config of a plugin.
      *
-     * @return PluginConfig
+     * @return PluginConfig|null
      */
     public function getConfig(): ?PluginConfig
     {
@@ -170,7 +170,7 @@ class Plugin
     /**
      * The config of a plugin.
      *
-     * @param PluginConfig $config
+     * @param PluginConfig|null $config
      *
      * @return self
      */

@@ -22,7 +22,7 @@ class GraphDriverData
     protected $data;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -30,7 +30,7 @@ class GraphDriverData
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class GraphDriverData
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getData(): ?\ArrayObject
     {
@@ -50,7 +50,7 @@ class GraphDriverData
     }
 
     /**
-     * @param string[] $data
+     * @param string[]|null $data
      *
      * @return self
      */

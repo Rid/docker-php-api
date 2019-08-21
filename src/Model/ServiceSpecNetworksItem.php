@@ -22,7 +22,7 @@ class ServiceSpecNetworksItem
     protected $aliases;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTarget(): ?string
     {
@@ -30,7 +30,7 @@ class ServiceSpecNetworksItem
     }
 
     /**
-     * @param string $target
+     * @param string|null $target
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ServiceSpecNetworksItem
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getAliases(): ?array
     {
@@ -50,7 +50,7 @@ class ServiceSpecNetworksItem
     }
 
     /**
-     * @param string[] $aliases
+     * @param string[]|null $aliases
      *
      * @return self
      */

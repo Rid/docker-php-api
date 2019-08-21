@@ -35,19 +35,19 @@ class ContainerConfig
      *
      * @var bool
      */
-    protected $attachStdin;
+    protected $attachStdin = false;
     /**
      * Whether to attach to `stdout`.
      *
      * @var bool
      */
-    protected $attachStdout;
+    protected $attachStdout = true;
     /**
      * Whether to attach to `stderr`.
      *
      * @var bool
      */
-    protected $attachStderr;
+    protected $attachStderr = true;
     /**
      * An object mapping ports to an empty object in the form:.
 
@@ -62,19 +62,19 @@ class ContainerConfig
      *
      * @var bool
      */
-    protected $tty;
+    protected $tty = false;
     /**
      * Open `stdin`.
      *
      * @var bool
      */
-    protected $openStdin;
+    protected $openStdin = false;
     /**
      * Close `stdin` after one attached client disconnects.
      *
      * @var bool
      */
-    protected $stdinOnce;
+    protected $stdinOnce = false;
     /**
      * A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value.
      *
@@ -155,13 +155,13 @@ class ContainerConfig
      *
      * @var string
      */
-    protected $stopSignal;
+    protected $stopSignal = 'SIGTERM';
     /**
      * Timeout to stop a container in seconds.
      *
      * @var int
      */
-    protected $stopTimeout;
+    protected $stopTimeout = 10;
     /**
      * Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell.
      *
@@ -172,7 +172,7 @@ class ContainerConfig
     /**
      * The hostname to use for the container, as a valid RFC 1123 hostname.
      *
-     * @return string
+     * @return string|null
      */
     public function getHostname(): ?string
     {
@@ -182,7 +182,7 @@ class ContainerConfig
     /**
      * The hostname to use for the container, as a valid RFC 1123 hostname.
      *
-     * @param string $hostname
+     * @param string|null $hostname
      *
      * @return self
      */
@@ -196,7 +196,7 @@ class ContainerConfig
     /**
      * The domain name to use for the container.
      *
-     * @return string
+     * @return string|null
      */
     public function getDomainname(): ?string
     {
@@ -206,7 +206,7 @@ class ContainerConfig
     /**
      * The domain name to use for the container.
      *
-     * @param string $domainname
+     * @param string|null $domainname
      *
      * @return self
      */
@@ -220,7 +220,7 @@ class ContainerConfig
     /**
      * The user that commands are run as inside the container.
      *
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -230,7 +230,7 @@ class ContainerConfig
     /**
      * The user that commands are run as inside the container.
      *
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */
@@ -244,7 +244,7 @@ class ContainerConfig
     /**
      * Whether to attach to `stdin`.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getAttachStdin(): ?bool
     {
@@ -254,7 +254,7 @@ class ContainerConfig
     /**
      * Whether to attach to `stdin`.
      *
-     * @param bool $attachStdin
+     * @param bool|null $attachStdin
      *
      * @return self
      */
@@ -268,7 +268,7 @@ class ContainerConfig
     /**
      * Whether to attach to `stdout`.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getAttachStdout(): ?bool
     {
@@ -278,7 +278,7 @@ class ContainerConfig
     /**
      * Whether to attach to `stdout`.
      *
-     * @param bool $attachStdout
+     * @param bool|null $attachStdout
      *
      * @return self
      */
@@ -292,7 +292,7 @@ class ContainerConfig
     /**
      * Whether to attach to `stderr`.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getAttachStderr(): ?bool
     {
@@ -302,7 +302,7 @@ class ContainerConfig
     /**
      * Whether to attach to `stderr`.
      *
-     * @param bool $attachStderr
+     * @param bool|null $attachStderr
      *
      * @return self
      */
@@ -319,7 +319,7 @@ class ContainerConfig
     `{"<port>/<tcp|udp|sctp>": {}}`
 
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getExposedPorts(): ?\ArrayObject
     {
@@ -332,7 +332,7 @@ class ContainerConfig
     `{"<port>/<tcp|udp|sctp>": {}}`
 
      *
-     * @param mixed[] $exposedPorts
+     * @param mixed[]|null $exposedPorts
      *
      * @return self
      */
@@ -346,7 +346,7 @@ class ContainerConfig
     /**
      * Attach standard streams to a TTY, including `stdin` if it is not closed.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getTty(): ?bool
     {
@@ -356,7 +356,7 @@ class ContainerConfig
     /**
      * Attach standard streams to a TTY, including `stdin` if it is not closed.
      *
-     * @param bool $tty
+     * @param bool|null $tty
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class ContainerConfig
     /**
      * Open `stdin`.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getOpenStdin(): ?bool
     {
@@ -380,7 +380,7 @@ class ContainerConfig
     /**
      * Open `stdin`.
      *
-     * @param bool $openStdin
+     * @param bool|null $openStdin
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class ContainerConfig
     /**
      * Close `stdin` after one attached client disconnects.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getStdinOnce(): ?bool
     {
@@ -404,7 +404,7 @@ class ContainerConfig
     /**
      * Close `stdin` after one attached client disconnects.
      *
-     * @param bool $stdinOnce
+     * @param bool|null $stdinOnce
      *
      * @return self
      */
@@ -418,7 +418,7 @@ class ContainerConfig
     /**
      * A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getEnv(): ?array
     {
@@ -428,7 +428,7 @@ class ContainerConfig
     /**
      * A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value.
      *
-     * @param string[] $env
+     * @param string[]|null $env
      *
      * @return self
      */
@@ -442,7 +442,7 @@ class ContainerConfig
     /**
      * Command to run specified as a string or an array of strings.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getCmd(): ?array
     {
@@ -452,7 +452,7 @@ class ContainerConfig
     /**
      * Command to run specified as a string or an array of strings.
      *
-     * @param string[] $cmd
+     * @param string[]|null $cmd
      *
      * @return self
      */
@@ -466,7 +466,7 @@ class ContainerConfig
     /**
      * A test to perform to check that the container is healthy.
      *
-     * @return HealthConfig
+     * @return HealthConfig|null
      */
     public function getHealthcheck(): ?HealthConfig
     {
@@ -476,7 +476,7 @@ class ContainerConfig
     /**
      * A test to perform to check that the container is healthy.
      *
-     * @param HealthConfig $healthcheck
+     * @param HealthConfig|null $healthcheck
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class ContainerConfig
     /**
      * Command is already escaped (Windows only).
      *
-     * @return bool
+     * @return bool|null
      */
     public function getArgsEscaped(): ?bool
     {
@@ -500,7 +500,7 @@ class ContainerConfig
     /**
      * Command is already escaped (Windows only).
      *
-     * @param bool $argsEscaped
+     * @param bool|null $argsEscaped
      *
      * @return self
      */
@@ -514,7 +514,7 @@ class ContainerConfig
     /**
      * The name of the image to use when creating the container.
      *
-     * @return string
+     * @return string|null
      */
     public function getImage(): ?string
     {
@@ -524,7 +524,7 @@ class ContainerConfig
     /**
      * The name of the image to use when creating the container.
      *
-     * @param string $image
+     * @param string|null $image
      *
      * @return self
      */
@@ -538,7 +538,7 @@ class ContainerConfig
     /**
      * An object mapping mount point paths inside the container to empty objects.
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getVolumes(): ?\ArrayObject
     {
@@ -548,7 +548,7 @@ class ContainerConfig
     /**
      * An object mapping mount point paths inside the container to empty objects.
      *
-     * @param mixed[] $volumes
+     * @param mixed[]|null $volumes
      *
      * @return self
      */
@@ -562,7 +562,7 @@ class ContainerConfig
     /**
      * The working directory for commands to run in.
      *
-     * @return string
+     * @return string|null
      */
     public function getWorkingDir(): ?string
     {
@@ -572,7 +572,7 @@ class ContainerConfig
     /**
      * The working directory for commands to run in.
      *
-     * @param string $workingDir
+     * @param string|null $workingDir
      *
      * @return self
      */
@@ -589,7 +589,7 @@ class ContainerConfig
     If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getEntrypoint(): ?array
     {
@@ -602,7 +602,7 @@ class ContainerConfig
     If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
 
      *
-     * @param string[] $entrypoint
+     * @param string[]|null $entrypoint
      *
      * @return self
      */
@@ -616,7 +616,7 @@ class ContainerConfig
     /**
      * Disable networking for the container.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getNetworkDisabled(): ?bool
     {
@@ -626,7 +626,7 @@ class ContainerConfig
     /**
      * Disable networking for the container.
      *
-     * @param bool $networkDisabled
+     * @param bool|null $networkDisabled
      *
      * @return self
      */
@@ -640,7 +640,7 @@ class ContainerConfig
     /**
      * MAC address of the container.
      *
-     * @return string
+     * @return string|null
      */
     public function getMacAddress(): ?string
     {
@@ -650,7 +650,7 @@ class ContainerConfig
     /**
      * MAC address of the container.
      *
-     * @param string $macAddress
+     * @param string|null $macAddress
      *
      * @return self
      */
@@ -664,7 +664,7 @@ class ContainerConfig
     /**
      * `ONBUILD` metadata that were defined in the image's `Dockerfile`.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getOnBuild(): ?array
     {
@@ -674,7 +674,7 @@ class ContainerConfig
     /**
      * `ONBUILD` metadata that were defined in the image's `Dockerfile`.
      *
-     * @param string[] $onBuild
+     * @param string[]|null $onBuild
      *
      * @return self
      */
@@ -688,7 +688,7 @@ class ContainerConfig
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getLabels(): ?\ArrayObject
     {
@@ -698,7 +698,7 @@ class ContainerConfig
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param string[]|null $labels
      *
      * @return self
      */
@@ -712,7 +712,7 @@ class ContainerConfig
     /**
      * Signal to stop a container as a string or unsigned integer.
      *
-     * @return string
+     * @return string|null
      */
     public function getStopSignal(): ?string
     {
@@ -722,7 +722,7 @@ class ContainerConfig
     /**
      * Signal to stop a container as a string or unsigned integer.
      *
-     * @param string $stopSignal
+     * @param string|null $stopSignal
      *
      * @return self
      */
@@ -736,7 +736,7 @@ class ContainerConfig
     /**
      * Timeout to stop a container in seconds.
      *
-     * @return int
+     * @return int|null
      */
     public function getStopTimeout(): ?int
     {
@@ -746,7 +746,7 @@ class ContainerConfig
     /**
      * Timeout to stop a container in seconds.
      *
-     * @param int $stopTimeout
+     * @param int|null $stopTimeout
      *
      * @return self
      */
@@ -760,7 +760,7 @@ class ContainerConfig
     /**
      * Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getShell(): ?array
     {
@@ -770,7 +770,7 @@ class ContainerConfig
     /**
      * Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell.
      *
-     * @param string[] $shell
+     * @param string[]|null $shell
      *
      * @return self
      */

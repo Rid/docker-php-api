@@ -92,7 +92,7 @@ class EndpointSettings
     /**
      * EndpointIPAMConfig represents an endpoint's IPAM configuration.
      *
-     * @return EndpointIPAMConfig
+     * @return EndpointIPAMConfig|null
      */
     public function getIPAMConfig(): ?EndpointIPAMConfig
     {
@@ -102,7 +102,7 @@ class EndpointSettings
     /**
      * EndpointIPAMConfig represents an endpoint's IPAM configuration.
      *
-     * @param EndpointIPAMConfig $iPAMConfig
+     * @param EndpointIPAMConfig|null $iPAMConfig
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class EndpointSettings
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getLinks(): ?array
     {
@@ -122,7 +122,7 @@ class EndpointSettings
     }
 
     /**
-     * @param string[] $links
+     * @param string[]|null $links
      *
      * @return self
      */
@@ -134,7 +134,7 @@ class EndpointSettings
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getAliases(): ?array
     {
@@ -142,7 +142,7 @@ class EndpointSettings
     }
 
     /**
-     * @param string[] $aliases
+     * @param string[]|null $aliases
      *
      * @return self
      */
@@ -156,7 +156,7 @@ class EndpointSettings
     /**
      * Unique ID of the network.
      *
-     * @return string
+     * @return string|null
      */
     public function getNetworkID(): ?string
     {
@@ -166,7 +166,7 @@ class EndpointSettings
     /**
      * Unique ID of the network.
      *
-     * @param string $networkID
+     * @param string|null $networkID
      *
      * @return self
      */
@@ -180,7 +180,7 @@ class EndpointSettings
     /**
      * Unique ID for the service endpoint in a Sandbox.
      *
-     * @return string
+     * @return string|null
      */
     public function getEndpointID(): ?string
     {
@@ -190,7 +190,7 @@ class EndpointSettings
     /**
      * Unique ID for the service endpoint in a Sandbox.
      *
-     * @param string $endpointID
+     * @param string|null $endpointID
      *
      * @return self
      */
@@ -204,7 +204,7 @@ class EndpointSettings
     /**
      * Gateway address for this network.
      *
-     * @return string
+     * @return string|null
      */
     public function getGateway(): ?string
     {
@@ -214,7 +214,7 @@ class EndpointSettings
     /**
      * Gateway address for this network.
      *
-     * @param string $gateway
+     * @param string|null $gateway
      *
      * @return self
      */
@@ -228,7 +228,7 @@ class EndpointSettings
     /**
      * IPv4 address.
      *
-     * @return string
+     * @return string|null
      */
     public function getIPAddress(): ?string
     {
@@ -238,7 +238,7 @@ class EndpointSettings
     /**
      * IPv4 address.
      *
-     * @param string $iPAddress
+     * @param string|null $iPAddress
      *
      * @return self
      */
@@ -252,7 +252,7 @@ class EndpointSettings
     /**
      * Mask length of the IPv4 address.
      *
-     * @return int
+     * @return int|null
      */
     public function getIPPrefixLen(): ?int
     {
@@ -262,7 +262,7 @@ class EndpointSettings
     /**
      * Mask length of the IPv4 address.
      *
-     * @param int $iPPrefixLen
+     * @param int|null $iPPrefixLen
      *
      * @return self
      */
@@ -276,7 +276,7 @@ class EndpointSettings
     /**
      * IPv6 gateway address.
      *
-     * @return string
+     * @return string|null
      */
     public function getIPv6Gateway(): ?string
     {
@@ -286,7 +286,7 @@ class EndpointSettings
     /**
      * IPv6 gateway address.
      *
-     * @param string $iPv6Gateway
+     * @param string|null $iPv6Gateway
      *
      * @return self
      */
@@ -300,7 +300,7 @@ class EndpointSettings
     /**
      * Global IPv6 address.
      *
-     * @return string
+     * @return string|null
      */
     public function getGlobalIPv6Address(): ?string
     {
@@ -310,7 +310,7 @@ class EndpointSettings
     /**
      * Global IPv6 address.
      *
-     * @param string $globalIPv6Address
+     * @param string|null $globalIPv6Address
      *
      * @return self
      */
@@ -324,7 +324,7 @@ class EndpointSettings
     /**
      * Mask length of the global IPv6 address.
      *
-     * @return int
+     * @return int|null
      */
     public function getGlobalIPv6PrefixLen(): ?int
     {
@@ -334,7 +334,7 @@ class EndpointSettings
     /**
      * Mask length of the global IPv6 address.
      *
-     * @param int $globalIPv6PrefixLen
+     * @param int|null $globalIPv6PrefixLen
      *
      * @return self
      */
@@ -348,7 +348,7 @@ class EndpointSettings
     /**
      * MAC address for the endpoint on this network.
      *
-     * @return string
+     * @return string|null
      */
     public function getMacAddress(): ?string
     {
@@ -358,7 +358,7 @@ class EndpointSettings
     /**
      * MAC address for the endpoint on this network.
      *
-     * @param string $macAddress
+     * @param string|null $macAddress
      *
      * @return self
      */
@@ -374,7 +374,7 @@ class EndpointSettings
     are passed directly to the driver and are driver specific.
 
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getDriverOpts(): ?\ArrayObject
     {
@@ -386,7 +386,7 @@ class EndpointSettings
     are passed directly to the driver and are driver specific.
 
      *
-     * @param string[] $driverOpts
+     * @param string[]|null $driverOpts
      *
      * @return self
      */

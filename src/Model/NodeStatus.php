@@ -32,7 +32,7 @@ class NodeStatus
     /**
      * NodeState represents the state of a node.
      *
-     * @return string
+     * @return string|null
      */
     public function getState(): ?string
     {
@@ -42,7 +42,7 @@ class NodeStatus
     /**
      * NodeState represents the state of a node.
      *
-     * @param string $state
+     * @param string|null $state
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class NodeStatus
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMessage(): ?string
     {
@@ -62,7 +62,7 @@ class NodeStatus
     }
 
     /**
-     * @param string $message
+     * @param string|null $message
      *
      * @return self
      */
@@ -76,7 +76,7 @@ class NodeStatus
     /**
      * IP address of the node.
      *
-     * @return string
+     * @return string|null
      */
     public function getAddr(): ?string
     {
@@ -86,7 +86,7 @@ class NodeStatus
     /**
      * IP address of the node.
      *
-     * @param string $addr
+     * @param string|null $addr
      *
      * @return self
      */

@@ -19,7 +19,7 @@ class PluginUpgrade extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * @param array  $body
      * @param array  $queryParameters {
      *
-     *     @var string $remote remote reference to upgrade to
+     *     @var string $remote Remote reference to upgrade to.
 
     The `:latest` tag is optional, and is used as the default if omitted.
 
@@ -38,7 +38,8 @@ class PluginUpgrade extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         $this->headerParameters = $headerParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {

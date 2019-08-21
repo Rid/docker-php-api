@@ -198,7 +198,7 @@ class NetworkSettings
     /**
      * Name of the network'a bridge (for example, `docker0`).
      *
-     * @return string
+     * @return string|null
      */
     public function getBridge(): ?string
     {
@@ -208,7 +208,7 @@ class NetworkSettings
     /**
      * Name of the network'a bridge (for example, `docker0`).
      *
-     * @param string $bridge
+     * @param string|null $bridge
      *
      * @return self
      */
@@ -222,7 +222,7 @@ class NetworkSettings
     /**
      * SandboxID uniquely represents a container's network stack.
      *
-     * @return string
+     * @return string|null
      */
     public function getSandboxID(): ?string
     {
@@ -232,7 +232,7 @@ class NetworkSettings
     /**
      * SandboxID uniquely represents a container's network stack.
      *
-     * @param string $sandboxID
+     * @param string|null $sandboxID
      *
      * @return self
      */
@@ -246,7 +246,7 @@ class NetworkSettings
     /**
      * Indicates if hairpin NAT should be enabled on the virtual interface.
      *
-     * @return bool
+     * @return bool|null
      */
     public function getHairpinMode(): ?bool
     {
@@ -256,7 +256,7 @@ class NetworkSettings
     /**
      * Indicates if hairpin NAT should be enabled on the virtual interface.
      *
-     * @param bool $hairpinMode
+     * @param bool|null $hairpinMode
      *
      * @return self
      */
@@ -270,7 +270,7 @@ class NetworkSettings
     /**
      * IPv6 unicast address using the link-local prefix.
      *
-     * @return string
+     * @return string|null
      */
     public function getLinkLocalIPv6Address(): ?string
     {
@@ -280,7 +280,7 @@ class NetworkSettings
     /**
      * IPv6 unicast address using the link-local prefix.
      *
-     * @param string $linkLocalIPv6Address
+     * @param string|null $linkLocalIPv6Address
      *
      * @return self
      */
@@ -294,7 +294,7 @@ class NetworkSettings
     /**
      * Prefix length of the IPv6 unicast address.
      *
-     * @return int
+     * @return int|null
      */
     public function getLinkLocalIPv6PrefixLen(): ?int
     {
@@ -304,7 +304,7 @@ class NetworkSettings
     /**
      * Prefix length of the IPv6 unicast address.
      *
-     * @param int $linkLocalIPv6PrefixLen
+     * @param int|null $linkLocalIPv6PrefixLen
      *
      * @return self
      */
@@ -324,7 +324,7 @@ class NetworkSettings
     are added to the mapping table.
 
      *
-     * @return PortBinding[][]
+     * @return PortBinding[][]|null
      */
     public function getPorts(): ?\ArrayObject
     {
@@ -340,7 +340,7 @@ class NetworkSettings
     are added to the mapping table.
 
      *
-     * @param PortBinding[][] $ports
+     * @param PortBinding[][]|null $ports
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class NetworkSettings
     /**
      * SandboxKey identifies the sandbox.
      *
-     * @return string
+     * @return string|null
      */
     public function getSandboxKey(): ?string
     {
@@ -364,7 +364,7 @@ class NetworkSettings
     /**
      * SandboxKey identifies the sandbox.
      *
-     * @param string $sandboxKey
+     * @param string|null $sandboxKey
      *
      * @return self
      */
@@ -376,7 +376,7 @@ class NetworkSettings
     }
 
     /**
-     * @return Address[]
+     * @return Address[]|null
      */
     public function getSecondaryIPAddresses(): ?array
     {
@@ -384,7 +384,7 @@ class NetworkSettings
     }
 
     /**
-     * @param Address[] $secondaryIPAddresses
+     * @param Address[]|null $secondaryIPAddresses
      *
      * @return self
      */
@@ -396,7 +396,7 @@ class NetworkSettings
     }
 
     /**
-     * @return Address[]
+     * @return Address[]|null
      */
     public function getSecondaryIPv6Addresses(): ?array
     {
@@ -404,7 +404,7 @@ class NetworkSettings
     }
 
     /**
-     * @param Address[] $secondaryIPv6Addresses
+     * @param Address[]|null $secondaryIPv6Addresses
      *
      * @return self
      */
@@ -427,7 +427,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @return string
+     * @return string|null
      */
     public function getEndpointID(): ?string
     {
@@ -446,7 +446,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @param string $endpointID
+     * @param string|null $endpointID
      *
      * @return self
      */
@@ -469,7 +469,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @return string
+     * @return string|null
      */
     public function getGateway(): ?string
     {
@@ -488,7 +488,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @param string $gateway
+     * @param string|null $gateway
      *
      * @return self
      */
@@ -511,7 +511,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @return string
+     * @return string|null
      */
     public function getGlobalIPv6Address(): ?string
     {
@@ -530,7 +530,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @param string $globalIPv6Address
+     * @param string|null $globalIPv6Address
      *
      * @return self
      */
@@ -553,7 +553,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @return int
+     * @return int|null
      */
     public function getGlobalIPv6PrefixLen(): ?int
     {
@@ -572,7 +572,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @param int $globalIPv6PrefixLen
+     * @param int|null $globalIPv6PrefixLen
      *
      * @return self
      */
@@ -595,7 +595,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @return string
+     * @return string|null
      */
     public function getIPAddress(): ?string
     {
@@ -614,7 +614,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @param string $iPAddress
+     * @param string|null $iPAddress
      *
      * @return self
      */
@@ -637,7 +637,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @return int
+     * @return int|null
      */
     public function getIPPrefixLen(): ?int
     {
@@ -656,7 +656,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @param int $iPPrefixLen
+     * @param int|null $iPPrefixLen
      *
      * @return self
      */
@@ -679,7 +679,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @return string
+     * @return string|null
      */
     public function getIPv6Gateway(): ?string
     {
@@ -698,7 +698,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @param string $iPv6Gateway
+     * @param string|null $iPv6Gateway
      *
      * @return self
      */
@@ -721,7 +721,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @return string
+     * @return string|null
      */
     public function getMacAddress(): ?string
     {
@@ -740,7 +740,7 @@ class NetworkSettings
     > to be removed in Docker 17.12.0
 
      *
-     * @param string $macAddress
+     * @param string|null $macAddress
      *
      * @return self
      */
@@ -754,7 +754,7 @@ class NetworkSettings
     /**
      * Information about all networks that the container is connected to.
      *
-     * @return EndpointSettings[]
+     * @return EndpointSettings[]|null
      */
     public function getNetworks(): ?\ArrayObject
     {
@@ -764,7 +764,7 @@ class NetworkSettings
     /**
      * Information about all networks that the container is connected to.
      *
-     * @param EndpointSettings[] $networks
+     * @param EndpointSettings[]|null $networks
      *
      * @return self
      */

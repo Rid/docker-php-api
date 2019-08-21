@@ -22,7 +22,7 @@ class NetworksPrunePostResponse200
     /**
      * Networks that were deleted.
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getNetworksDeleted(): ?array
     {
@@ -32,7 +32,7 @@ class NetworksPrunePostResponse200
     /**
      * Networks that were deleted.
      *
-     * @param string[] $networksDeleted
+     * @param string[]|null $networksDeleted
      *
      * @return self
      */

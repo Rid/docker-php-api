@@ -34,7 +34,7 @@ class ImagesSearchGetResponse200Item
     protected $starCount;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -42,7 +42,7 @@ class ImagesSearchGetResponse200Item
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class ImagesSearchGetResponse200Item
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsOfficial(): ?bool
     {
@@ -62,7 +62,7 @@ class ImagesSearchGetResponse200Item
     }
 
     /**
-     * @param bool $isOfficial
+     * @param bool|null $isOfficial
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class ImagesSearchGetResponse200Item
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsAutomated(): ?bool
     {
@@ -82,7 +82,7 @@ class ImagesSearchGetResponse200Item
     }
 
     /**
-     * @param bool $isAutomated
+     * @param bool|null $isAutomated
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class ImagesSearchGetResponse200Item
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -102,7 +102,7 @@ class ImagesSearchGetResponse200Item
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class ImagesSearchGetResponse200Item
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getStarCount(): ?int
     {
@@ -122,7 +122,7 @@ class ImagesSearchGetResponse200Item
     }
 
     /**
-     * @param int $starCount
+     * @param int|null $starCount
      *
      * @return self
      */

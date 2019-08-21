@@ -22,7 +22,7 @@ class IdResponse
     /**
      * The id of the newly created object.
      *
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -32,7 +32,7 @@ class IdResponse
     /**
      * The id of the newly created object.
      *
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */

@@ -22,7 +22,7 @@ class SwarmSpecDispatcher
     /**
      * The delay for an agent to send a heartbeat to the dispatcher.
      *
-     * @return int
+     * @return int|null
      */
     public function getHeartbeatPeriod(): ?int
     {
@@ -32,7 +32,7 @@ class SwarmSpecDispatcher
     /**
      * The delay for an agent to send a heartbeat to the dispatcher.
      *
-     * @param int $heartbeatPeriod
+     * @param int|null $heartbeatPeriod
      *
      * @return self
      */

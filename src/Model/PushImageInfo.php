@@ -30,7 +30,7 @@ class PushImageInfo
     protected $progressDetail;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getError(): ?string
     {
@@ -38,7 +38,7 @@ class PushImageInfo
     }
 
     /**
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class PushImageInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStatus(): ?string
     {
@@ -58,7 +58,7 @@ class PushImageInfo
     }
 
     /**
-     * @param string $status
+     * @param string|null $status
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class PushImageInfo
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getProgress(): ?string
     {
@@ -78,7 +78,7 @@ class PushImageInfo
     }
 
     /**
-     * @param string $progress
+     * @param string|null $progress
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class PushImageInfo
     }
 
     /**
-     * @return ProgressDetail
+     * @return ProgressDetail|null
      */
     public function getProgressDetail(): ?ProgressDetail
     {
@@ -98,7 +98,7 @@ class PushImageInfo
     }
 
     /**
-     * @param ProgressDetail $progressDetail
+     * @param ProgressDetail|null $progressDetail
      *
      * @return self
      */
