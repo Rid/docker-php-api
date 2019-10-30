@@ -35,7 +35,7 @@ class SecretDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         return str_replace(['{id}'], [$this->id], '/secrets/{id}');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], null];
     }
@@ -52,7 +52,7 @@ class SecretDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * @throws \Docker\API\Exception\SecretDeleteInternalServerErrorException
      * @throws \Docker\API\Exception\SecretDeleteServiceUnavailableException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (204 === $status) {
             return null;

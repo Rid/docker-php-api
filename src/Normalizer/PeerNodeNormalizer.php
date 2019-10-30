@@ -29,7 +29,7 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\PeerNode';
+        return $data instanceof \Docker\API\Model\PeerNode;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

@@ -39,7 +39,7 @@ class ContainerExec extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         return str_replace(['{id}'], [$this->id], '/containers/{id}/exec');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
@@ -58,7 +58,7 @@ class ContainerExec extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      *
      * @return \Docker\API\Model\IdResponse|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (201 === $status) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\IdResponse', 'json');

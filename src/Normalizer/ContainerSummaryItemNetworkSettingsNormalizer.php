@@ -29,7 +29,7 @@ class ContainerSummaryItemNetworkSettingsNormalizer implements DenormalizerInter
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\ContainerSummaryItemNetworkSettings';
+        return $data instanceof \Docker\API\Model\ContainerSummaryItemNetworkSettings;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

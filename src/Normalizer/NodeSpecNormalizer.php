@@ -29,7 +29,7 @@ class NodeSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\NodeSpec';
+        return $data instanceof \Docker\API\Model\NodeSpec;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

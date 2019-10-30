@@ -29,7 +29,7 @@ class ConfigSpecNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\ConfigSpec';
+        return $data instanceof \Docker\API\Model\ConfigSpec;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

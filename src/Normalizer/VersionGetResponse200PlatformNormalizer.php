@@ -29,7 +29,7 @@ class VersionGetResponse200PlatformNormalizer implements DenormalizerInterface, 
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\VersionGetResponse200Platform';
+        return $data instanceof \Docker\API\Model\VersionGetResponse200Platform;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

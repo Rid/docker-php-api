@@ -29,7 +29,7 @@ class ContainersCreatePostBodyNetworkingConfigNormalizer implements Denormalizer
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\ContainersCreatePostBodyNetworkingConfig';
+        return $data instanceof \Docker\API\Model\ContainersCreatePostBodyNetworkingConfig;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

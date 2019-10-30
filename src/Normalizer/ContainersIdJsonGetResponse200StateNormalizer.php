@@ -29,7 +29,7 @@ class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInter
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\ContainersIdJsonGetResponse200State';
+        return $data instanceof \Docker\API\Model\ContainersIdJsonGetResponse200State;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

@@ -29,7 +29,7 @@ class SecretsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\SecretsCreatePostBody';
+        return $data instanceof \Docker\API\Model\SecretsCreatePostBody;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

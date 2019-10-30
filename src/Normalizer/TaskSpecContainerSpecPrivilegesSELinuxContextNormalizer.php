@@ -29,7 +29,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContextNormalizer implements Denorma
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\TaskSpecContainerSpecPrivilegesSELinuxContext';
+        return $data instanceof \Docker\API\Model\TaskSpecContainerSpecPrivilegesSELinuxContext;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

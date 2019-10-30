@@ -40,7 +40,7 @@ class ContainerStart extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
         return str_replace(['{id}'], [$this->id], '/containers/{id}/start');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], null];
     }
@@ -67,7 +67,7 @@ class ContainerStart extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * @throws \Docker\API\Exception\ContainerStartNotFoundException
      * @throws \Docker\API\Exception\ContainerStartInternalServerErrorException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (204 === $status) {
             return null;

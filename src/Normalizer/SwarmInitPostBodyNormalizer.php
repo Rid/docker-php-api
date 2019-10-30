@@ -29,7 +29,7 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\SwarmInitPostBody';
+        return $data instanceof \Docker\API\Model\SwarmInitPostBody;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

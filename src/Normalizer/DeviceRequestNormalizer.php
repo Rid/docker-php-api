@@ -29,7 +29,7 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\DeviceRequest';
+        return $data instanceof \Docker\API\Model\DeviceRequest;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

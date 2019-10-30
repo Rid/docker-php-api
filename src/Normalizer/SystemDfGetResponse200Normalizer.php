@@ -29,7 +29,7 @@ class SystemDfGetResponse200Normalizer implements DenormalizerInterface, Normali
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\SystemDfGetResponse200';
+        return $data instanceof \Docker\API\Model\SystemDfGetResponse200;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

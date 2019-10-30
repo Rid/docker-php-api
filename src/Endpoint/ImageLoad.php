@@ -43,7 +43,7 @@ class ImageLoad extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         return '/images/load';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], $this->body];
     }
@@ -69,7 +69,7 @@ class ImageLoad extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      *
      * @throws \Docker\API\Exception\ImageLoadInternalServerErrorException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (200 === $status) {
             return null;

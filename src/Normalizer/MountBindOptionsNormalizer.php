@@ -29,7 +29,7 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\MountBindOptions';
+        return $data instanceof \Docker\API\Model\MountBindOptions;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

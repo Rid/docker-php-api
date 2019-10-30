@@ -29,7 +29,7 @@ class ObjectVersionNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\ObjectVersion';
+        return $data instanceof \Docker\API\Model\ObjectVersion;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

@@ -29,7 +29,7 @@ class ServiceSpecNetworksItemNormalizer implements DenormalizerInterface, Normal
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\ServiceSpecNetworksItem';
+        return $data instanceof \Docker\API\Model\ServiceSpecNetworksItem;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

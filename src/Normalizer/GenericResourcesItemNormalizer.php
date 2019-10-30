@@ -29,7 +29,7 @@ class GenericResourcesItemNormalizer implements DenormalizerInterface, Normalize
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\GenericResourcesItem';
+        return $data instanceof \Docker\API\Model\GenericResourcesItem;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

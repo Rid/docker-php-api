@@ -36,7 +36,7 @@ class SwarmLeave extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         return '/swarm/leave';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], null];
     }
@@ -63,7 +63,7 @@ class SwarmLeave extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * @throws \Docker\API\Exception\SwarmLeaveInternalServerErrorException
      * @throws \Docker\API\Exception\SwarmLeaveServiceUnavailableException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (200 === $status) {
             return null;

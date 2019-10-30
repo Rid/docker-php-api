@@ -96,7 +96,7 @@ class ImageBuild extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         return '/build';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], $this->body];
     }
@@ -158,7 +158,7 @@ class ImageBuild extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * @throws \Docker\API\Exception\ImageBuildBadRequestException
      * @throws \Docker\API\Exception\ImageBuildInternalServerErrorException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (200 === $status) {
             return null;

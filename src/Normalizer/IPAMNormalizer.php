@@ -29,7 +29,7 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\IPAM';
+        return $data instanceof \Docker\API\Model\IPAM;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

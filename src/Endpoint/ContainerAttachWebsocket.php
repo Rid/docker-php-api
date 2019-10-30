@@ -45,7 +45,7 @@ class ContainerAttachWebsocket extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
         return str_replace(['{id}'], [$this->id], '/containers/{id}/attach/ws');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], null];
     }
@@ -78,7 +78,7 @@ class ContainerAttachWebsocket extends \Jane\OpenApiRuntime\Client\BaseEndpoint 
      * @throws \Docker\API\Exception\ContainerAttachWebsocketNotFoundException
      * @throws \Docker\API\Exception\ContainerAttachWebsocketInternalServerErrorException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (101 === $status) {
             return null;

@@ -29,7 +29,7 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\ClusterInfo';
+        return $data instanceof \Docker\API\Model\ClusterInfo;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

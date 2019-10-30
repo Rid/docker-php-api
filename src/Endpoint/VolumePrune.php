@@ -40,7 +40,7 @@ class VolumePrune extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         return '/volumes/prune';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], null];
     }
@@ -68,7 +68,7 @@ class VolumePrune extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @return \Docker\API\Model\VolumesPrunePostResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\VolumesPrunePostResponse200', 'json');

@@ -29,7 +29,7 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\ContainersIdExecPostBody';
+        return $data instanceof \Docker\API\Model\ContainersIdExecPostBody;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

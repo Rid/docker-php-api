@@ -29,7 +29,7 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\Plugin';
+        return $data instanceof \Docker\API\Model\Plugin;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])

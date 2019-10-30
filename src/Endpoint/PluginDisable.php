@@ -35,7 +35,7 @@ class PluginDisable extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         return str_replace(['{name}'], [$this->name], '/plugins/{name}/disable');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         return [[], null];
     }
@@ -51,7 +51,7 @@ class PluginDisable extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * @throws \Docker\API\Exception\PluginDisableNotFoundException
      * @throws \Docker\API\Exception\PluginDisableInternalServerErrorException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
         if (200 === $status) {
             return null;

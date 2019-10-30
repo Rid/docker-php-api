@@ -29,7 +29,7 @@ class ImageRootFSNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'Docker\\API\\Model\\ImageRootFS';
+        return $data instanceof \Docker\API\Model\ImageRootFS;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
